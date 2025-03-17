@@ -6,7 +6,7 @@ Takım Üyelerimizin detaylı özgemişlerinin yer aldığı kişisel sayfaları
 
 # Takım Üyeleri
 
-1.  [Edin_Džeko](/takim/edindzeko.qmd)
+1.  [Buse Dönmez Zerman](/takim/busedonmezzerman.qmd)
 
 2.  [Dušan Tadić](/takim/dusantadic.qmd)
 
