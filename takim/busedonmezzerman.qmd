@@ -39,5 +39,5 @@ R, Quarto, Git, Python
 
 Resim, Kick-boks
 
-# buradan özgeçmişimi görüntüleyebilirsiniz.
-[CV'mi aç](/assets/cv/BuseDonmezZermanCV.pdf)
+# özgeçmiş linki
+[buradan özgeçmişimi görüntüleyebilirsiniz](/assets/cv/BuseDonmezZermanCV.pdf)
