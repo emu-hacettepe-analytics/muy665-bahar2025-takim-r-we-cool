@@ -1,5 +1,5 @@
 ---
-title: "Takım: XXX"
+title: "Takım: R We Cool"
 sidebar: false 
 ---
 
@@ -13,7 +13,7 @@ Lütfen faaliyetlerimizi görmek için için bizi takipte kalın.
 
 ## Takım Üyeleri
 
-1.  [Edin_Džeko](/takim/edindzeko.qmd)
+1.  [Buse Donmez Zerman](/takim/busedonmezzerman.qmd)
 
 2.  [Dušan Tadić](/takim/dusantadic.qmd)
 
