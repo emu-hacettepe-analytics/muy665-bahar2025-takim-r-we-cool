@@ -36,3 +36,7 @@ R, Quarto, Git, Python
 # Hobiler
 
 Tiyatro, Yüzme, Resim
+
+# Özgeçmişimi Buradan Görüntüleyebilirsiniz
+
+[Özgeçmişimi Görüntüle](/assets/cv/FeyzaBegümAFŞARCV-2024.pdf)
