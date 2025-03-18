@@ -2,7 +2,7 @@
 title: "Buse Dönmez Zerman"
 ---
 
-![](/assets/images/buse_vesikalik.jpg){width=50% fig-align="center"}
+![](/assets/images/buse_vesikalik.jpg){width="50%" fig-align="center"}
 
 # Eğitim
 
@@ -36,4 +36,5 @@ title: "Buse Dönmez Zerman"
 R, Quarto, Git, Python
 
 # Hobiler
+
 Resim, Kick-boks

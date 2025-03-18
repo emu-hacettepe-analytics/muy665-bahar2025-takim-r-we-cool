@@ -10,6 +10,6 @@ Takım Üyelerimizin detaylı özgemişlerinin yer aldığı kişisel sayfaları
 
 2.  [Dušan Tadić](/takim/dusantadic.qmd)
 
-3.  [Frederico Rodrigues de Paula Santos](/takim/fred.qmd)
+3.  [Begüm Afşar](/takim/begumafsar.qmd)
 
 4.  [Sebastian Szymański](/takim/szymanski.qmd)
