@@ -38,3 +38,6 @@ R, Quarto, Git, Python
 # Hobiler
 
 Resim, Kick-boks
+
+# buradan özgeçmişimi görüntüleyebilirsiniz.
+[CV'mi aç](/assets/cv/BuseDonmezZermanCV.pdf)
