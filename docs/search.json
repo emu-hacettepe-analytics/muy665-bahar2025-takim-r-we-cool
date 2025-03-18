@@ -240,7 +240,7 @@
     "href": "takim.html",
     "title": "Takım Üyeleri",
     "section": "",
-    "text": "Takım Üyelerimizin detaylı özgemişlerinin yer aldığı kişisel sayfalarına gitmek için sol menüyü veya aşağıdaki linkleri kullanabilirsiniz.\n\nTakım Üyeleri\n\nBuse Dönmez Zerman\nDušan Tadić\nBegüm Afşar\nSebastian Szymański\n\n\n\n\n\n Back to top",
+    "text": "Takım Üyelerimizin detaylı özgemişlerinin yer aldığı kişisel sayfalarına gitmek için sol menüyü veya aşağıdaki linkleri kullanabilirsiniz.\n\nTakım Üyeleri\n\nBuse Dönmez Zerman\nBuket Ozertem\nBegüm Afşar\nSebastian Szymański\n\n\n\n\n\n Back to top",
     "crumbs": [
       "Takım Üyeleri"
     ]
@@ -524,14 +524,14 @@
   {
     "objectID": "takim/dusantadic.html#işler",
     "href": "takim/dusantadic.html#işler",
-    "title": "Dusan Tadic",
+    "title": "Buket Ozertem",
     "section": "İşler",
-    "text": "İşler\n\nFirma xxx, pozisyon xx, yıl xxx\nFirma yyy, pozisyon yyy, yıl yyy"
+    "text": "İşler\n\nFirma Arlight Aydinlatma, pozisyon Proje Muhendisi, yıl 2013-2015\nFirma Enerjisa, pozisyon Proje Muhendisi, yıl 2015-2017\nFirma Meteksan, pozisyon Proje Muhendisi, yil 2017-2018\nFirma Roketsan, pozisyon Proje Muhendisi, yil 2018- devam ediyor"
   },
   {
     "objectID": "takim/dusantadic.html#stajlar",
     "href": "takim/dusantadic.html#stajlar",
-    "title": "Dusan Tadic",
+    "title": "Buket Ozertem",
     "section": "Stajlar",
     "text": "Stajlar\n\nFirma aaa, pozisyon xx, yıl xxx\nFirma bbb, pozisyon yyy, yıl yyy"
   },
@@ -588,6 +588,28 @@
     "crumbs": [
       "Takım Üyeleri",
       "Begüm Afşar"
+    ]
+  },
+  {
+    "objectID": "takim/buketozertem.html#işler",
+    "href": "takim/buketozertem.html#işler",
+    "title": "Buket Ozertem",
+    "section": "İşler",
+    "text": "İşler\n\nFirma Arlight Aydinlatma, pozisyon Proje Muhendisi, yıl 2013-2015\nFirma Enerjisa, pozisyon Proje Muhendisi, yıl 2015-2017\nFirma Meteksan, pozisyon Proje Muhendisi, yil 2017-2018\nFirma Roketsan, pozisyon Proje Muhendisi, yil 2018- devam ediyor",
+    "crumbs": [
+      "Takım Üyeleri",
+      "Buket Ozertem"
+    ]
+  },
+  {
+    "objectID": "takim/buketozertem.html#stajlar",
+    "href": "takim/buketozertem.html#stajlar",
+    "title": "Buket Ozertem",
+    "section": "Stajlar",
+    "text": "Stajlar\n\nFirma aaa, pozisyon xx, yıl xxx\nFirma bbb, pozisyon yyy, yıl yyy",
+    "crumbs": [
+      "Takım Üyeleri",
+      "Buket Ozertem"
     ]
   }
 ]

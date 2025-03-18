@@ -8,7 +8,7 @@ Takım Üyelerimizin detaylı özgemişlerinin yer aldığı kişisel sayfaları
 
 1.  [Buse Dönmez Zerman](/takim/busedonmezzerman.qmd)
 
-2.  [Dušan Tadić](/takim/dusantadic.qmd)
+2.  [Buket Ozertem](/takim/buketozertem.qmd)
 
 3.  [Begüm Afşar](/takim/begumafsar.qmd)
 
