@@ -240,7 +240,7 @@
     "href": "takim.html",
     "title": "Takım Üyeleri",
     "section": "",
-    "text": "Takım Üyelerimizin detaylı özgemişlerinin yer aldığı kişisel sayfalarına gitmek için sol menüyü veya aşağıdaki linkleri kullanabilirsiniz.\n\nTakım Üyeleri\n\nBuse Dönmez Zerman\nDušan Tadić\nFrederico Rodrigues de Paula Santos\nSebastian Szymański\n\n\n\n\n\n Back to top",
+    "text": "Takım Üyelerimizin detaylı özgemişlerinin yer aldığı kişisel sayfalarına gitmek için sol menüyü veya aşağıdaki linkleri kullanabilirsiniz.\n\nTakım Üyeleri\n\nBuse Dönmez Zerman\nDušan Tadić\nBegüm Afşar\nSebastian Szymański\n\n\n\n\n\n Back to top",
     "crumbs": [
       "Takım Üyeleri"
     ]
@@ -573,13 +573,21 @@
     "href": "takim/begumafsar.html#işler",
     "title": "Begüm Afşar",
     "section": "İşler",
-    "text": "İşler\n\nEnox Teknoloji, Saha Satış Mühendisi, 2020-Devam ediyor."
+    "text": "İşler\n\nEnox Teknoloji, Saha Satış Mühendisi, 2020-Devam ediyor.",
+    "crumbs": [
+      "Takım Üyeleri",
+      "Begüm Afşar"
+    ]
   },
   {
     "objectID": "takim/begumafsar.html#stajlar",
     "href": "takim/begumafsar.html#stajlar",
     "title": "Begüm Afşar",
     "section": "Stajlar",
-    "text": "Stajlar\n\nGeomatics Group , 2018\nM47 Technologies, 2019"
+    "text": "Stajlar\n\nGeomatics Group , 2018\nM47 Technologies, 2019",
+    "crumbs": [
+      "Takım Üyeleri",
+      "Begüm Afşar"
+    ]
   }
 ]
