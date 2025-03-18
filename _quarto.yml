@@ -37,10 +37,10 @@ website:
       contents:
         - takim.qmd
         - takim/busedonmezzerman.qmd
-        - takim/edindzeko.qmd
+        - takim/begumafsar.qmd
         - takim/fred.qmd  
         - takim/szymanski.qmd
-        - takim/begumafsar.qmd 
+        
         
         
   page-navigation: true
