@@ -39,7 +39,8 @@ website:
         - takim/dusantadic.qmd
         - takim/edindzeko.qmd
         - takim/fred.qmd  
-        - takim/szymanski.qmd  
+        - takim/szymanski.qmd
+        - takim/begumafsar.qmd 
         
         
   page-navigation: true
