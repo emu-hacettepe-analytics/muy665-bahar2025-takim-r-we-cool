@@ -2,7 +2,7 @@
 title: "begumafsar"
 ---
 
-# ![](images/Feyza%20Begüm%20Afşar-Fotoğraf.jpg){width="156"} {#sec-}
+# ![](/assets/images/Feyza%20Begüm%20Afşar-Fotoğraf.jpg){width="156"} {#sec-}
 
 -   Lisans, Çankaya Üniversitesi, Türkiye, 2015 - 2020.
 -   Yüksek Lisans, Endüstri Mühendisliği, Hacettepe Üniversitesi, Türkiye, 2025 - devam ediyor.
