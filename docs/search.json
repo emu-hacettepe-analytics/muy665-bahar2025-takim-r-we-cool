@@ -424,7 +424,7 @@
     "href": "portfolyo/calisma1.html#b",
     "title": "Çalışma 1",
     "section": "(b)",
-    "text": "(b)",
+    "text": "(b)\ninstall.packages(“mtcars”) library(mtcars) data(mtcars) class(mtcars) head(mtcars)",
     "crumbs": [
       "Porfolyo",
       "Çalışma 1"

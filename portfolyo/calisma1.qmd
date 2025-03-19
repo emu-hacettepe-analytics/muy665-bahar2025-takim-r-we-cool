@@ -14,3 +14,11 @@ Bu çalışmada 3 görevimiz var. Bu görevler..... Bunlara sırayla aşağıda 
 ```
 
 ## (b)
+
+install.packages("mtcars")
+library(mtcars)
+data(mtcars)
+class(mtcars)
+head(mtcars)
+ 
+
