@@ -42,3 +42,8 @@ R, Quarto, Git, Python
 # Hobiler
 
 Spor yapmak, farkli ulkeler gormek
+
+# Özgeçmişimi Buradan Görüntüleyebilirsiniz
+ 
+[Özgeçmişimi Görüntüle](/assets/cv/BuketOzertemCV.pdf)
+ 
