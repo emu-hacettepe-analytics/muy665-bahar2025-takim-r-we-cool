@@ -1,18 +1,42 @@
----
-title: "Çalışma 1"
----
+# B
+# mtcars veri setini yukleyelim
+data(mtcars)
 
-\
-(Aşağıdakiler örnek olarak verilmiştir.)
+my_summary_stats <- function(vector) 
+{
+  mean = mean(vector, na.rm = TRUE)
+  median = median(vector, na.rm = TRUE)
+  sd = sd(vector, na.rm = TRUE)
+  min = min(vector, na.rm = TRUE)
+  max = max(vector, na.rm = TRUE)
+  
+  returnList <- list(mean, median, sd, min, max)
+  return(returnList)
+}
 
-Bu çalışmada 3 görevimiz var. Bu görevler..... Bunlara sırayla aşağıda cevap arıyoruz.
+# Sayisal sütunlar üzerinde döngü ile işlem yapılması
+for (column_name in colnames(mtcars)) {
+  if (is.numeric(mtcars[[column_name]])) {
+   listem <- my_summary_stats(mtcars[[column_name]])
+   cat("Ozet İstatistikler -", column_name, ":\n")
+   print(listem)
+  }
+}
 
-## (a)
-install.packages("mtcars")
-library(mtcars)
+# sayısal sütunlar için apply kullanımı
+apply(mtcars, 2, mean)
+apply(mtcars, 2, median)
+apply(mtcars, 2, sd)
+apply(mtcars, 2, min)
+apply(mtcars, 2, max)
 
-```{r}
-1 + 1
-```
+# C
+# dslabs veri setini yukleyelim
+install.packages("dslabs")
+library(dslabs)
+data(na_example)
+sum(is.na(na_example))
 
-## (b)
+na_example[is.na(na_example)] <- 2025
+cleaned_data <- na_example 
+print(cleaned_data)
