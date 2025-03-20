@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ---
 title: "Çalışma 1"
 ---
@@ -17,6 +18,11 @@ Bu çalışmada 3 görevimiz var. Bu görevler..... Bunlara sırayla aşağıda 
 
 install.packages("mtcars")
 library(mtcars)
+=======
+# Çalışma 1
+# B
+# mtcars veri setini yukleyelim
+>>>>>>> d320012ff1493f5cfe4382f771bd9e249a460d0a
 data(mtcars)
 class(mtcars)
 head(mtcars)
