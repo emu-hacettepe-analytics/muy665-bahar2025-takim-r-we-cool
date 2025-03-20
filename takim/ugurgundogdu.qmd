@@ -1,25 +1,23 @@
 ---
-title: "Begüm Afşar"
+title: "Uğur Gündoğdu"
 ---
 
-![](images/Feyza Begüm Afşar-Fotoğraf.jpg){fig-align="center" width="225"}
+![](images/ugurvesikalik.jpeg){fig-align="center" width="225"}
 
 # Eğitim
 
--   Lisans, Çankaya Üniversitesi, Türkiye, 2015 - 2020.
--   Yüksek Lisans, Endüstri Mühendisliği, Hacettepe Üniversitesi, Türkiye, 2025 - devam ediyor.
+-   Lisans, Bilkent Üniversitesi, Türkiye, 2016 - 2021.
+-   Yüksek Lisans, Endüstri Mühendisliği, Hacettepe Üniversitesi, Türkiye, 2024 - devam ediyor.
 
 # İş Deneyimi
 
 ## İşler
 
-1.  Enox Teknoloji, Saha Satış Mühendisi, 2020-Devam ediyor.
+1.  Firma Roketsan, pozisyon Sistem Mühendisi, yıl 2024
 
 ## Stajlar
 
-1.  Geomatics Group , 2018
-
-2.  M47 Technologies, 2019
+1.  Firma STM, pozisyon Tasarım Mühendisi, yıl 2020
 
 # Projeler
 
@@ -35,8 +33,8 @@ R, Quarto, Git, Python
 
 # Hobiler
 
-Tiyatro, Yüzme, Resim
+Futbol, Tenis
 
 # Özgeçmişimi Buradan Görüntüleyebilirsiniz
 
-[Özgeçmişimi Görüntüle](/assets/cv/FeyzaBegümAFŞARCV-2024.pdf)
+[Özgeçmişimi Görüntüle](/assets/cv/CV_Ugur_GUNDOGDU.pdf)
