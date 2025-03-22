@@ -1,0 +1,36 @@
+
+---
+title: "Berkay Bozkurt"
+---
+
+![](images/beboz_foto.jpeg){fig-align="center" width="225"}
+
+# EDitim
+
+-   Lisans, Gazi Üniversitesi, Elektrik-Elektornik Mühendisliği, Türkiye, 2015 - 2020.
+-   Yüksek Lisans, Endüstri Mühendisliği, Hacettepe Üniversitesi, Türkiye, 2025 - Halen
+
+# İş Deneyimi
+
+## İşler
+
+1.  Aselsan, Elektro-Optik Sistem Mühendisi, 2024 - Halen
+2.  Aselsan, Donanım Tasarım Mühendisi, 2019 - 2024.
+
+## Stajlar
+
+1.  Aselsan, 2019
+
+2.  Türkiye Radyo ve Televizyon Kurumu, 2018
+
+# Patentler
+
+1.  TR 2022 005680 Elektro-Optik Sensör Birimleri İçin Modüler Akıllı Elektronik Kart Mimarisi, 2023.
+
+# Yetkinlikler
+
+Amelasyon, Altium, PADS Professional, Matlab
+
+# Özgeçmişimi Buradan Görüntüleyebilirsiniz
+
+[Özgeçmişimi Görüntüle](/docs/assets/cv/beboz_cv.pdf)
