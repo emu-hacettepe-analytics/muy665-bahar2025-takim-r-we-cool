@@ -3,7 +3,7 @@
 title: "Nurten Albayrak"
 ---
 
-![](images/nurten_foto.jpeg){fig-align="center" width="225"}
+![](images/nurten_foto.png){fig-align="center" width="225"}
 
 # Eğitim
 
