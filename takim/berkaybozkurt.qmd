@@ -3,7 +3,7 @@
 title: "Berkay Bozkurt"
 ---
 
-![](images/clipboard-339678790.jpg){fig-align="center" width="225"}
+![](images/beboz_foto.jpeg){fig-align="center" width="225"}
 
 # Eğitim
 
@@ -32,3 +32,5 @@ title: "Berkay Bozkurt"
 Amelasyon, Altium, PADS Professional, Matlab
 
 # Özgeçmişimi Buradan Görüntüleyebilirsiniz
+
+[Özgeçmişimi Görüntüle](/assets/cv/beboz_cv.pdf)
