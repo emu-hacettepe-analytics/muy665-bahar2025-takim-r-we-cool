@@ -13,3 +13,5 @@ Takım Üyelerimizin detaylı özgemişlerinin yer aldığı kişisel sayfaları
 3.  [Begüm Afşar](/takim/begumafsar.qmd)
 
 4.  [Uğur Gündoğdu](/takim/ugurgundogdu.qmd)
+
+5.  [Berkay Bozkurt](/takim/berkaybozkurt.qmd)
