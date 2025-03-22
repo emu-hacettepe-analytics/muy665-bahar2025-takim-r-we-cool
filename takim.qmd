@@ -15,7 +15,8 @@ Takım Üyelerimizin detaylı özgemişlerinin yer aldığı kişisel sayfaları
 4.  [Uğur Gündoğdu](/takim/ugurgundogdu.qmd)
 
 5.  [Berkay Bozkurt](/takim/berkaybozkurt.qmd)
-<<<<<<< HEAD
 
-6.  [Bora Koparan](/takim/borakoparan.qmd)
+6.  [Nurten Albayrak](/takim/nurtenalbayrak.qmd)
+
+7.  [Bora Koparan](/takim/borakoparan.qmd)
 
