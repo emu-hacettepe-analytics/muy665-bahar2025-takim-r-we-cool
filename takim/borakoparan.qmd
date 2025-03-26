@@ -31,4 +31,4 @@ Film izlemek, Atış yapmak
 
 # Özgeçmiş
 
-[Özgeçmişimi Görüntüle](assets/cv/CV_Bora_Koparan.pdf)
+[Özgeçmişimi Görüntüle](/assets/cv/CV_Bora_Koparan.pdf)
