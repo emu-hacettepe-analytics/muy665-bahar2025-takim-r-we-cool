@@ -1,6 +1,8 @@
-# Çalışma 1
 # B
+
 # mtcars veri setini yukleyelim
+
+```{r}
 data(mtcars)
 
 my_summary_stats <- function(vector) 
@@ -14,7 +16,11 @@ my_summary_stats <- function(vector)
   returnList <- list(mean, median, sd, min, max)
   return(returnList)
 }
+```
 
+# Sayisal sütunlar üzerinde döngü ile işlem yapılması
+
+```{r}
 # Sayisal sütunlar üzerinde döngü ile işlem yapılması
 for (column_name in colnames(mtcars)) {
   if (is.numeric(mtcars[[column_name]])) {
@@ -23,16 +29,23 @@ for (column_name in colnames(mtcars)) {
    print(listem)
   }
 }
+```
 
 # sayısal sütunlar için apply kullanımı
+
+```{r}
 apply(mtcars, 2, mean)
 apply(mtcars, 2, median)
 apply(mtcars, 2, sd)
 apply(mtcars, 2, min)
 apply(mtcars, 2, max)
+```
 
 # C
+
 # dslabs veri setini yukleyelim
+
+```{r}
 install.packages("dslabs")
 library(dslabs)
 data(na_example)
@@ -41,3 +54,4 @@ sum(is.na(na_example))
 na_example[is.na(na_example)] <- 2025
 cleaned_data <- na_example 
 print(cleaned_data)
+```

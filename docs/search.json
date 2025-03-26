@@ -322,12 +322,12 @@
   {
     "objectID": "portfolyo/calisma1.html",
     "href": "portfolyo/calisma1.html",
-    "title": "Çalışma 1",
+    "title": "B",
     "section": "",
-    "text": "(Aşağıdakiler örnek olarak verilmiştir.)\nBu çalışmada 3 görevimiz var. Bu görevler….. Bunlara sırayla aşağıda cevap arıyoruz.",
+    "text": "B\n\n\nmtcars veri setini yukleyelim\ndata(mtcars)\nmy_summary_stats &lt;- function(vector) { mean = mean(vector, na.rm = TRUE) median = median(vector, na.rm = TRUE) sd = sd(vector, na.rm = TRUE) min = min(vector, na.rm = TRUE) max = max(vector, na.rm = TRUE)\nreturnList &lt;- list(mean, median, sd, min, max) return(returnList) }\n\n\nSayisal sütunlar üzerinde döngü ile işlem yapılması\nfor (column_name in colnames(mtcars)) { if (is.numeric(mtcars[[column_name]])) { listem &lt;- my_summary_stats(mtcars[[column_name]]) cat(“Ozet İstatistikler -”, column_name, “:”) print(listem) } }\n\n\nsayısal sütunlar için apply kullanımı\napply(mtcars, 2, mean) apply(mtcars, 2, median) apply(mtcars, 2, sd) apply(mtcars, 2, min) apply(mtcars, 2, max)\n\n\nC\n\n\ndslabs veri setini yukleyelim\ninstall.packages(“dslabs”) library(dslabs) data(na_example) sum(is.na(na_example))\nna_example[is.na(na_example)] &lt;- 2025 cleaned_data &lt;- na_example print(cleaned_data)\n\n\n\n\n Back to top",
     "crumbs": [
       "Porfolyo",
-      "Çalışma 1"
+      "B"
     ]
   },
   {
