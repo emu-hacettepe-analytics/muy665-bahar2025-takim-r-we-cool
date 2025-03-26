@@ -2,7 +2,7 @@
 title: "Bora KOPARAN"
 ---
 
-![](images/clipboard-3409846941.jpeg){fig-align="center" width="169"}
+![](/assets/images/bora_foto.jpg){width="169"}
 
 # Eğitim
 
@@ -31,4 +31,4 @@ Film izlemek, Atış yapmak
 
 # Özgeçmiş
 
-[Özgeçmişimi Görüntüle](/assets/cv/CV Bora Koparan #1 (12).pdf)
+[Özgeçmişimi Görüntüle](/assets/cv/CV%20Bora%20Koparan%20#1%20(12).pdf)

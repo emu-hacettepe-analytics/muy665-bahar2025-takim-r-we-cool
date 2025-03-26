@@ -23,6 +23,8 @@ Lütfen faaliyetlerimizi görmek için için bizi takipte kalın.
 
 6.  [Nurten Albayrak](/takim/nurtenalbayrak.qmd)
 
+7.  [Bora Koparan](/takim/borakoparan.qmd)
+
 ## Proje Adı
 
 MUY660-İş Analitiği iyileştirme çalışmaları (örnek)
