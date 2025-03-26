@@ -1,3 +1,4 @@
+# Çalışma 1
 # B
 # mtcars veri setini yukleyelim
 ```{r}
