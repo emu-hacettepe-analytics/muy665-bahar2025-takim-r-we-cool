@@ -2,7 +2,7 @@
 title: "Begüm Afşar"
 ---
 
-![](images/Feyza Begüm Afşar-Fotoğraf.jpg){fig-align="center" width="225"}
+![](images/Feyza%20Begüm%20Afşar-Fotoğraf.jpg){fig-align="center" width="225"}
 
 # Eğitim
 
