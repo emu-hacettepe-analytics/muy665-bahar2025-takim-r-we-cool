@@ -1,18 +1,17 @@
-
 ---
 title: "Nurten Albayrak"
 ---
 
-![](takim/images/nurten_foto.PNG){fig-align="center" width="225"}
+![](takim/images/nurten_foto.jpg){fig-align="center" width="225"}
 
 # Eğitim
 
--   Lisans, Gazi Üniversitesi, Elektrik-Elektornik Mühendisliği, Türkiye, 2015 - 2021.
--   Yüksek Lisans, Endüstri Mühendisliği, Hacettepe Üniversitesi, Türkiye, 2025 - Halen
+-   Lisans, Gazi Üniversitesi, Elektrik-Elektornik Mühendisliği, Türkiye, 2015 - 2021.
+-   Yüksek Lisans, Endüstri Mühendisliği, Hacettepe Üniversitesi, Türkiye, 2025 - Halen
 
-# İş Deneyimi
+# İş Deneyimi
 
-## İşler
+## İşler
 
 1.  Aselsan, Proje Mühendisi, 2024 - Halen
 2.  Aselsan, Donanım Test ve Doğrulama Mühendisi, 2021 - 2024
