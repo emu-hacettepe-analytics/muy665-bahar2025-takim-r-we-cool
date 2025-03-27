@@ -1,18 +1,17 @@
-
 ---
 title: "Berkay Bozkurt"
 ---
 
 ![](images/beboz_foto.jpeg){fig-align="center" width="225"}
 
-# EDitim
+# Eğitim
 
--   Lisans, Gazi Üniversitesi, Elektrik-Elektornik Mühendisliği, Türkiye, 2015 - 2020.
--   Yüksek Lisans, Endüstri Mühendisliği, Hacettepe Üniversitesi, Türkiye, 2025 - Halen
+-   Lisans, Gazi Üniversitesi, Elektrik-Elektornik Mühendisliği, Türkiye, 2015 - 2020.
+-   Yüksek Lisans, Endüstri Mühendisliği, Hacettepe Üniversitesi, Türkiye, 2025 - Halen
 
-# İş Deneyimi
+# İş Deneyimi
 
-## İşler
+## İşler
 
 1.  Aselsan, Elektro-Optik Sistem Mühendisi, 2024 - Halen
 2.  Aselsan, Donanım Tasarım Mühendisi, 2019 - 2024.

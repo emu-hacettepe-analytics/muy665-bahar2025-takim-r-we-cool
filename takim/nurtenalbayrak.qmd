@@ -2,7 +2,7 @@
 title: "Nurten Albayrak"
 ---
 
-![](takim/images/nurten_foto.jpg){fig-align="center" width="225"}
+![](/assets/images/nurten_foto.jpg){width="169"}
 
 # Eğitim
 

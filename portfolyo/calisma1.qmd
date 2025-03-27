@@ -122,7 +122,7 @@ apply(mtcars, 2, max)
 
 # C
 
-# dslabs veri setini yukleyelim
+# dslabs veri setini yükleyelim
 
 ```{r}
 #install.packages("dslabs")
@@ -133,4 +133,11 @@ sum(is.na(na_example))
 na_example[is.na(na_example)] <- 2025
 cleaned_data <- na_example 
 print(cleaned_data)
+```
+
+# 2025 değerinin veri setinde kaç kez geçtiğini raporlayalım
+
+```{r}
+sum(cleaned_data == 2025)
+
 ```
