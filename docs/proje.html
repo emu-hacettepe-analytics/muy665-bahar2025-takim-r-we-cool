@@ -304,24 +304,24 @@ Attaching package: 'car'</code></pre>
 <div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(data_new)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>'data.frame':   991 obs. of  22 variables:
- $ index                     : int  NA 2 3 4 5 6 7 8 9 10 ...
+ $ index                     : int  1 2 3 4 5 6 NA 8 9 10 ...
  $ brand                     : chr  "tecno" "tecno" "hp" "acer" ...
  $ Model                     : chr  "Tecno Megabook T1 Laptop (11th Gen Core i3/ 8GB/ 512GB SSD/ Win11 Home)" "Tecno Megabook T1 Laptop (11th Gen Core i7/ 16GB/ 1TB SSD/ Win11 Home)" "HP Victus 15-fb0157AX Gaming Laptop (AMD Ryzen 5 5600H/ 8GB/ 512GB SSD/ Win11/ 4GB Graph)" "Acer Extensa EX214-53 Laptop (12th Gen Core i5/ 8GB/ 512GB SSD/ Win11 Home)" ...
- $ Price                     : int  23990 35990 51100 39990 28580 70990 34990 49990 36990 NA ...
+ $ Price                     : int  23990 35990 51100 39990 28580 70990 34990 49990 36990 59990 ...
  $ Rating                    : int  63 67 73 62 62 45 56 70 60 71 ...
  $ processor_brand           : chr  "intel" "intel" "amd" "intel" ...
  $ processor_tier            : chr  "core i3" "core i7" "ryzen 5" "core i5" ...
- $ num_cores                 : int  2 4 6 12 4 8 NA 6 6 14 ...
- $ num_threads               : int  4 8 NA 16 8 8 8 12 8 20 ...
- $ ram_memory                : int  8 NA 8 8 NA 8 16 8 8 32 ...
+ $ num_cores                 : int  2 4 6 NA 4 8 4 6 6 14 ...
+ $ num_threads               : int  4 8 12 16 8 8 8 12 8 20 ...
+ $ ram_memory                : int  8 16 8 8 8 8 16 8 8 32 ...
  $ primary_storage_type      : chr  "SSD" "SSD" "SSD" "SSD" ...
  $ primary_storage_capacity  : int  512 1024 512 512 512 256 512 512 512 1024 ...
- $ secondary_storage_type    : chr  "No secondary storage" "No secondary storage" NA "No secondary storage" ...
- $ secondary_storage_capacity: int  0 0 0 0 0 0 0 0 0 0 ...
+ $ secondary_storage_type    : chr  "No secondary storage" NA "No secondary storage" "No secondary storage" ...
+ $ secondary_storage_capacity: int  0 0 NA 0 0 0 0 0 0 0 ...
  $ gpu_brand                 : chr  "intel" "intel" "amd" "intel" ...
  $ gpu_type                  : chr  "integrated" "integrated" "dedicated" "integrated" ...
  $ is_touch_screen           : chr  "False" "False" "False" "False" ...
- $ display_size              : num  15.6 15.6 NA 14 15.6 13.3 15.6 15.6 15.6 15.6 ...
+ $ display_size              : num  NA 15.6 15.6 14 15.6 13.3 15.6 15.6 15.6 15.6 ...
  $ resolution_width          : int  1920 1920 1920 1920 1920 2560 1920 1920 1920 1920 ...
  $ resolution_height         : int  1080 1080 1080 1080 1080 1600 1080 1080 1080 1080 ...
  $ OS                        : chr  "windows" "windows" NA "windows" ...
@@ -332,53 +332,53 @@ Attaching package: 'car'</code></pre>
 <div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(data_new)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>     index           brand              Model               Price       
- Min.   :   2.0   Length:991         Length:991         Min.   : 11990  
- 1st Qu.: 256.8   Class :character   Class :character   1st Qu.: 43425  
- Median : 506.0   Mode  :character   Mode  :character   Median : 61990  
- Mean   : 507.2                                         Mean   : 77248  
- 3rd Qu.: 757.2                                         3rd Qu.: 88988  
+ Min.   :   1.0   Length:991         Length:991         Min.   :  9800  
+ 1st Qu.: 262.5   Class :character   Class :character   1st Qu.: 43348  
+ Median : 510.0   Mode  :character   Mode  :character   Median : 61595  
+ Mean   : 508.5                                         Mean   : 76682  
+ 3rd Qu.: 755.5                                         3rd Qu.: 87990  
  Max.   :1002.0                                         Max.   :454490  
- NA's   :79                                             NA's   :89      
-     Rating      processor_brand    processor_tier       num_cores    
- Min.   :24.00   Length:991         Length:991         Min.   : 2.00  
- 1st Qu.:58.00   Class :character   Class :character   1st Qu.: 6.00  
- Median :64.00   Mode  :character   Mode  :character   Median : 8.00  
- Mean   :63.97                                         Mean   : 8.14  
- 3rd Qu.:71.00                                         3rd Qu.:10.00  
- Max.   :89.00                                         Max.   :24.00  
- NA's   :81                                            NA's   :65     
+ NA's   :68                                             NA's   :75      
+     Rating      processor_brand    processor_tier       num_cores     
+ Min.   :24.00   Length:991         Length:991         Min.   : 2.000  
+ 1st Qu.:58.00   Class :character   Class :character   1st Qu.: 6.000  
+ Median :64.00   Mode  :character   Mode  :character   Median : 8.000  
+ Mean   :63.92                                         Mean   : 8.132  
+ 3rd Qu.:71.00                                         3rd Qu.:10.000  
+ Max.   :89.00                                         Max.   :24.000  
+ NA's   :76                                            NA's   :77      
   num_threads      ram_memory    primary_storage_type primary_storage_capacity
  Min.   : 0.00   Min.   : 2.00   Length:991           Min.   :  32.0          
  1st Qu.: 8.00   1st Qu.: 8.00   Class :character     1st Qu.: 512.0          
  Median :12.00   Median :16.00   Mode  :character     Median : 512.0          
- Mean   :12.26   Mean   :13.05                        Mean   : 612.5          
+ Mean   :12.23   Mean   :13.11                        Mean   : 616.8          
  3rd Qu.:16.00   3rd Qu.:16.00                        3rd Qu.: 512.0          
  Max.   :32.00   Max.   :36.00                        Max.   :2048.0          
- NA's   :67      NA's   :87                           NA's   :71              
+ NA's   :82      NA's   :76                           NA's   :74              
  secondary_storage_type secondary_storage_capacity  gpu_brand        
  Length:991             Min.   :  0.000            Length:991        
  Class :character       1st Qu.:  0.000            Class :character  
  Mode  :character       Median :  0.000            Mode  :character  
-                        Mean   :  4.332                              
+                        Mean   :  4.057                              
                         3rd Qu.:  0.000                              
                         Max.   :512.000                              
-                        NA's   :75                                   
+                        NA's   :76                                   
    gpu_type         is_touch_screen     display_size   resolution_width
  Length:991         Length:991         Min.   :10.10   Min.   :1080    
  Class :character   Class :character   1st Qu.:14.00   1st Qu.:1920    
  Mode  :character   Mode  :character   Median :15.60   Median :1920    
-                                       Mean   :15.17   Mean   :2006    
+                                       Mean   :15.16   Mean   :2004    
                                        3rd Qu.:15.60   3rd Qu.:1920    
                                        Max.   :18.00   Max.   :3840    
-                                       NA's   :64      NA's   :80      
+                                       NA's   :78      NA's   :83      
  resolution_height      OS            year_of_warranty  
  Min.   : 768      Length:991         Length:991        
  1st Qu.:1080      Class :character   Class :character  
  Median :1080      Mode  :character   Mode  :character  
- Mean   :1181                                           
+ Mean   :1183                                           
  3rd Qu.:1200                                           
  Max.   :2560                                           
- NA's   :73                                             </code></pre>
+ NA's   :96                                             </code></pre>
 </div>
 </div>
 <div class="cell">
@@ -407,17 +407,17 @@ Attaching package: 'car'</code></pre>
 <span id="cb27-9"><a href="#cb27-9" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(descriptive_stats)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  index_mean index_sd Price_mean Price_sd Rating_mean Rating_sd num_cores_mean
-1   507.1711 289.1572   77248.09 57288.64    63.96593   10.2426       8.140389
+1   508.4615 287.6851   76682.28 57492.48     63.9235  10.15658       8.132385
   num_cores_sd num_threads_mean num_threads_sd ram_memory_mean ram_memory_sd
-1     4.221406          12.2619        5.57259        13.05088      5.640941
+1     4.239927         12.22882       5.616449        13.11257      5.601598
   primary_storage_capacity_mean primary_storage_capacity_sd
-1                      612.5217                    268.4163
+1                      616.8288                    269.0915
   secondary_storage_capacity_mean secondary_storage_capacity_sd
-1                        4.331878                      34.88164
+1                        4.056831                       33.8923
   display_size_mean display_size_sd resolution_width_mean resolution_width_sd
-1          15.16667         0.94613               2006.47            366.6135
+1          15.16232        0.950083              2004.434            359.1484
   resolution_height_mean resolution_height_sd
-1               1181.166             261.9694</code></pre>
+1               1183.133             267.1445</code></pre>
 </div>
 </div>
 <div class="cell">
@@ -450,87 +450,87 @@ Attaching package: 'car'</code></pre>
 <span id="cb29-27"><a href="#cb29-27" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(data_new)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>'data.frame':   991 obs. of  22 variables:
- $ index                     : int  NA 2 3 4 5 6 7 8 9 10 ...
- $ brand                     : Factor w/ 26 levels "acer","apple",..: 22 22 11 1 15 2 13 3 11 13 ...
- $ Model                     : Factor w/ 917 levels "Acer 16 Predator Neo NH.QLTSI.001 Laptop (13th Gen Core i5/ 16GB/ 512GB SSD/ Win11/ 6GB Graph)",..: 899 900 576 47 768 81 610 134 444 612 ...
+ $ index                     : int  1 2 3 4 5 6 NA 8 9 10 ...
+ $ brand                     : Factor w/ 26 levels "acer","apple",..: 22 22 11 1 15 NA 13 NA 11 13 ...
+ $ Model                     : Factor w/ 913 levels "Acer 16 Predator Neo NH.QLTSI.001 Laptop (13th Gen Core i5/ 16GB/ 512GB SSD/ Win11/ 6GB Graph)",..: 896 897 566 52 765 86 597 138 441 599 ...
  $ Price                     : num  23990 35990 51100 39990 28580 ...
  $ Rating                    : num  63 67 73 62 62 45 56 70 60 71 ...
- $ processor_brand           : Factor w/ 4 levels "amd","apple",..: 3 3 1 3 1 2 NA 3 3 NA ...
- $ processor_tier            : Factor w/ 15 levels "celeron","core i3",..: 2 4 13 3 12 7 3 3 2 5 ...
- $ num_cores                 : Factor w/ 11 levels "2","4","5","6",..: 1 2 4 7 2 5 NA 4 4 8 ...
- $ num_threads               : num  4 8 NA 16 8 8 8 12 8 20 ...
- $ ram_memory                : Factor w/ 7 levels "2","4","8","12",..: 3 NA 3 3 NA 3 5 3 3 6 ...
+ $ processor_brand           : Factor w/ 4 levels "amd","apple",..: 3 3 1 3 1 2 3 3 3 3 ...
+ $ processor_tier            : Factor w/ 15 levels "celeron","core i3",..: 2 4 13 3 12 7 3 3 2 NA ...
+ $ num_cores                 : Factor w/ 12 levels "2","4","5","6",..: 1 2 4 NA 2 5 2 4 4 9 ...
+ $ num_threads               : num  4 8 12 16 8 8 8 12 8 20 ...
+ $ ram_memory                : Factor w/ 7 levels "2","4","8","12",..: 3 5 3 3 3 3 5 3 3 6 ...
  $ primary_storage_type      : Factor w/ 2 levels "HDD","SSD": 2 2 2 2 2 2 2 2 2 2 ...
  $ primary_storage_capacity  : num  512 1024 512 512 512 ...
- $ secondary_storage_type    : Factor w/ 2 levels "No secondary storage",..: 1 1 NA 1 1 1 1 1 1 1 ...
- $ secondary_storage_capacity: num  0 0 0 0 0 0 0 0 0 0 ...
+ $ secondary_storage_type    : Factor w/ 2 levels "No secondary storage",..: 1 NA 1 1 1 1 NA 1 1 1 ...
+ $ secondary_storage_capacity: num  0 0 NA 0 0 0 0 0 0 0 ...
  $ gpu_brand                 : Factor w/ 5 levels "amd","apple",..: 4 4 1 4 1 2 4 5 4 4 ...
  $ gpu_type                  : Factor w/ 3 levels "apple","dedicated",..: 3 3 2 3 3 1 3 2 3 3 ...
  $ is_touch_screen           : Factor w/ 2 levels "False","True": 1 1 1 1 1 1 1 1 1 1 ...
- $ display_size              : num  15.6 15.6 NA 14 15.6 13.3 15.6 15.6 15.6 15.6 ...
+ $ display_size              : num  NA 15.6 15.6 14 15.6 13.3 15.6 15.6 15.6 15.6 ...
  $ resolution_width          : num  1920 1920 1920 1920 1920 2560 1920 1920 1920 1920 ...
  $ resolution_height         : num  1080 1080 1080 1080 1080 1600 1080 1080 1080 1080 ...
  $ OS                        : Factor w/ 7 levels "android","chrome",..: 7 7 NA 7 7 4 7 7 7 7 ...
- $ year_of_warranty          : Factor w/ 4 levels "1","2","3","No information": 1 1 1 1 1 1 1 1 1 1 ...</code></pre>
+ $ year_of_warranty          : Factor w/ 4 levels "1","2","3","No information": 1 1 1 1 1 NA 1 1 1 1 ...</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(data_new)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>     index            brand    
- Min.   :   2.0   asus   :195  
- 1st Qu.: 256.8   lenovo :189  
- Median : 506.0   hp     :183  
- Mean   : 507.2   dell   :101  
- 3rd Qu.: 757.2   msi    : 84  
- Max.   :1002.0   (Other):160  
- NA's   :79       NA's   : 79  
+ Min.   :   1.0   asus   :194  
+ 1st Qu.: 262.5   hp     :192  
+ Median : 510.0   lenovo :184  
+ Mean   : 508.5   dell   : 93  
+ 3rd Qu.: 755.5   msi    : 87  
+ Max.   :1002.0   (Other):166  
+ NA's   :68       NA's   : 75  
                                                                                              Model    
  Acer 16 Predator Neo NH.QLTSI.001 Laptop (13th Gen Core i5/ 16GB/ 512GB SSD/ Win11/ 6GB Graph) :  1  
  Acer Aspire 3 14 A314-36M Laptop (Intel Core i3 N305/ 8GB/ 512GB SSD/ Win11 Home)              :  1  
  Acer Aspire 3 15 A315-510P Laptop (Intel Core i3 N305/ 8GB/ 512GB SSD/ Win11 Home)             :  1  
  Acer Aspire 3 15 A315-510P UN.KDHSI.019 Laptop (Intel Core i3 N305/ 8GB/ 512GB SSD/ Win11 Home):  1  
  Acer Aspire 3 A315-24P Laptop (Ryzen 3 7520U/ 8GB/ 256GB SSD/ Win11 Home)                      :  1  
- (Other)                                                                                        :912  
- NA's                                                                                           : 74  
+ (Other)                                                                                        :908  
+ NA's                                                                                           : 78  
      Price            Rating      processor_brand processor_tier   num_cores  
- Min.   : 11990   Min.   :24.00   amd  :250       core i5:317    6      :185  
- 1st Qu.: 43425   1st Qu.:58.00   apple: 14       core i7:149    10     :175  
- Median : 61990   Median :64.00   intel:656       ryzen 5:127    8      :173  
- Mean   : 77248   Mean   :63.97   other:  3       core i3:122    4      :118  
- 3rd Qu.: 88988   3rd Qu.:71.00   NA's : 68       ryzen 7: 73    2      : 88  
- Max.   :454490   Max.   :89.00                   (Other):144    (Other):187  
- NA's   :89       NA's   :81                      NA's   : 59    NA's   : 65  
+ Min.   :  9800   Min.   :24.00   amd  :251       core i5:311    6      :181  
+ 1st Qu.: 43348   1st Qu.:58.00   apple: 14       core i7:150    10     :171  
+ Median : 61595   Median :64.00   intel:659       ryzen 5:127    8      :164  
+ Mean   : 76682   Mean   :63.92   other:  4       core i3:116    4      :123  
+ 3rd Qu.: 87990   3rd Qu.:71.00   NA's : 63       ryzen 7: 73    2      : 85  
+ Max.   :454490   Max.   :89.00                   (Other):141    (Other):190  
+ NA's   :75       NA's   :76                      NA's   : 73    NA's   : 77  
   num_threads      ram_memory  primary_storage_type primary_storage_capacity
- Min.   : 0.00   16     :472   HDD : 23             Min.   :  32.0          
- 1st Qu.: 8.00   8      :370   SSD :889             1st Qu.: 512.0          
- Median :12.00   32     : 34   NA's: 79             Median : 512.0          
- Mean   :12.26   4      : 22                        Mean   : 612.5          
+ Min.   : 0.00   16     :485   HDD : 24             Min.   :  32.0          
+ 1st Qu.: 8.00   8      :370   SSD :887             1st Qu.: 512.0          
+ Median :12.00   32     : 34   NA's: 80             Median : 512.0          
+ Mean   :12.23   4      : 20                        Mean   : 616.8          
  3rd Qu.:16.00   12     :  3                        3rd Qu.: 512.0          
  Max.   :32.00   (Other):  3                        Max.   :2048.0          
- NA's   :67      NA's   : 87                        NA's   :71              
+ NA's   :82      NA's   : 76                        NA's   :74              
           secondary_storage_type secondary_storage_capacity  gpu_brand  
- No secondary storage:898        Min.   :  0.000            amd   :158  
+ No secondary storage:902        Min.   :  0.000            amd   :152  
  SSD                 : 15        1st Qu.:  0.000            apple : 14  
- NA's                : 78        Median :  0.000            arm   :  4  
-                                 Mean   :  4.332            intel :432  
-                                 3rd Qu.:  0.000            nvidia:320  
-                                 Max.   :512.000            NA's  : 63  
-                                 NA's   :75                             
+ NA's                : 74        Median :  0.000            arm   :  4  
+                                 Mean   :  4.057            intel :427  
+                                 3rd Qu.:  0.000            nvidia:324  
+                                 Max.   :512.000            NA's  : 70  
+                                 NA's   :76                             
        gpu_type   is_touch_screen  display_size   resolution_width
- apple     : 14   False:818       Min.   :10.10   Min.   :1080    
- dedicated :331   True : 78       1st Qu.:14.00   1st Qu.:1920    
- integrated:575   NA's : 95       Median :15.60   Median :1920    
- NA's      : 71                   Mean   :15.17   Mean   :2006    
+ apple     : 14   False:851       Min.   :10.10   Min.   :1080    
+ dedicated :332   True : 82       1st Qu.:14.00   1st Qu.:1920    
+ integrated:582   NA's : 58       Median :15.60   Median :1920    
+ NA's      : 63                   Mean   :15.16   Mean   :2004    
                                   3rd Qu.:15.60   3rd Qu.:1920    
                                   Max.   :18.00   Max.   :3840    
-                                  NA's   :64      NA's   :80      
+                                  NA's   :78      NA's   :83      
  resolution_height       OS            year_of_warranty
- Min.   : 768      windows:867   1             :826    
- 1st Qu.:1080      dos    : 31   2             : 59    
- Median :1080      chrome : 15   3             :  9    
- Mean   :1181      mac    : 15   No information: 18    
- 3rd Qu.:1200      other  :  2   NA's          : 79    
+ Min.   : 768      windows:866   1             :826    
+ 1st Qu.:1080      dos    : 31   2             : 58    
+ Median :1080      chrome : 16   3             :  9    
+ Mean   :1183      mac    : 15   No information: 17    
+ 3rd Qu.:1200      other  :  2   NA's          : 81    
  Max.   :2560      (Other):  2                         
- NA's   :73        NA's   : 59                         </code></pre>
+ NA's   :96        NA's   : 59                         </code></pre>
 </div>
 </div>
 <p>“Are there any notable differences in the frequencies of processor tiers?”</p>
@@ -553,7 +553,7 @@ Attaching package: 'car'</code></pre>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(data_new, <span class="fu">aes</span>(<span class="at">x=</span>Rating)) <span class="sc">+</span> <span class="fu">geom_histogram</span>(<span class="at">binwidth=</span><span class="dv">5</span>, <span class="at">fill=</span><span class="st">'green3'</span>, <span class="at">color=</span><span class="st">'black'</span>) <span class="sc">+</span> <span class="fu">theme_minimal</span>() <span class="sc">+</span> <span class="fu">ggtitle</span>(<span class="st">'Histogram of Laptop Ratings'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
-<pre><code>Warning: Removed 81 rows containing non-finite outside the scale range
+<pre><code>Warning: Removed 76 rows containing non-finite outside the scale range
 (`stat_bin()`).</code></pre>
 </div>
 <div class="cell-output-display">
@@ -614,7 +614,7 @@ Attaching package: 'car'</code></pre>
 <span id="cb38-4"><a href="#cb38-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
 <span id="cb38-5"><a href="#cb38-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">labels =</span> scales<span class="sc">::</span><span class="fu">dollar_format</span>(<span class="at">prefix =</span> <span class="st">'$'</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
-<pre><code>Warning: Removed 89 rows containing missing values or values outside the scale range
+<pre><code>Warning: Removed 75 rows containing missing values or values outside the scale range
 (`geom_point()`).</code></pre>
 </div>
 <div class="cell-output-display">
@@ -634,7 +634,7 @@ Attaching package: 'car'</code></pre>
 <span id="cb40-4"><a href="#cb40-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
 <span id="cb40-5"><a href="#cb40-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">labels =</span> scales<span class="sc">::</span><span class="fu">dollar_format</span>(<span class="at">prefix =</span> <span class="st">'$'</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
-<pre><code>Warning: Removed 81 rows containing missing values or values outside the scale range
+<pre><code>Warning: Removed 76 rows containing missing values or values outside the scale range
 (`geom_point()`).</code></pre>
 </div>
 <div class="cell-output-display">
@@ -654,7 +654,7 @@ Attaching package: 'car'</code></pre>
 <span id="cb42-5"><a href="#cb42-5" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"Rating"</span>) <span class="sc">+</span></span>
 <span id="cb42-6"><a href="#cb42-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
-<pre><code>Warning: Removed 81 rows containing missing values or values outside the scale range
+<pre><code>Warning: Removed 76 rows containing missing values or values outside the scale range
 (`geom_point()`).</code></pre>
 </div>
 <div class="cell-output-display">
@@ -670,7 +670,7 @@ Attaching package: 'car'</code></pre>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb44"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cor</span>(data_new<span class="sc">$</span>Price, data_new<span class="sc">$</span>Rating, <span class="at">use=</span><span class="st">'complete.obs'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.6606084</code></pre>
+<pre><code>[1] 0.6588524</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb46"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(data_new, <span class="fu">aes</span>(<span class="at">x=</span>Price, <span class="at">y=</span>Rating)) <span class="sc">+</span></span>
 <span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
@@ -682,11 +682,11 @@ Attaching package: 'car'</code></pre>
 <pre><code>`geom_smooth()` using formula = 'y ~ x'</code></pre>
 </div>
 <div class="cell-output cell-output-stderr">
-<pre><code>Warning: Removed 164 rows containing non-finite outside the scale range
+<pre><code>Warning: Removed 145 rows containing non-finite outside the scale range
 (`stat_smooth()`).</code></pre>
 </div>
 <div class="cell-output cell-output-stderr">
-<pre><code>Warning: Removed 164 rows containing missing values or values outside the scale range
+<pre><code>Warning: Removed 145 rows containing missing values or values outside the scale range
 (`geom_point()`).</code></pre>
 </div>
 <div class="cell-output-display">
@@ -707,11 +707,11 @@ Attaching package: 'car'</code></pre>
 <span id="cb50-5"><a href="#cb50-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">'Rating'</span>) <span class="sc">+</span></span>
 <span id="cb50-6"><a href="#cb50-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">45</span>, <span class="at">hjust =</span> <span class="dv">1</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
-<pre><code>Warning: Removed 71 rows containing missing values or values outside the scale range
+<pre><code>Warning: Removed 74 rows containing missing values or values outside the scale range
 (`stat_boxplot()`).</code></pre>
 </div>
 <div class="cell-output cell-output-stderr">
-<pre><code>Warning: Removed 76 rows containing non-finite outside the scale range
+<pre><code>Warning: Removed 72 rows containing non-finite outside the scale range
 (`stat_boxplot()`).</code></pre>
 </div>
 <div class="cell-output-display">
@@ -771,66 +771,6 @@ override using the `.groups` argument.</code></pre>
 </div>
 </div>
 <p>The brand of a laptop significantly impacts its average rating, with Asus and Acer leading in customer satisfaction, while Axl and Avita lag behind.</p>
-<p><em>4. Exploration of the missingness mechanism and impute missing values and validate it.</em></p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb57"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb57-1"><a href="#cb57-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(<span class="fu">is.na</span>(data_new))<span class="co"># to check the number of NA values in dataset</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 1635</code></pre>
-</div>
-</div>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb59"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb59-1"><a href="#cb59-1" aria-hidden="true" tabindex="-1"></a><span class="co">#fixing index column</span></span>
-<span id="cb59-2"><a href="#cb59-2" aria-hidden="true" tabindex="-1"></a>data_new<span class="sc">$</span>index <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">991</span>)</span>
-<span id="cb59-3"><a href="#cb59-3" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(<span class="fu">is.na</span>(data_new<span class="sc">$</span>index))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 0</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb61"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb61-1"><a href="#cb61-1" aria-hidden="true" tabindex="-1"></a><span class="co">#removing columns which are unnecessary</span></span>
-<span id="cb61-2"><a href="#cb61-2" aria-hidden="true" tabindex="-1"></a>laptops <span class="ot">&lt;-</span> data_new[,<span class="sc">-</span><span class="fu">c</span>(<span class="dv">3</span>,<span class="dv">13</span>,<span class="dv">14</span>,<span class="dv">17</span>,<span class="dv">18</span>,<span class="dv">19</span>,<span class="dv">20</span>,<span class="dv">22</span>)]</span>
-<span id="cb61-3"><a href="#cb61-3" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(laptops)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>  index  brand Price Rating processor_brand processor_tier num_cores
-1     1  tecno 23990     63           intel        core i3         2
-2     2  tecno 35990     67           intel        core i7         4
-3     3     hp 51100     73             amd        ryzen 5         6
-4     4   acer 39990     62           intel        core i5        12
-5     5 lenovo 28580     62             amd        ryzen 3         4
-6     6  apple 70990     45           apple             m1         8
-  num_threads ram_memory primary_storage_type primary_storage_capacity
-1           4          8                  SSD                      512
-2           8       &lt;NA&gt;                  SSD                     1024
-3          NA          8                  SSD                      512
-4          16          8                  SSD                      512
-5           8       &lt;NA&gt;                  SSD                      512
-6           8          8                  SSD                      256
-  gpu_brand   gpu_type      OS
-1     intel integrated windows
-2     intel integrated windows
-3       amd  dedicated    &lt;NA&gt;
-4     intel integrated windows
-5       amd integrated windows
-6     apple      apple     mac</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb63"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb63-1"><a href="#cb63-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(laptops)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>'data.frame':   991 obs. of  14 variables:
- $ index                   : int  1 2 3 4 5 6 7 8 9 10 ...
- $ brand                   : Factor w/ 26 levels "acer","apple",..: 22 22 11 1 15 2 13 3 11 13 ...
- $ Price                   : num  23990 35990 51100 39990 28580 ...
- $ Rating                  : num  63 67 73 62 62 45 56 70 60 71 ...
- $ processor_brand         : Factor w/ 4 levels "amd","apple",..: 3 3 1 3 1 2 NA 3 3 NA ...
- $ processor_tier          : Factor w/ 15 levels "celeron","core i3",..: 2 4 13 3 12 7 3 3 2 5 ...
- $ num_cores               : Factor w/ 11 levels "2","4","5","6",..: 1 2 4 7 2 5 NA 4 4 8 ...
- $ num_threads             : num  4 8 NA 16 8 8 8 12 8 20 ...
- $ ram_memory              : Factor w/ 7 levels "2","4","8","12",..: 3 NA 3 3 NA 3 5 3 3 6 ...
- $ primary_storage_type    : Factor w/ 2 levels "HDD","SSD": 2 2 2 2 2 2 2 2 2 2 ...
- $ primary_storage_capacity: num  512 1024 512 512 512 ...
- $ gpu_brand               : Factor w/ 5 levels "amd","apple",..: 4 4 1 4 1 2 4 5 4 4 ...
- $ gpu_type                : Factor w/ 3 levels "apple","dedicated",..: 3 3 2 3 3 1 3 2 3 3 ...
- $ OS                      : Factor w/ 7 levels "android","chrome",..: 7 7 NA 7 7 4 7 7 7 7 ...</code></pre>
-</div>
-</div>
-<p>There are no NA values in the dataset. All of them were imputed.</p>
 
 
 </section>

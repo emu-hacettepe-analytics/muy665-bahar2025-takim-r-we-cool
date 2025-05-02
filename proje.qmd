@@ -239,27 +239,5 @@ ggplot(summary_table_rating, aes(x=brand, y=average_rating, fill=brand)) +
 
 The brand of a laptop significantly impacts its average rating, with Asus and Acer leading in customer satisfaction, while Axl and Avita lag behind.
 
-*4. Exploration of the missingness mechanism and impute missing values and validate it.*
-
-```{r}
-sum(is.na(data_new))# to check the number of NA values in dataset
-```
-
-```{r}
-#fixing index column
-data_new$index <- c(1:991)
-sum(is.na(data_new$index))
-#removing columns which are unnecessary
-laptops <- data_new[,-c(3,13,14,17,18,19,20,22)]
-head(laptops)
-
-str(laptops)
-
-
-```
-
-
-
-There are no NA values in the dataset. All of them were imputed.
 
 
