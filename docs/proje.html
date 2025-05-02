@@ -6,8 +6,10 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="author" content="R_we_cool">
+<meta name="dcterms.date" content="2025-01-01">
 
-<title>Proje X (proje adını yazınız) – R We Cool Takımı Analitik Labı</title>
+<title>MUY660-project – R We Cool Takımı Analitik Labı</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -19,6 +21,40 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -123,22 +159,8 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#proje-genel-bakış-ve-kapsamı" id="toc-proje-genel-bakış-ve-kapsamı" class="nav-link active" data-scroll-target="#proje-genel-bakış-ve-kapsamı"><span class="header-section-number">1</span> Proje Genel Bakış ve Kapsamı</a></li>
-  <li><a href="#veri" id="toc-veri" class="nav-link" data-scroll-target="#veri"><span class="header-section-number">2</span> Veri</a>
-  <ul class="collapse">
-  <li><a href="#veri-kaynağı" id="toc-veri-kaynağı" class="nav-link" data-scroll-target="#veri-kaynağı"><span class="header-section-number">2.1</span> Veri Kaynağı</a></li>
-  <li><a href="#veri-hakkında-genel-bilgiler" id="toc-veri-hakkında-genel-bilgiler" class="nav-link" data-scroll-target="#veri-hakkında-genel-bilgiler"><span class="header-section-number">2.2</span> Veri Hakkında Genel Bilgiler</a></li>
-  <li><a href="#tercih-sebebi" id="toc-tercih-sebebi" class="nav-link" data-scroll-target="#tercih-sebebi"><span class="header-section-number">2.3</span> Tercih Sebebi</a></li>
-  <li><a href="#ön-işleme" id="toc-ön-işleme" class="nav-link" data-scroll-target="#ön-işleme"><span class="header-section-number">2.4</span> Ön İşleme</a></li>
-  </ul></li>
-  <li><a href="#analiz" id="toc-analiz" class="nav-link" data-scroll-target="#analiz"><span class="header-section-number">3</span> Analiz</a>
-  <ul class="collapse">
-  <li><a href="#keşifsel-veri-analizi" id="toc-keşifsel-veri-analizi" class="nav-link" data-scroll-target="#keşifsel-veri-analizi"><span class="header-section-number">3.1</span> Keşifsel Veri Analizi</a></li>
-  <li><a href="#trend-analizi" id="toc-trend-analizi" class="nav-link" data-scroll-target="#trend-analizi"><span class="header-section-number">3.2</span> Trend Analizi</a></li>
-  <li><a href="#model-uydurma" id="toc-model-uydurma" class="nav-link" data-scroll-target="#model-uydurma"><span class="header-section-number">3.3</span> Model Uydurma</a></li>
-  <li><a href="#sonuçlar" id="toc-sonuçlar" class="nav-link" data-scroll-target="#sonuçlar"><span class="header-section-number">3.4</span> Sonuçlar</a></li>
-  </ul></li>
-  <li><a href="#sonuçlar-ve-ana-çıkarımlar" id="toc-sonuçlar-ve-ana-çıkarımlar" class="nav-link" data-scroll-target="#sonuçlar-ve-ana-çıkarımlar"><span class="header-section-number">4</span> Sonuçlar ve Ana Çıkarımlar</a></li>
+  <li><a href="#r-markdown" id="toc-r-markdown" class="nav-link active" data-scroll-target="#r-markdown"><span class="header-section-number">0.1</span> R Markdown</a></li>
+  <li><a href="#section" id="toc-section" class="nav-link" data-scroll-target="#section"><span class="header-section-number">1</span> </a></li>
   </ul>
 </nav>
 </nav>
@@ -151,14 +173,26 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Proje X (proje adını yazınız)</h1>
+<h1 class="title">MUY660-project</h1>
 </div>
 
 
 
 <div class="quarto-title-meta">
 
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>R_we_cool </p>
+          </div>
+  </div>
     
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">January 1, 2025</p>
+    </div>
+  </div>
   
     
   </div>
@@ -168,56 +202,1026 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p><strong>Proje sayfamıza hoş geldiniz.</strong></p>
-<p><em>Projemizle ilgili güncellemelerden haberdar olmak için bu alanı takip edin.</em></p>
-<p>(Aşağıdaki başlıklar örnek olarak verilmiştir; lütfen gerektiği şekilde düzenlemekten çekinmeyin.)</p>
-<section id="proje-genel-bakış-ve-kapsamı" class="level1" data-number="1">
-<h1 data-number="1"><span class="header-section-number">1</span> Proje Genel Bakış ve Kapsamı</h1>
-<p>xxxxxx</p>
+<section id="r-markdown" class="level2" data-number="0.1">
+<h2 data-number="0.1" class="anchored" data-anchor-id="r-markdown"><span class="header-section-number">0.1</span> R Markdown</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(GGally)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Registered S3 method overwritten by 'GGally':
+  method from   
+  +.gg   ggplot2</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(stringr)</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>
+Attaching package: 'dplyr'</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>The following objects are masked from 'package:stats':
+
+    filter, lag</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>The following objects are masked from 'package:base':
+
+    intersect, setdiff, setequal, union</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(car)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Zorunlu paket yükleniyor: carData</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>
+Attaching package: 'car'</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>The following object is masked from 'package:dplyr':
+
+    recode</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">getwd</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "C:/Users/Bora KOPARAN/OneDrive/Belgeler/GitHub/muy665-bahar2025-takim-r-we-cool"</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"laptops.csv"</span>)</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  index  brand
+1     1  tecno
+2     2  tecno
+3     3     hp
+4     4   acer
+5     5 lenovo
+6     6  apple
+                                                                                      Model
+1                   Tecno Megabook T1 Laptop (11th Gen Core i3/ 8GB/ 512GB SSD/ Win11 Home)
+2                    Tecno Megabook T1 Laptop (11th Gen Core i7/ 16GB/ 1TB SSD/ Win11 Home)
+3 HP Victus 15-fb0157AX Gaming Laptop (AMD Ryzen 5 5600H/ 8GB/ 512GB SSD/ Win11/ 4GB Graph)
+4               Acer Extensa EX214-53 Laptop (12th Gen Core i5/ 8GB/ 512GB SSD/ Win11 Home)
+5              Lenovo V15 82KDA01BIH Laptop (AMD Ryzen 3 5300U/ 8GB/ 512GB SSD/ Win11 Home)
+6                   Apple MacBook Air 2020 MGND3HN Laptop (Apple M1/ 8GB/ 256GB SSD/ MacOS)
+  Price Rating processor_brand processor_tier num_cores num_threads ram_memory
+1 23990     63           intel        core i3         2           4          8
+2 35990     67           intel        core i7         4           8         16
+3 51100     73             amd        ryzen 5         6          12          8
+4 39990     62           intel        core i5        12          16          8
+5 28580     62             amd        ryzen 3         4           8          8
+6 70990     45           apple             m1         8           8          8
+  primary_storage_type primary_storage_capacity secondary_storage_type
+1                  SSD                      512   No secondary storage
+2                  SSD                     1024   No secondary storage
+3                  SSD                      512   No secondary storage
+4                  SSD                      512   No secondary storage
+5                  SSD                      512   No secondary storage
+6                  SSD                      256   No secondary storage
+  secondary_storage_capacity gpu_brand   gpu_type is_touch_screen display_size
+1                          0     intel integrated           False         15.6
+2                          0     intel integrated           False         15.6
+3                          0       amd  dedicated           False         15.6
+4                          0     intel integrated           False         14.0
+5                          0       amd integrated           False         15.6
+6                          0     apple      apple           False         13.3
+  resolution_width resolution_height      OS year_of_warranty
+1             1920              1080 windows                1
+2             1920              1080 windows                1
+3             1920              1080 windows                1
+4             1920              1080 windows                1
+5             1920              1080 windows                1
+6             2560              1600     mac                1</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Missing values are added to the data</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(missForest)</span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>data_new <span class="ot">=</span> <span class="fu">prodNA</span>(data, <span class="at">noNA =</span> <span class="fl">0.075</span>)</span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(<span class="fu">is.na</span>(data_new)) <span class="co"># we can see the NA values are added </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 1635</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(data_new)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>'data.frame':   991 obs. of  22 variables:
+ $ index                     : int  1 2 3 4 5 6 7 8 9 10 ...
+ $ brand                     : chr  "tecno" "tecno" "hp" "acer" ...
+ $ Model                     : chr  "Tecno Megabook T1 Laptop (11th Gen Core i3/ 8GB/ 512GB SSD/ Win11 Home)" "Tecno Megabook T1 Laptop (11th Gen Core i7/ 16GB/ 1TB SSD/ Win11 Home)" "HP Victus 15-fb0157AX Gaming Laptop (AMD Ryzen 5 5600H/ 8GB/ 512GB SSD/ Win11/ 4GB Graph)" "Acer Extensa EX214-53 Laptop (12th Gen Core i5/ 8GB/ 512GB SSD/ Win11 Home)" ...
+ $ Price                     : int  23990 35990 51100 39990 28580 70990 34990 49990 NA 59990 ...
+ $ Rating                    : int  NA 67 73 62 62 45 56 70 60 71 ...
+ $ processor_brand           : chr  "intel" "intel" "amd" "intel" ...
+ $ processor_tier            : chr  "core i3" "core i7" "ryzen 5" "core i5" ...
+ $ num_cores                 : int  2 4 6 12 4 8 4 6 6 14 ...
+ $ num_threads               : int  4 8 12 NA 8 NA 8 NA 8 20 ...
+ $ ram_memory                : int  8 16 8 8 8 8 16 8 8 32 ...
+ $ primary_storage_type      : chr  "SSD" "SSD" "SSD" "SSD" ...
+ $ primary_storage_capacity  : int  512 1024 512 512 512 256 512 512 512 NA ...
+ $ secondary_storage_type    : chr  "No secondary storage" "No secondary storage" "No secondary storage" "No secondary storage" ...
+ $ secondary_storage_capacity: int  0 0 0 NA NA 0 0 0 0 0 ...
+ $ gpu_brand                 : chr  "intel" "intel" "amd" "intel" ...
+ $ gpu_type                  : chr  NA "integrated" "dedicated" "integrated" ...
+ $ is_touch_screen           : chr  "False" "False" "False" "False" ...
+ $ display_size              : num  15.6 15.6 15.6 14 15.6 13.3 15.6 15.6 15.6 15.6 ...
+ $ resolution_width          : int  NA 1920 1920 1920 1920 NA 1920 1920 1920 1920 ...
+ $ resolution_height         : int  1080 1080 1080 1080 1080 1600 1080 1080 1080 1080 ...
+ $ OS                        : chr  "windows" "windows" NA "windows" ...
+ $ year_of_warranty          : chr  "1" "1" "1" NA ...</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(data_new)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>     index           brand              Model               Price       
+ Min.   :   1.0   Length:991         Length:991         Min.   :  9800  
+ 1st Qu.: 261.5   Class :character   Class :character   1st Qu.: 43548  
+ Median : 507.0   Mode  :character   Mode  :character   Median : 61786  
+ Mean   : 506.1                                         Mean   : 77657  
+ 3rd Qu.: 756.5                                         3rd Qu.: 89990  
+ Max.   :1002.0                                         Max.   :454490  
+ NA's   :76                                             NA's   :69      
+     Rating      processor_brand    processor_tier       num_cores     
+ Min.   :24.00   Length:991         Length:991         Min.   : 2.000  
+ 1st Qu.:58.00   Class :character   Class :character   1st Qu.: 6.000  
+ Median :64.00   Mode  :character   Mode  :character   Median : 8.000  
+ Mean   :63.89                                         Mean   : 8.178  
+ 3rd Qu.:71.00                                         3rd Qu.:10.000  
+ Max.   :89.00                                         Max.   :24.000  
+ NA's   :84                                            NA's   :73      
+  num_threads      ram_memory    primary_storage_type primary_storage_capacity
+ Min.   : 0.00   Min.   : 2.00   Length:991           Min.   :  32            
+ 1st Qu.: 8.00   1st Qu.: 8.00   Class :character     1st Qu.: 512            
+ Median :12.00   Median :16.00   Mode  :character     Median : 512            
+ Mean   :12.16   Mean   :13.07                        Mean   : 610            
+ 3rd Qu.:16.00   3rd Qu.:16.00                        3rd Qu.: 512            
+ Max.   :32.00   Max.   :36.00                        Max.   :2048            
+ NA's   :88      NA's   :68                           NA's   :69              
+ secondary_storage_type secondary_storage_capacity  gpu_brand        
+ Length:991             Min.   :  0.000            Length:991        
+ Class :character       1st Qu.:  0.000            Class :character  
+ Mode  :character       Median :  0.000            Mode  :character  
+                        Mean   :  4.084                              
+                        3rd Qu.:  0.000                              
+                        Max.   :512.000                              
+                        NA's   :82                                   
+   gpu_type         is_touch_screen     display_size   resolution_width
+ Length:991         Length:991         Min.   :10.10   Min.   :1080    
+ Class :character   Class :character   1st Qu.:14.00   1st Qu.:1920    
+ Mode  :character   Mode  :character   Median :15.60   Median :1920    
+                                       Mean   :15.17   Mean   :2005    
+                                       3rd Qu.:15.60   3rd Qu.:1920    
+                                       Max.   :18.00   Max.   :3840    
+                                       NA's   :75      NA's   :61      
+ resolution_height      OS            year_of_warranty  
+ Min.   : 768      Length:991         Length:991        
+ 1st Qu.:1080      Class :character   Class :character  
+ Median :1080      Mode  :character   Mode  :character  
+ Mean   :1182                                           
+ 3rd Qu.:1200                                           
+ Max.   :2560                                           
+ NA's   :74                                             </code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(<span class="fu">is.na</span>(data_new))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 1635</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(<span class="fu">duplicated</span>(data_new)) <span class="co"># no duplicated </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(data_new)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 991  22</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate descriptive statistics</span></span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>descriptive_stats <span class="ot">&lt;-</span> data_new <span class="sc">%&gt;%</span></span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="fu">across</span>(<span class="fu">where</span>(is.numeric), <span class="fu">list</span>(</span>
+<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">mean =</span> <span class="sc">~</span><span class="fu">mean</span>(.x, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">sd =</span> <span class="sc">~</span><span class="fu">sd</span>(.x, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb27-6"><a href="#cb27-6" aria-hidden="true" tabindex="-1"></a>  )))</span>
+<span id="cb27-7"><a href="#cb27-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-8"><a href="#cb27-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-9"><a href="#cb27-9" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(descriptive_stats)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  index_mean index_sd Price_mean Price_sd Rating_mean Rating_sd num_cores_mean
+1   506.0579 287.7245   77656.54 58092.11    63.89085  10.25654        8.17756
+  num_cores_sd num_threads_mean num_threads_sd ram_memory_mean ram_memory_sd
+1     4.251122          12.1639       5.640539        13.06826      5.569391
+  primary_storage_capacity_mean primary_storage_capacity_sd
+1                       610.013                    265.8441
+  secondary_storage_capacity_mean secondary_storage_capacity_sd
+1                        4.083608                      34.00249
+  display_size_mean display_size_sd resolution_width_mean resolution_width_sd
+1          15.17391       0.9458488              2004.828            368.4155
+  resolution_height_mean resolution_height_sd
+1               1182.303             265.0288</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Convert relevant columns to factors</span></span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>data_new<span class="sc">$</span>brand <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(data_new<span class="sc">$</span>brand)</span>
+<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>data_new<span class="sc">$</span>Model <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(data_new<span class="sc">$</span>Model)</span>
+<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a>data_new<span class="sc">$</span>processor_brand <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(data_new<span class="sc">$</span>processor_brand)</span>
+<span id="cb29-5"><a href="#cb29-5" aria-hidden="true" tabindex="-1"></a>data_new<span class="sc">$</span>processor_tier <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(data_new<span class="sc">$</span>processor_tier)</span>
+<span id="cb29-6"><a href="#cb29-6" aria-hidden="true" tabindex="-1"></a>data_new<span class="sc">$</span>primary_storage_type <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(data_new<span class="sc">$</span>primary_storage_type)</span>
+<span id="cb29-7"><a href="#cb29-7" aria-hidden="true" tabindex="-1"></a>data_new<span class="sc">$</span>secondary_storage_type <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(data_new<span class="sc">$</span>secondary_storage_type)</span>
+<span id="cb29-8"><a href="#cb29-8" aria-hidden="true" tabindex="-1"></a>data_new<span class="sc">$</span>gpu_brand <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(data_new<span class="sc">$</span>gpu_brand)</span>
+<span id="cb29-9"><a href="#cb29-9" aria-hidden="true" tabindex="-1"></a>data_new<span class="sc">$</span>gpu_type <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(data_new<span class="sc">$</span>gpu_type)</span>
+<span id="cb29-10"><a href="#cb29-10" aria-hidden="true" tabindex="-1"></a>data_new<span class="sc">$</span>OS <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(data_new<span class="sc">$</span>OS)</span>
+<span id="cb29-11"><a href="#cb29-11" aria-hidden="true" tabindex="-1"></a>data_new<span class="sc">$</span>is_touch_screen <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(data_new<span class="sc">$</span>is_touch_screen)</span>
+<span id="cb29-12"><a href="#cb29-12" aria-hidden="true" tabindex="-1"></a>data_new<span class="sc">$</span>year_of_warranty <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(data_new<span class="sc">$</span>year_of_warranty)</span>
+<span id="cb29-13"><a href="#cb29-13" aria-hidden="true" tabindex="-1"></a>data_new<span class="sc">$</span>ram_memory <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(data_new<span class="sc">$</span>ram_memory)</span>
+<span id="cb29-14"><a href="#cb29-14" aria-hidden="true" tabindex="-1"></a>data_new<span class="sc">$</span>num_cores <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(data_new<span class="sc">$</span>num_cores)</span>
+<span id="cb29-15"><a href="#cb29-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-16"><a href="#cb29-16" aria-hidden="true" tabindex="-1"></a><span class="co"># Convert relevant columns to numeric</span></span>
+<span id="cb29-17"><a href="#cb29-17" aria-hidden="true" tabindex="-1"></a>data_new<span class="sc">$</span>Price <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(data_new<span class="sc">$</span>Price)</span>
+<span id="cb29-18"><a href="#cb29-18" aria-hidden="true" tabindex="-1"></a>data_new<span class="sc">$</span>Rating <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(data_new<span class="sc">$</span>Rating)</span>
+<span id="cb29-19"><a href="#cb29-19" aria-hidden="true" tabindex="-1"></a>data_new<span class="sc">$</span>num_threads <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(data_new<span class="sc">$</span>num_threads)</span>
+<span id="cb29-20"><a href="#cb29-20" aria-hidden="true" tabindex="-1"></a>data_new<span class="sc">$</span>primary_storage_capacity <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(data_new<span class="sc">$</span>primary_storage_capacity)</span>
+<span id="cb29-21"><a href="#cb29-21" aria-hidden="true" tabindex="-1"></a>data_new<span class="sc">$</span>secondary_storage_capacity <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(data_new<span class="sc">$</span>secondary_storage_capacity)</span>
+<span id="cb29-22"><a href="#cb29-22" aria-hidden="true" tabindex="-1"></a>data_new<span class="sc">$</span>display_size <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(data_new<span class="sc">$</span>display_size)</span>
+<span id="cb29-23"><a href="#cb29-23" aria-hidden="true" tabindex="-1"></a>data_new<span class="sc">$</span>resolution_width <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(data_new<span class="sc">$</span>resolution_width)</span>
+<span id="cb29-24"><a href="#cb29-24" aria-hidden="true" tabindex="-1"></a>data_new<span class="sc">$</span>resolution_height <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(data_new<span class="sc">$</span>resolution_height)</span>
+<span id="cb29-25"><a href="#cb29-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-26"><a href="#cb29-26" aria-hidden="true" tabindex="-1"></a><span class="co"># View the structure of the cleaned data frame</span></span>
+<span id="cb29-27"><a href="#cb29-27" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(data_new)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>'data.frame':   991 obs. of  22 variables:
+ $ index                     : int  1 2 3 4 5 6 7 8 9 10 ...
+ $ brand                     : Factor w/ 26 levels "acer","apple",..: 22 22 11 1 15 2 13 NA 11 13 ...
+ $ Model                     : Factor w/ 919 levels "Acer 16 Predator Neo NH.QLTSI.001 Laptop (13th Gen Core i5/ 16GB/ 512GB SSD/ Win11/ 6GB Graph)",..: 903 904 576 48 776 85 608 142 441 NA ...
+ $ Price                     : num  23990 35990 51100 39990 28580 ...
+ $ Rating                    : num  NA 67 73 62 62 45 56 70 60 71 ...
+ $ processor_brand           : Factor w/ 4 levels "amd","apple",..: 3 3 1 3 1 2 NA 3 3 3 ...
+ $ processor_tier            : Factor w/ 15 levels "celeron","core i3",..: 2 4 13 3 12 7 3 3 2 5 ...
+ $ num_cores                 : Factor w/ 12 levels "2","4","5","6",..: 1 2 4 8 2 5 2 4 4 9 ...
+ $ num_threads               : num  4 8 12 NA 8 NA 8 NA 8 20 ...
+ $ ram_memory                : Factor w/ 7 levels "2","4","8","12",..: 3 5 3 3 3 3 5 3 3 6 ...
+ $ primary_storage_type      : Factor w/ 2 levels "HDD","SSD": 2 2 2 2 2 2 2 2 2 2 ...
+ $ primary_storage_capacity  : num  512 1024 512 512 512 ...
+ $ secondary_storage_type    : Factor w/ 2 levels "No secondary storage",..: 1 1 1 1 1 1 1 1 1 1 ...
+ $ secondary_storage_capacity: num  0 0 0 NA NA 0 0 0 0 0 ...
+ $ gpu_brand                 : Factor w/ 5 levels "amd","apple",..: 4 4 1 4 1 2 4 NA 4 4 ...
+ $ gpu_type                  : Factor w/ 3 levels "apple","dedicated",..: NA 3 2 3 3 1 3 2 3 3 ...
+ $ is_touch_screen           : Factor w/ 2 levels "False","True": 1 1 1 1 NA 1 1 1 1 1 ...
+ $ display_size              : num  15.6 15.6 15.6 14 15.6 13.3 15.6 15.6 15.6 15.6 ...
+ $ resolution_width          : num  NA 1920 1920 1920 1920 NA 1920 1920 1920 1920 ...
+ $ resolution_height         : num  1080 1080 1080 1080 1080 1600 1080 1080 1080 1080 ...
+ $ OS                        : Factor w/ 7 levels "android","chrome",..: 7 7 NA 7 7 4 7 7 7 7 ...
+ $ year_of_warranty          : Factor w/ 4 levels "1","2","3","No information": 1 1 1 NA 1 1 1 1 1 1 ...</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(data_new)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>     index            brand    
+ Min.   :   1.0   asus   :196  
+ 1st Qu.: 261.5   hp     :193  
+ Median : 507.0   lenovo :182  
+ Mean   : 506.1   dell   : 96  
+ 3rd Qu.: 756.5   msi    : 87  
+ Max.   :1002.0   (Other):172  
+ NA's   :76       NA's   : 65  
+                                                                                            Model    
+ Acer 16 Predator Neo NH.QLTSI.001 Laptop (13th Gen Core i5/ 16GB/ 512GB SSD/ Win11/ 6GB Graph):  1  
+ Acer Aspire 3 14 A314-36M Laptop (Intel Core i3 N305/ 8GB/ 512GB SSD/ Win11 Home)             :  1  
+ Acer Aspire 3 15 A315-510P Laptop (Intel Core i3 N305/ 8GB/ 512GB SSD/ Win11 Home)            :  1  
+ Acer Aspire 3 A315-24P Laptop (Ryzen 3 7520U/ 8GB/ 256GB SSD/ Win11 Home)                     :  1  
+ Acer Aspire 3 A315-24P NX.KDESI.003 Laptop (Ryzen 3 7520U/ 8GB/ 512GB SSD/ Win11 Home)        :  1  
+ (Other)                                                                                       :914  
+ NA's                                                                                          : 72  
+     Price            Rating      processor_brand processor_tier   num_cores  
+ Min.   :  9800   Min.   :24.00   amd  :243       core i5:317    6      :186  
+ 1st Qu.: 43548   1st Qu.:58.00   apple: 13       core i7:149    8      :167  
+ Median : 61786   Median :64.00   intel:649       ryzen 5:129    10     :167  
+ Mean   : 77657   Mean   :63.89   other:  4       core i3:117    4      :114  
+ 3rd Qu.: 89990   3rd Qu.:71.00   NA's : 82       ryzen 7: 70    12     : 91  
+ Max.   :454490   Max.   :89.00                   (Other):141    (Other):193  
+ NA's   :69       NA's   :84                      NA's   : 68    NA's   : 73  
+  num_threads      ram_memory  primary_storage_type primary_storage_capacity
+ Min.   : 0.00   16     :489   HDD : 25             Min.   :  32            
+ 1st Qu.: 8.00   8      :373   SSD :886             1st Qu.: 512            
+ Median :12.00   32     : 33   NA's: 80             Median : 512            
+ Mean   :12.16   4      : 22                        Mean   : 610            
+ 3rd Qu.:16.00   12     :  3                        3rd Qu.: 512            
+ Max.   :32.00   (Other):  3                        Max.   :2048            
+ NA's   :88      NA's   : 68                        NA's   :69              
+          secondary_storage_type secondary_storage_capacity  gpu_brand  
+ No secondary storage:905        Min.   :  0.000            amd   :151  
+ SSD                 : 13        1st Qu.:  0.000            apple : 11  
+ NA's                : 73        Median :  0.000            arm   :  4  
+                                 Mean   :  4.084            intel :432  
+                                 3rd Qu.:  0.000            nvidia:317  
+                                 Max.   :512.000            NA's  : 76  
+                                 NA's   :82                             
+       gpu_type   is_touch_screen  display_size   resolution_width
+ apple     : 13   False:833       Min.   :10.10   Min.   :1080    
+ dedicated :335   True : 79       1st Qu.:14.00   1st Qu.:1920    
+ integrated:563   NA's : 79       Median :15.60   Median :1920    
+ NA's      : 80                   Mean   :15.17   Mean   :2005    
+                                  3rd Qu.:15.60   3rd Qu.:1920    
+                                  Max.   :18.00   Max.   :3840    
+                                  NA's   :75      NA's   :61      
+ resolution_height       OS            year_of_warranty
+ Min.   : 768      windows:860   1             :835    
+ 1st Qu.:1080      dos    : 27   2             : 58    
+ Median :1080      chrome : 15   3             :  9    
+ Mean   :1182      mac    : 15   No information: 18    
+ 3rd Qu.:1200      other  :  2   NA's          : 71    
+ Max.   :2560      (Other):  2                         
+ NA's   :74        NA's   : 70                         </code></pre>
+</div>
+</div>
+<p>“Are there any notable differences in the frequencies of processor tiers?”</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>f<span class="ot">=</span><span class="fu">table</span>(data<span class="sc">$</span>processor_tier)</span>
+<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a>f_data<span class="ot">=</span><span class="fu">data.frame</span>(f) </span>
+<span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(f_data,<span class="fu">aes</span>(<span class="at">x=</span><span class="fu">reorder</span>(Var1,Freq),<span class="at">y=</span>Freq,<span class="at">fill=</span>Var1))<span class="sc">+</span><span class="fu">geom_bar</span>(<span class="at">stat=</span><span class="st">"identity"</span>)<span class="sc">+</span></span>
+<span id="cb33-5"><a href="#cb33-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title=</span><span class="st">"Bar Plot of Processor Brands"</span>,<span class="at">y=</span><span class="st">"Frequencies"</span>,<span class="at">x=</span><span class="st">"Levels"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="proje_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>When the bar plot was examined, the majority of the processor tiers is corre i5. Theoretically, it might be said that most of the customers are satisfied with the performance of the core i5.</p>
+<p>Histogram of Laptop Ratings (dependent variable)</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(data_new, <span class="fu">aes</span>(<span class="at">x=</span>Rating)) <span class="sc">+</span> <span class="fu">geom_histogram</span>(<span class="at">binwidth=</span><span class="dv">5</span>, <span class="at">fill=</span><span class="st">'green3'</span>, <span class="at">color=</span><span class="st">'black'</span>) <span class="sc">+</span> <span class="fu">theme_minimal</span>() <span class="sc">+</span> <span class="fu">ggtitle</span>(<span class="st">'Histogram of Laptop Ratings'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: Removed 84 rows containing non-finite outside the scale range
+(`stat_bin()`).</code></pre>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="proje_files/figure-html/unnamed-chunk-9-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>What is the impact of GPU brand (e.g., NVIDIA, AMD) on laptops’ Ratings? Null Hypothesis (H0): There is no significant difference in ratings between different GPU brands. Alternative Hypothesis (H1): There is a significant difference in ratings between different GPU</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>summary_table_rating <span class="ot">&lt;-</span> data_new <span class="sc">%&gt;%</span></span>
+<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(gpu_brand) <span class="sc">%&gt;%</span></span>
+<span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">average_rating =</span> <span class="fu">mean</span>(Rating, <span class="at">na.rm =</span> <span class="cn">TRUE</span>))</span>
+<span id="cb36-4"><a href="#cb36-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-5"><a href="#cb36-5" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(summary_table_rating, <span class="fu">aes</span>(<span class="at">x=</span>gpu_brand, <span class="at">y=</span>average_rating, <span class="at">fill=</span>gpu_brand)) <span class="sc">+</span></span>
+<span id="cb36-6"><a href="#cb36-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">stat=</span><span class="st">'identity'</span>) <span class="sc">+</span></span>
+<span id="cb36-7"><a href="#cb36-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">'Average Ratings by GPU Brand'</span>) <span class="sc">+</span></span>
+<span id="cb36-8"><a href="#cb36-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">'GPU Brand'</span>) <span class="sc">+</span></span>
+<span id="cb36-9"><a href="#cb36-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">'Average Rating'</span>) <span class="sc">+</span></span>
+<span id="cb36-10"><a href="#cb36-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
+<span id="cb36-11"><a href="#cb36-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">45</span>, <span class="at">hjust =</span> <span class="dv">1</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="proje_files/figure-html/unnamed-chunk-10-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>What is the impact of GPU brand (e.g., NVIDIA, AMD) on laptop prices?</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>summary_table_price <span class="ot">&lt;-</span> data_new <span class="sc">%&gt;%</span></span>
+<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(gpu_brand) <span class="sc">%&gt;%</span></span>
+<span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">average_price =</span> <span class="fu">mean</span>(Price, <span class="at">na.rm =</span> <span class="cn">TRUE</span>))</span>
+<span id="cb37-4"><a href="#cb37-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-5"><a href="#cb37-5" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(summary_table_price, <span class="fu">aes</span>(<span class="at">x=</span>gpu_brand, <span class="at">y=</span>average_price, <span class="at">fill=</span>gpu_brand)) <span class="sc">+</span></span>
+<span id="cb37-6"><a href="#cb37-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">stat=</span><span class="st">'identity'</span>) <span class="sc">+</span></span>
+<span id="cb37-7"><a href="#cb37-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">'Average Prices by GPU Brand'</span>) <span class="sc">+</span></span>
+<span id="cb37-8"><a href="#cb37-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">'GPU Brand'</span>) <span class="sc">+</span></span>
+<span id="cb37-9"><a href="#cb37-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">'Average Price'</span>) <span class="sc">+</span></span>
+<span id="cb37-10"><a href="#cb37-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
+<span id="cb37-11"><a href="#cb37-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">45</span>, <span class="at">hjust =</span> <span class="dv">1</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="proje_files/figure-html/unnamed-chunk-11-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>How the price of laptops differs from according to their processor brand and gpu type?</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(data_new, <span class="fu">aes</span>(<span class="at">x =</span> processor_brand, <span class="at">y =</span> Price, <span class="at">color =</span> gpu_type)) <span class="sc">+</span></span>
+<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">alpha =</span> <span class="fl">0.6</span>) <span class="sc">+</span></span>
+<span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">'Price vs Processor Brand by GPU Type'</span>, <span class="at">x =</span> <span class="st">'Processor Brand'</span>, <span class="at">y =</span> <span class="st">'Price'</span>) <span class="sc">+</span></span>
+<span id="cb38-4"><a href="#cb38-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
+<span id="cb38-5"><a href="#cb38-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">labels =</span> scales<span class="sc">::</span><span class="fu">dollar_format</span>(<span class="at">prefix =</span> <span class="st">'$'</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: Removed 69 rows containing missing values or values outside the scale range
+(`geom_point()`).</code></pre>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="proje_files/figure-html/unnamed-chunk-12-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Plot showing the relationship between processor brand and price, colored by GPU type</p>
+<p>How the rating of laptops differs from according to theit processor brand and gpu type?</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(data_new, <span class="fu">aes</span>(<span class="at">x =</span> processor_brand, <span class="at">y =</span> Rating, <span class="at">color =</span> gpu_type)) <span class="sc">+</span></span>
+<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">alpha =</span> <span class="fl">0.6</span>) <span class="sc">+</span></span>
+<span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">'Rating vs Processor Brand by GPU Type'</span>, <span class="at">x =</span> <span class="st">'Processor Brand'</span>, <span class="at">y =</span> <span class="st">'Price'</span>) <span class="sc">+</span></span>
+<span id="cb40-4"><a href="#cb40-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
+<span id="cb40-5"><a href="#cb40-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">labels =</span> scales<span class="sc">::</span><span class="fu">dollar_format</span>(<span class="at">prefix =</span> <span class="st">'$'</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: Removed 84 rows containing missing values or values outside the scale range
+(`geom_point()`).</code></pre>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="proje_files/figure-html/unnamed-chunk-13-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Is there a relationship between number of cores and laptops’ ratings according to processor brand?</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(data_new, <span class="fu">aes</span>(<span class="at">x =</span> num_cores, <span class="at">y =</span> Rating, <span class="at">color =</span> processor_brand)) <span class="sc">+</span></span>
+<span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb42-3"><a href="#cb42-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Number of Cores vs. Rating"</span>,</span>
+<span id="cb42-4"><a href="#cb42-4" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">"Number of Cores"</span>,</span>
+<span id="cb42-5"><a href="#cb42-5" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"Rating"</span>) <span class="sc">+</span></span>
+<span id="cb42-6"><a href="#cb42-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: Removed 84 rows containing missing values or values outside the scale range
+(`geom_point()`).</code></pre>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="proje_files/figure-html/unnamed-chunk-14-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>It might be said that, there is an linear relationships number of cores and ratings.</p>
+<p>Is there a correlation between price and rating?</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cor</span>(data_new<span class="sc">$</span>Price, data_new<span class="sc">$</span>Rating, <span class="at">use=</span><span class="st">'complete.obs'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.6649642</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(data_new, <span class="fu">aes</span>(<span class="at">x=</span>Price, <span class="at">y=</span>Rating)) <span class="sc">+</span></span>
+<span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb46-3"><a href="#cb46-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method=</span><span class="st">'lm'</span>, <span class="at">col=</span><span class="st">'blue'</span>) <span class="sc">+</span></span>
+<span id="cb46-4"><a href="#cb46-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">'Scatter Plot of Price vs Rating'</span>) <span class="sc">+</span></span>
+<span id="cb46-5"><a href="#cb46-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">'Price'</span>) <span class="sc">+</span></span>
+<span id="cb46-6"><a href="#cb46-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">'Rating'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>`geom_smooth()` using formula = 'y ~ x'</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: Removed 148 rows containing non-finite outside the scale range
+(`stat_smooth()`).</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: Removed 148 rows containing missing values or values outside the scale range
+(`geom_point()`).</code></pre>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="proje_files/figure-html/unnamed-chunk-15-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>As observed, there is a moderate to positive correlation between the two variables, with a correlation coefficient of approximately 0.661.</p>
+<p>How do ratings vary with different primary storage types and capacities?</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb50"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(data_new, <span class="fu">aes</span>(<span class="at">x=</span>primary_storage_capacity, <span class="at">y=</span>Rating, <span class="at">fill=</span>primary_storage_type)) <span class="sc">+</span></span>
+<span id="cb50-2"><a href="#cb50-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>() <span class="sc">+</span></span>
+<span id="cb50-3"><a href="#cb50-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">'Ratings by Primary Storage Type and Capacity'</span>) <span class="sc">+</span></span>
+<span id="cb50-4"><a href="#cb50-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">'Primary Storage Capacity'</span>) <span class="sc">+</span></span>
+<span id="cb50-5"><a href="#cb50-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">'Rating'</span>) <span class="sc">+</span></span>
+<span id="cb50-6"><a href="#cb50-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">45</span>, <span class="at">hjust =</span> <span class="dv">1</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: Removed 69 rows containing missing values or values outside the scale range
+(`stat_boxplot()`).</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: Removed 82 rows containing non-finite outside the scale range
+(`stat_boxplot()`).</code></pre>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="proje_files/figure-html/unnamed-chunk-16-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>The box plot indicates a clear preference for laptops with SSDs over HDDs, particularly those with higher storage capacities, as evidenced by higher and more consistent ratings.</p>
+<p>How do ratings vary with different combinations of processor brand, GPU brand, and RAM memory?</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb53"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb53-2"><a href="#cb53-2" aria-hidden="true" tabindex="-1"></a>summary_table <span class="ot">&lt;-</span> data_new <span class="sc">%&gt;%</span></span>
+<span id="cb53-3"><a href="#cb53-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(processor_brand, gpu_brand, ram_memory) <span class="sc">%&gt;%</span></span>
+<span id="cb53-4"><a href="#cb53-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">average_rating =</span> <span class="fu">mean</span>(Rating, <span class="at">na.rm =</span> <span class="cn">TRUE</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>`summarise()` has grouped output by 'processor_brand', 'gpu_brand'. You can
+override using the `.groups` argument.</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb55"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(summary_table, <span class="fu">aes</span>(<span class="at">x=</span>ram_memory, <span class="at">y=</span><span class="fu">interaction</span>(processor_brand, gpu_brand), <span class="at">fill=</span>average_rating)) <span class="sc">+</span></span>
+<span id="cb55-2"><a href="#cb55-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_tile</span>() <span class="sc">+</span></span>
+<span id="cb55-3"><a href="#cb55-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_gradient</span>(<span class="at">low=</span><span class="st">'blue'</span>, <span class="at">high=</span><span class="st">'red'</span>) <span class="sc">+</span></span>
+<span id="cb55-4"><a href="#cb55-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">'Heatmap of Ratings by Processor Brand, GPU Brand, and RAM Memory'</span>) <span class="sc">+</span></span>
+<span id="cb55-5"><a href="#cb55-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">'RAM Memory (GB)'</span>) <span class="sc">+</span></span>
+<span id="cb55-6"><a href="#cb55-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">'Processor Brand and GPU Brand'</span>) <span class="sc">+</span></span>
+<span id="cb55-7"><a href="#cb55-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">45</span>, <span class="at">hjust =</span> <span class="dv">1</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="proje_files/figure-html/unnamed-chunk-17-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>laptops with higher RAM capacities and combinations of AMD or Intel processors with NVIDIA GPUs tend to receive higher ratings.</p>
+<p>How do different laptop brands (e.g., Dell, HP, Lenovo) affect the average rating? Hypothesis: Certain brands, such as Apple, have higher average ratings compared to others.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb56"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a>summary_table_rating <span class="ot">&lt;-</span> data_new <span class="sc">%&gt;%</span></span>
+<span id="cb56-2"><a href="#cb56-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(brand) <span class="sc">%&gt;%</span></span>
+<span id="cb56-3"><a href="#cb56-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">average_rating =</span> <span class="fu">mean</span>(Rating, <span class="at">na.rm =</span> <span class="cn">TRUE</span>))</span>
+<span id="cb56-4"><a href="#cb56-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb56-5"><a href="#cb56-5" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(summary_table_rating, <span class="fu">aes</span>(<span class="at">x=</span>brand, <span class="at">y=</span>average_rating, <span class="at">fill=</span>brand)) <span class="sc">+</span></span>
+<span id="cb56-6"><a href="#cb56-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">stat=</span><span class="st">'identity'</span>) <span class="sc">+</span></span>
+<span id="cb56-7"><a href="#cb56-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">'Average Ratings by Laptop Brand'</span>) <span class="sc">+</span></span>
+<span id="cb56-8"><a href="#cb56-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">'Laptop Brand'</span>) <span class="sc">+</span></span>
+<span id="cb56-9"><a href="#cb56-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">'Average Rating'</span>) <span class="sc">+</span></span>
+<span id="cb56-10"><a href="#cb56-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
+<span id="cb56-11"><a href="#cb56-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">45</span>, <span class="at">hjust =</span> <span class="dv">1</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: Removed 1 row containing missing values or values outside the scale range
+(`geom_bar()`).</code></pre>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="proje_files/figure-html/unnamed-chunk-18-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>The brand of a laptop significantly impacts its average rating, with Asus and Acer leading in customer satisfaction, while Axl and Avita lag behind.</p>
+<p><em>4. Exploration of the missingness mechanism and impute missing values and validate it.</em></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb58"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb58-1"><a href="#cb58-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(<span class="fu">is.na</span>(data_new))<span class="co"># to check the number of NA values in dataset</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 1635</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb60"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb60-1"><a href="#cb60-1" aria-hidden="true" tabindex="-1"></a><span class="co">#fixing index column</span></span>
+<span id="cb60-2"><a href="#cb60-2" aria-hidden="true" tabindex="-1"></a>data_new<span class="sc">$</span>index <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">991</span>)</span>
+<span id="cb60-3"><a href="#cb60-3" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(<span class="fu">is.na</span>(data_new<span class="sc">$</span>index))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb62"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb62-1"><a href="#cb62-1" aria-hidden="true" tabindex="-1"></a><span class="co">#removing columns which are unnecessary</span></span>
+<span id="cb62-2"><a href="#cb62-2" aria-hidden="true" tabindex="-1"></a>laptops <span class="ot">&lt;-</span> data_new[,<span class="sc">-</span><span class="fu">c</span>(<span class="dv">3</span>,<span class="dv">13</span>,<span class="dv">14</span>,<span class="dv">17</span>,<span class="dv">18</span>,<span class="dv">19</span>,<span class="dv">20</span>,<span class="dv">22</span>)]</span>
+<span id="cb62-3"><a href="#cb62-3" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(laptops)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  index  brand Price Rating processor_brand processor_tier num_cores
+1     1  tecno 23990     NA           intel        core i3         2
+2     2  tecno 35990     67           intel        core i7         4
+3     3     hp 51100     73             amd        ryzen 5         6
+4     4   acer 39990     62           intel        core i5        12
+5     5 lenovo 28580     62             amd        ryzen 3         4
+6     6  apple 70990     45           apple             m1         8
+  num_threads ram_memory primary_storage_type primary_storage_capacity
+1           4          8                  SSD                      512
+2           8         16                  SSD                     1024
+3          12          8                  SSD                      512
+4          NA          8                  SSD                      512
+5           8          8                  SSD                      512
+6          NA          8                  SSD                      256
+  gpu_brand   gpu_type      OS
+1     intel       &lt;NA&gt; windows
+2     intel integrated windows
+3       amd  dedicated    &lt;NA&gt;
+4     intel integrated windows
+5       amd integrated windows
+6     apple      apple     mac</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb64"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb64-1"><a href="#cb64-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(laptops)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>'data.frame':   991 obs. of  14 variables:
+ $ index                   : int  1 2 3 4 5 6 7 8 9 10 ...
+ $ brand                   : Factor w/ 26 levels "acer","apple",..: 22 22 11 1 15 2 13 NA 11 13 ...
+ $ Price                   : num  23990 35990 51100 39990 28580 ...
+ $ Rating                  : num  NA 67 73 62 62 45 56 70 60 71 ...
+ $ processor_brand         : Factor w/ 4 levels "amd","apple",..: 3 3 1 3 1 2 NA 3 3 3 ...
+ $ processor_tier          : Factor w/ 15 levels "celeron","core i3",..: 2 4 13 3 12 7 3 3 2 5 ...
+ $ num_cores               : Factor w/ 12 levels "2","4","5","6",..: 1 2 4 8 2 5 2 4 4 9 ...
+ $ num_threads             : num  4 8 12 NA 8 NA 8 NA 8 20 ...
+ $ ram_memory              : Factor w/ 7 levels "2","4","8","12",..: 3 5 3 3 3 3 5 3 3 6 ...
+ $ primary_storage_type    : Factor w/ 2 levels "HDD","SSD": 2 2 2 2 2 2 2 2 2 2 ...
+ $ primary_storage_capacity: num  512 1024 512 512 512 ...
+ $ gpu_brand               : Factor w/ 5 levels "amd","apple",..: 4 4 1 4 1 2 4 NA 4 4 ...
+ $ gpu_type                : Factor w/ 3 levels "apple","dedicated",..: NA 3 2 3 3 1 3 2 3 3 ...
+ $ OS                      : Factor w/ 7 levels "android","chrome",..: 7 7 NA 7 7 4 7 7 7 7 ...</code></pre>
+</div>
+</div>
+<pre><code>**Imputation Part**</code></pre>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb67"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb67-1"><a href="#cb67-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(mice)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>
+Attaching package: 'mice'</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>The following object is masked from 'package:stats':
+
+    filter</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>The following objects are masked from 'package:base':
+
+    cbind, rbind</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb71"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb71-1"><a href="#cb71-1" aria-hidden="true" tabindex="-1"></a>imputation_methods <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">""</span>, <span class="st">"cart"</span>, <span class="st">""</span>, <span class="st">""</span>, <span class="st">"cart"</span>, <span class="st">"cart"</span>, <span class="st">""</span>, <span class="st">"cart"</span>, <span class="st">"cart"</span>, <span class="st">"cart"</span>, <span class="st">""</span>, <span class="st">"cart"</span>, <span class="st">"cart"</span>,<span class="st">"cart"</span>)</span>
+<span id="cb71-2"><a href="#cb71-2" aria-hidden="true" tabindex="-1"></a>imputed_data <span class="ot">&lt;-</span> <span class="fu">mice</span>(laptops, <span class="at">method =</span> imputation_methods, <span class="at">m =</span> <span class="dv">5</span>, <span class="at">maxit =</span> <span class="dv">5</span>, <span class="at">seed =</span> <span class="dv">123</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+ iter imp variable
+  1   1  brand  processor_brand  processor_tier  num_threads  ram_memory  primary_storage_type  gpu_brand  gpu_type  OS
+  1   2  brand  processor_brand  processor_tier  num_threads  ram_memory  primary_storage_type  gpu_brand  gpu_type  OS
+  1   3  brand  processor_brand  processor_tier  num_threads  ram_memory  primary_storage_type  gpu_brand  gpu_type  OS
+  1   4  brand  processor_brand  processor_tier  num_threads  ram_memory  primary_storage_type  gpu_brand  gpu_type  OS
+  1   5  brand  processor_brand  processor_tier  num_threads  ram_memory  primary_storage_type  gpu_brand  gpu_type  OS
+  2   1  brand  processor_brand  processor_tier  num_threads  ram_memory  primary_storage_type  gpu_brand  gpu_type  OS
+  2   2  brand  processor_brand  processor_tier  num_threads  ram_memory  primary_storage_type  gpu_brand  gpu_type  OS
+  2   3  brand  processor_brand  processor_tier  num_threads  ram_memory  primary_storage_type  gpu_brand  gpu_type  OS
+  2   4  brand  processor_brand  processor_tier  num_threads  ram_memory  primary_storage_type  gpu_brand  gpu_type  OS
+  2   5  brand  processor_brand  processor_tier  num_threads  ram_memory  primary_storage_type  gpu_brand  gpu_type  OS
+  3   1  brand  processor_brand  processor_tier  num_threads  ram_memory  primary_storage_type  gpu_brand  gpu_type  OS
+  3   2  brand  processor_brand  processor_tier  num_threads  ram_memory  primary_storage_type  gpu_brand  gpu_type  OS
+  3   3  brand  processor_brand  processor_tier  num_threads  ram_memory  primary_storage_type  gpu_brand  gpu_type  OS
+  3   4  brand  processor_brand  processor_tier  num_threads  ram_memory  primary_storage_type  gpu_brand  gpu_type  OS
+  3   5  brand  processor_brand  processor_tier  num_threads  ram_memory  primary_storage_type  gpu_brand  gpu_type  OS
+  4   1  brand  processor_brand  processor_tier  num_threads  ram_memory  primary_storage_type  gpu_brand  gpu_type  OS
+  4   2  brand  processor_brand  processor_tier  num_threads  ram_memory  primary_storage_type  gpu_brand  gpu_type  OS
+  4   3  brand  processor_brand  processor_tier  num_threads  ram_memory  primary_storage_type  gpu_brand  gpu_type  OS
+  4   4  brand  processor_brand  processor_tier  num_threads  ram_memory  primary_storage_type  gpu_brand  gpu_type  OS
+  4   5  brand  processor_brand  processor_tier  num_threads  ram_memory  primary_storage_type  gpu_brand  gpu_type  OS
+  5   1  brand  processor_brand  processor_tier  num_threads  ram_memory  primary_storage_type  gpu_brand  gpu_type  OS
+  5   2  brand  processor_brand  processor_tier  num_threads  ram_memory  primary_storage_type  gpu_brand  gpu_type  OS
+  5   3  brand  processor_brand  processor_tier  num_threads  ram_memory  primary_storage_type  gpu_brand  gpu_type  OS
+  5   4  brand  processor_brand  processor_tier  num_threads  ram_memory  primary_storage_type  gpu_brand  gpu_type  OS
+  5   5  brand  processor_brand  processor_tier  num_threads  ram_memory  primary_storage_type  gpu_brand  gpu_type  OS</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: Number of logged events: 225</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb74"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb74-1"><a href="#cb74-1" aria-hidden="true" tabindex="-1"></a>completed_data <span class="ot">&lt;-</span> <span class="fu">complete</span>(imputed_data, <span class="dv">1</span>)</span>
+<span id="cb74-2"><a href="#cb74-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb74-3"><a href="#cb74-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb74-4"><a href="#cb74-4" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(<span class="fu">is.na</span>(completed_data))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 462</code></pre>
+</div>
+</div>
+<p>#brand column</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb76"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb76-1"><a href="#cb76-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(<span class="fu">is.na</span>(completed_data<span class="sc">$</span>brand))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 18</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb78"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb78-1"><a href="#cb78-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(completed_data<span class="sc">$</span>brand)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+     acer     apple      asus     avita       axl     chuwi      dell   fujitsu 
+       87        15       210         4         1         4        99         5 
+ gigabyte     honor        hp     iball   infinix       jio    lenovo        lg 
+        2         2       203         1        12         1       194         7 
+microsoft       msi primebook    realme   samsung     tecno   ultimus    walker 
+        2        93         3         2         7         2         5         1 
+    wings zebronics 
+        4         7 </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb80"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb80-1"><a href="#cb80-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Step 1: Convert the factor column to character</span></span>
+<span id="cb80-2"><a href="#cb80-2" aria-hidden="true" tabindex="-1"></a>completed_data<span class="sc">$</span>brand <span class="ot">&lt;-</span> <span class="fu">as.character</span>(completed_data<span class="sc">$</span>brand)</span>
+<span id="cb80-3"><a href="#cb80-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Step 2: Replace NA values with mode == "asus"</span></span>
+<span id="cb80-4"><a href="#cb80-4" aria-hidden="true" tabindex="-1"></a>completed_data<span class="sc">$</span>brand[<span class="fu">is.na</span>(completed_data<span class="sc">$</span>brand)] <span class="ot">&lt;-</span> <span class="st">"asus"</span></span>
+<span id="cb80-5"><a href="#cb80-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Step 3: Convert the column back to factor</span></span>
+<span id="cb80-6"><a href="#cb80-6" aria-hidden="true" tabindex="-1"></a>completed_data<span class="sc">$</span>brand <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(completed_data<span class="sc">$</span>brand)</span>
+<span id="cb80-7"><a href="#cb80-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb80-8"><a href="#cb80-8" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(completed_data<span class="sc">$</span>brand)<span class="co"># Verify the changes</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>     acer     apple      asus     avita       axl     chuwi      dell   fujitsu 
+       87        15       228         4         1         4        99         5 
+ gigabyte     honor        hp     iball   infinix       jio    lenovo        lg 
+        2         2       203         1        12         1       194         7 
+microsoft       msi primebook    realme   samsung     tecno   ultimus    walker 
+        2        93         3         2         7         2         5         1 
+    wings zebronics 
+        4         7 </code></pre>
+</div>
+</div>
+<p>#Price column</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb82"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb82-1"><a href="#cb82-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(<span class="fu">na.omit</span>(laptops<span class="sc">$</span>Price)) <span class="co">#77562</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 77656.54</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb84"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb84-1"><a href="#cb84-1" aria-hidden="true" tabindex="-1"></a>completed_data<span class="sc">$</span>Price <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(<span class="fu">is.na</span>(completed_data<span class="sc">$</span>Price), <span class="dv">77562</span>, laptops<span class="sc">$</span>Price)</span>
+<span id="cb84-2"><a href="#cb84-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(<span class="fu">is.na</span>(completed_data<span class="sc">$</span>Price))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb86"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb86-1"><a href="#cb86-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(completed_data<span class="sc">$</span>Price)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> num [1:991] 23990 35990 51100 39990 28580 ...</code></pre>
+</div>
+</div>
+<p>#Rating column</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb88"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb88-1"><a href="#cb88-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(<span class="fu">na.omit</span>(laptops<span class="sc">$</span>Rating))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 63.89085</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb90"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb90-1"><a href="#cb90-1" aria-hidden="true" tabindex="-1"></a>completed_data<span class="sc">$</span>Rating <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(<span class="fu">is.na</span>(completed_data<span class="sc">$</span>Rating), <span class="fl">63.82</span>, laptops<span class="sc">$</span>Rating)</span>
+<span id="cb90-2"><a href="#cb90-2" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(laptops<span class="sc">$</span>Rating)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> num [1:991] NA 67 73 62 62 45 56 70 60 71 ...</code></pre>
+</div>
+</div>
+<p>#Proccesor_brand</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb92"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb92-1"><a href="#cb92-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(<span class="fu">is.na</span>(completed_data<span class="sc">$</span>processor_brand))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 24</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb94"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb94-1"><a href="#cb94-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(laptops<span class="sc">$</span>processor_brand)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+  amd apple intel other 
+  243    13   649     4 </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb96"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb96-1"><a href="#cb96-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Step 1: Convert the factor column to character</span></span>
+<span id="cb96-2"><a href="#cb96-2" aria-hidden="true" tabindex="-1"></a>completed_data<span class="sc">$</span>processor_brand <span class="ot">&lt;-</span> <span class="fu">as.character</span>(completed_data<span class="sc">$</span>processor_brand)</span>
+<span id="cb96-3"><a href="#cb96-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Step 2: Replace NA values with mode == "intel"</span></span>
+<span id="cb96-4"><a href="#cb96-4" aria-hidden="true" tabindex="-1"></a>completed_data<span class="sc">$</span>processor_brand[<span class="fu">is.na</span>(completed_data<span class="sc">$</span>processor_brand)] <span class="ot">&lt;-</span> <span class="st">"intel"</span></span>
+<span id="cb96-5"><a href="#cb96-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Step 3: Convert the column back to factor</span></span>
+<span id="cb96-6"><a href="#cb96-6" aria-hidden="true" tabindex="-1"></a>completed_data<span class="sc">$</span>processor_brand <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(completed_data<span class="sc">$</span>processor_brand)</span>
+<span id="cb96-7"><a href="#cb96-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-8"><a href="#cb96-8" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(completed_data<span class="sc">$</span>processor_tier)<span class="co"># Verify the changes</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>     celeron      core i3      core i5      core i7      core i9 core ultra 7 
+          40          124          337          157           37            3 
+          m1           m2           m3        other      pentium      ryzen 3 
+           1            6            7           13            2           30 
+     ryzen 5      ryzen 7      ryzen 9         NA's 
+         139           73           13            9 </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb98"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb98-1"><a href="#cb98-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(<span class="fu">is.na</span>(completed_data<span class="sc">$</span>processor_brand))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0</code></pre>
+</div>
+</div>
+<p>#Processor_tier</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb100"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb100-1"><a href="#cb100-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Step 1: Convert the factor column to character</span></span>
+<span id="cb100-2"><a href="#cb100-2" aria-hidden="true" tabindex="-1"></a>completed_data<span class="sc">$</span>processor_tier <span class="ot">&lt;-</span> <span class="fu">as.character</span>(completed_data<span class="sc">$</span>processor_tier)</span>
+<span id="cb100-3"><a href="#cb100-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Step 2: Replace NA values with mode == "core i5"</span></span>
+<span id="cb100-4"><a href="#cb100-4" aria-hidden="true" tabindex="-1"></a>completed_data<span class="sc">$</span>processor_tier[<span class="fu">is.na</span>(completed_data<span class="sc">$</span>processor_tier)] <span class="ot">&lt;-</span> <span class="st">"core i5"</span></span>
+<span id="cb100-5"><a href="#cb100-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Step 3: Convert the column back to factor</span></span>
+<span id="cb100-6"><a href="#cb100-6" aria-hidden="true" tabindex="-1"></a>completed_data<span class="sc">$</span>processor_tier <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(completed_data<span class="sc">$</span>processor_tier)</span>
+<span id="cb100-7"><a href="#cb100-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb100-8"><a href="#cb100-8" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(completed_data<span class="sc">$</span>processor_tier)<span class="co"># Verify the changes</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>     celeron      core i3      core i5      core i7      core i9 core ultra 7 
+          40          124          346          157           37            3 
+          m1           m2           m3        other      pentium      ryzen 3 
+           1            6            7           13            2           30 
+     ryzen 5      ryzen 7      ryzen 9 
+         139           73           13 </code></pre>
+</div>
+</div>
+<p>#num_cores</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb102"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb102-1"><a href="#cb102-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(<span class="fu">is.na</span>(completed_data<span class="sc">$</span>num_cores)) <span class="co"># 24 NA values</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 73</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb104"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb104-1"><a href="#cb104-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(laptops<span class="sc">$</span>num_cores) <span class="co"># we will impute mode == "6" for NA values </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+  2   4   5   6   8  10  11  12  14  16  20  24 
+ 87 114   8 186 167 167   1  91  54  21   2  20 </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb106"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb106-1"><a href="#cb106-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Step 1: Convert the factor column to character</span></span>
+<span id="cb106-2"><a href="#cb106-2" aria-hidden="true" tabindex="-1"></a>completed_data<span class="sc">$</span>num_cores <span class="ot">&lt;-</span> <span class="fu">as.character</span>(completed_data<span class="sc">$</span>num_cores)</span>
+<span id="cb106-3"><a href="#cb106-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Step 2: Replace NA values with mode == "6</span></span>
+<span id="cb106-4"><a href="#cb106-4" aria-hidden="true" tabindex="-1"></a>completed_data<span class="sc">$</span>num_cores[<span class="fu">is.na</span>(completed_data<span class="sc">$</span>num_cores)] <span class="ot">&lt;-</span> <span class="st">"6"</span></span>
+<span id="cb106-5"><a href="#cb106-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Step 3: Convert the column back to factor</span></span>
+<span id="cb106-6"><a href="#cb106-6" aria-hidden="true" tabindex="-1"></a>completed_data<span class="sc">$</span>num_cores <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(completed_data<span class="sc">$</span>num_cores)</span>
+<span id="cb106-7"><a href="#cb106-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb106-8"><a href="#cb106-8" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(completed_data<span class="sc">$</span>num_cores)<span class="co"># Verify the changes</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> 10  11  12  14  16   2  20  24   4   5   6   8 
+167   1  91  54  21  87   2  20 114   8 259 167 </code></pre>
+</div>
+</div>
+<p>#num_threads</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb108"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb108-1"><a href="#cb108-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(<span class="fu">is.na</span>(completed_data<span class="sc">$</span>num_threads)) <span class="co"># 79 NA values</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 19</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb110"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb110-1"><a href="#cb110-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Step 1: Calculate the median of the primary_storage_capacity column, ignoring NA values</span></span>
+<span id="cb110-2"><a href="#cb110-2" aria-hidden="true" tabindex="-1"></a>median_num_threads <span class="ot">&lt;-</span> <span class="fu">median</span>(laptops<span class="sc">$</span>num_threads, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb110-3"><a href="#cb110-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Step 2: Replace NA values with the calculated median</span></span>
+<span id="cb110-4"><a href="#cb110-4" aria-hidden="true" tabindex="-1"></a>completed_data<span class="sc">$</span>num_threads[<span class="fu">is.na</span>(completed_data<span class="sc">$</span>num_threads)] <span class="ot">&lt;-</span> median_num_threads</span>
+<span id="cb110-5"><a href="#cb110-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb110-6"><a href="#cb110-6" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(completed_data<span class="sc">$</span>num_threads)<span class="co"># Verify the change</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+   0.00    8.00   12.00   12.19   16.00   32.00 </code></pre>
+</div>
+</div>
+<p>#ram_memory</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb112"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb112-1"><a href="#cb112-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(<span class="fu">is.na</span>(completed_data<span class="sc">$</span>ram_memory)) <span class="co"># 23 NA values</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 18</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb114"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb114-1"><a href="#cb114-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(laptops<span class="sc">$</span>ram_memory) <span class="co"># we will impute mode == "16" for NA values </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+  2   4   8  12  16  32  36 
+  1  22 373   3 489  33   2 </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb116"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb116-1"><a href="#cb116-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Step 1: Convert the factor column to character</span></span>
+<span id="cb116-2"><a href="#cb116-2" aria-hidden="true" tabindex="-1"></a>completed_data<span class="sc">$</span>ram_memory <span class="ot">&lt;-</span> <span class="fu">as.character</span>(completed_data<span class="sc">$</span>ram_memory)</span>
+<span id="cb116-3"><a href="#cb116-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Step 2: Replace NA values with mode == "16"</span></span>
+<span id="cb116-4"><a href="#cb116-4" aria-hidden="true" tabindex="-1"></a>completed_data<span class="sc">$</span>ram_memory[<span class="fu">is.na</span>(completed_data<span class="sc">$</span>ram_memory)] <span class="ot">&lt;-</span> <span class="st">"16"</span></span>
+<span id="cb116-5"><a href="#cb116-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Step 3: Convert the column back to factor</span></span>
+<span id="cb116-6"><a href="#cb116-6" aria-hidden="true" tabindex="-1"></a>completed_data<span class="sc">$</span>ram_memory <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(completed_data<span class="sc">$</span>ram_memory)</span>
+<span id="cb116-7"><a href="#cb116-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb116-8"><a href="#cb116-8" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(completed_data<span class="sc">$</span>ram_memory)<span class="co"># Verify the changes</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> 12  16   2  32  36   4   8 
+  3 532   1  34   2  23 396 </code></pre>
+</div>
+</div>
+<p>#primary_storage_type</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb118"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb118-1"><a href="#cb118-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(<span class="fu">is.na</span>(completed_data<span class="sc">$</span>primary_storage_type)) <span class="co">#21 NA values</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 15</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb120"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb120-1"><a href="#cb120-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(laptops<span class="sc">$</span>primary_storage_type) <span class="co"># we will impute mode == "SSD" for NA values </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+HDD SSD 
+ 25 886 </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb122"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb122-1"><a href="#cb122-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Step 1: Convert the factor column to character</span></span>
+<span id="cb122-2"><a href="#cb122-2" aria-hidden="true" tabindex="-1"></a>completed_data<span class="sc">$</span>primary_storage_type <span class="ot">&lt;-</span> <span class="fu">as.character</span>(completed_data<span class="sc">$</span>primary_storage_type)</span>
+<span id="cb122-3"><a href="#cb122-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Step 2: Replace NA values with mode == "SSD"</span></span>
+<span id="cb122-4"><a href="#cb122-4" aria-hidden="true" tabindex="-1"></a>completed_data<span class="sc">$</span>primary_storage_type[<span class="fu">is.na</span>(completed_data<span class="sc">$</span>primary_storage_type)] <span class="ot">&lt;-</span> <span class="st">"SSD"</span></span>
+<span id="cb122-5"><a href="#cb122-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Step 3: Convert the column back to factor</span></span>
+<span id="cb122-6"><a href="#cb122-6" aria-hidden="true" tabindex="-1"></a>completed_data<span class="sc">$</span>primary_storage_type <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(completed_data<span class="sc">$</span>primary_storage_type)</span>
+<span id="cb122-7"><a href="#cb122-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb122-8"><a href="#cb122-8" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(completed_data<span class="sc">$</span>primary_storage_type)<span class="co"># Verify the changes</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>HDD SSD 
+ 27 964 </code></pre>
+</div>
+</div>
 </section>
-<section id="veri" class="level1" data-number="2">
-<h1 data-number="2"><span class="header-section-number">2</span> Veri</h1>
-<p>xxxxxx</p>
-<section id="veri-kaynağı" class="level2" data-number="2.1">
-<h2 data-number="2.1" class="anchored" data-anchor-id="veri-kaynağı"><span class="header-section-number">2.1</span> Veri Kaynağı</h2>
-<p>xxxxxx</p>
-</section>
-<section id="veri-hakkında-genel-bilgiler" class="level2" data-number="2.2">
-<h2 data-number="2.2" class="anchored" data-anchor-id="veri-hakkında-genel-bilgiler"><span class="header-section-number">2.2</span> Veri Hakkında Genel Bilgiler</h2>
-<p>xxxxxx</p>
-</section>
-<section id="tercih-sebebi" class="level2" data-number="2.3">
-<h2 data-number="2.3" class="anchored" data-anchor-id="tercih-sebebi"><span class="header-section-number">2.3</span> Tercih Sebebi</h2>
-<p>xxxxxx</p>
-</section>
-<section id="ön-işleme" class="level2" data-number="2.4">
-<h2 data-number="2.4" class="anchored" data-anchor-id="ön-işleme"><span class="header-section-number">2.4</span> Ön İşleme</h2>
-<p>xxxxxx</p>
-</section>
-</section>
-<section id="analiz" class="level1" data-number="3">
-<h1 data-number="3"><span class="header-section-number">3</span> Analiz</h1>
-<p>xxxxxx</p>
-<section id="keşifsel-veri-analizi" class="level2" data-number="3.1">
-<h2 data-number="3.1" class="anchored" data-anchor-id="keşifsel-veri-analizi"><span class="header-section-number">3.1</span> Keşifsel Veri Analizi</h2>
-<p>xxxxxx</p>
-</section>
-<section id="trend-analizi" class="level2" data-number="3.2">
-<h2 data-number="3.2" class="anchored" data-anchor-id="trend-analizi"><span class="header-section-number">3.2</span> Trend Analizi</h2>
-<p>xxxxxx</p>
-</section>
-<section id="model-uydurma" class="level2" data-number="3.3">
-<h2 data-number="3.3" class="anchored" data-anchor-id="model-uydurma"><span class="header-section-number">3.3</span> Model Uydurma</h2>
-<p>xxxxxx</p>
-</section>
-<section id="sonuçlar" class="level2" data-number="3.4">
-<h2 data-number="3.4" class="anchored" data-anchor-id="sonuçlar"><span class="header-section-number">3.4</span> Sonuçlar</h2>
-<p>xxxxxx</p>
-</section>
-</section>
-<section id="sonuçlar-ve-ana-çıkarımlar" class="level1" data-number="4">
-<h1 data-number="4"><span class="header-section-number">4</span> Sonuçlar ve Ana Çıkarımlar</h1>
-<p>xxxxxx</p>
+<section id="section" class="level1" data-number="1">
+<h1 data-number="1"><span class="header-section-number">1</span> </h1>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb124"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb124-1"><a href="#cb124-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(<span class="fu">is.na</span>(completed_data<span class="sc">$</span>primary_storage_capacity))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 69</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb126"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb126-1"><a href="#cb126-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Step 1: Calculate the median of the primary_storage_capacity column, ignoring NA values</span></span>
+<span id="cb126-2"><a href="#cb126-2" aria-hidden="true" tabindex="-1"></a>median_num_cores <span class="ot">&lt;-</span> <span class="fu">median</span>(laptops<span class="sc">$</span>primary_storage_capacity, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb126-3"><a href="#cb126-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Step 2: Replace NA values with the calculated median</span></span>
+<span id="cb126-4"><a href="#cb126-4" aria-hidden="true" tabindex="-1"></a>completed_data<span class="sc">$</span>primary_storage_capacity[<span class="fu">is.na</span>(completed_data<span class="sc">$</span>primary_storage_capacity)] <span class="ot">&lt;-</span> median_num_cores</span>
+<span id="cb126-5"><a href="#cb126-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb126-6"><a href="#cb126-6" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(completed_data<span class="sc">$</span>primary_storage_capacity)<span class="co"># Verify the changes</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+   32.0   512.0   512.0   603.2   512.0  2048.0 </code></pre>
+</div>
+</div>
+<p>#gpu_brand</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb128"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb128-1"><a href="#cb128-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(<span class="fu">is.na</span>(completed_data<span class="sc">$</span>gpu_brand))<span class="co"># 30 NA values</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 25</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb130"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb130-1"><a href="#cb130-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(laptops<span class="sc">$</span>gpu_brand)<span class="co">#mode == "intel"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+   amd  apple    arm  intel nvidia 
+   151     11      4    432    317 </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb132"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb132-1"><a href="#cb132-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Step 1: Convert the factor column to character</span></span>
+<span id="cb132-2"><a href="#cb132-2" aria-hidden="true" tabindex="-1"></a>completed_data<span class="sc">$</span>gpu_brand <span class="ot">&lt;-</span> <span class="fu">as.character</span>(completed_data<span class="sc">$</span>gpu_brand)</span>
+<span id="cb132-3"><a href="#cb132-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Step 2: Replace NA values with "intel"</span></span>
+<span id="cb132-4"><a href="#cb132-4" aria-hidden="true" tabindex="-1"></a>completed_data<span class="sc">$</span>gpu_brand[<span class="fu">is.na</span>(completed_data<span class="sc">$</span>gpu_brand)] <span class="ot">&lt;-</span> <span class="st">"intel"</span></span>
+<span id="cb132-5"><a href="#cb132-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Step 3: Convert the column back to factor</span></span>
+<span id="cb132-6"><a href="#cb132-6" aria-hidden="true" tabindex="-1"></a>completed_data<span class="sc">$</span>gpu_brand <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(completed_data<span class="sc">$</span>gpu_brand)</span>
+<span id="cb132-7"><a href="#cb132-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb132-8"><a href="#cb132-8" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(completed_data<span class="sc">$</span>gpu_brand)<span class="co"># Verify the changes</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>   amd  apple    arm  intel nvidia 
+   164     14      4    473    336 </code></pre>
+</div>
+</div>
+<p>#gpu_type</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb134"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb134-1"><a href="#cb134-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(<span class="fu">is.na</span>(completed_data<span class="sc">$</span>gpu_type))<span class="co">#29 NA values</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 26</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb136"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb136-1"><a href="#cb136-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(laptops<span class="sc">$</span>gpu_type) <span class="co">#mode == "integrated"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+     apple  dedicated integrated 
+        13        335        563 </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb138"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb138-1"><a href="#cb138-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Step 1: Convert the factor column to character</span></span>
+<span id="cb138-2"><a href="#cb138-2" aria-hidden="true" tabindex="-1"></a>completed_data<span class="sc">$</span>gpu_type <span class="ot">&lt;-</span> <span class="fu">as.character</span>(completed_data<span class="sc">$</span>gpu_type)</span>
+<span id="cb138-3"><a href="#cb138-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Step 2: Replace NA values with "integrated"</span></span>
+<span id="cb138-4"><a href="#cb138-4" aria-hidden="true" tabindex="-1"></a>completed_data<span class="sc">$</span>gpu_type[<span class="fu">is.na</span>(completed_data<span class="sc">$</span>gpu_type)] <span class="ot">&lt;-</span> <span class="st">"integrated"</span></span>
+<span id="cb138-5"><a href="#cb138-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Step 3: Convert the column back to factor</span></span>
+<span id="cb138-6"><a href="#cb138-6" aria-hidden="true" tabindex="-1"></a>completed_data<span class="sc">$</span>gpu_type <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(completed_data<span class="sc">$</span>gpu_type)</span>
+<span id="cb138-7"><a href="#cb138-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb138-8"><a href="#cb138-8" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(completed_data<span class="sc">$</span>gpu_type)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>     apple  dedicated integrated 
+        14        356        621 </code></pre>
+</div>
+</div>
+<p>#OS</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb140"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb140-1"><a href="#cb140-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(<span class="fu">is.na</span>(completed_data<span class="sc">$</span>OS))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 13</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb142"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb142-1"><a href="#cb142-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(laptops<span class="sc">$</span>OS) <span class="co">#mode == "windows"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+android  chrome     dos     mac   other  ubuntu windows 
+      1      15      27      15       2       1     860 </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb144"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb144-1"><a href="#cb144-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Step 1: Convert the factor column to character</span></span>
+<span id="cb144-2"><a href="#cb144-2" aria-hidden="true" tabindex="-1"></a>completed_data<span class="sc">$</span>OS <span class="ot">&lt;-</span> <span class="fu">as.character</span>(completed_data<span class="sc">$</span>OS)</span>
+<span id="cb144-3"><a href="#cb144-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Step 2: Replace NA values with "windows"</span></span>
+<span id="cb144-4"><a href="#cb144-4" aria-hidden="true" tabindex="-1"></a>completed_data<span class="sc">$</span>OS[<span class="fu">is.na</span>(completed_data<span class="sc">$</span>OS)] <span class="ot">&lt;-</span> <span class="st">"windows"</span></span>
+<span id="cb144-5"><a href="#cb144-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Step 3: Convert the column back to factor</span></span>
+<span id="cb144-6"><a href="#cb144-6" aria-hidden="true" tabindex="-1"></a>completed_data<span class="sc">$</span>OS <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(completed_data<span class="sc">$</span>OS)</span>
+<span id="cb144-7"><a href="#cb144-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb144-8"><a href="#cb144-8" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(completed_data<span class="sc">$</span>OS)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>android  chrome     dos     mac   other  ubuntu windows 
+      1      15      28      15       2       1     929 </code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb146"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb146-1"><a href="#cb146-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(<span class="fu">is.na</span>(completed_data))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb148"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb148-1"><a href="#cb148-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(completed_data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>'data.frame':   991 obs. of  14 variables:
+ $ index                   : int  1 2 3 4 5 6 7 8 9 10 ...
+ $ brand                   : Factor w/ 26 levels "acer","apple",..: 22 22 11 1 15 2 13 3 11 13 ...
+ $ Price                   : num  23990 35990 51100 39990 28580 ...
+ $ Rating                  : num  63.8 67 73 62 62 ...
+ $ processor_brand         : Factor w/ 4 levels "amd","apple",..: 3 3 1 3 1 2 3 3 3 3 ...
+ $ processor_tier          : Factor w/ 15 levels "celeron","core i3",..: 2 4 13 3 12 7 3 3 2 5 ...
+ $ num_cores               : Factor w/ 12 levels "10","11","12",..: 6 9 11 3 9 12 9 11 11 4 ...
+ $ num_threads             : num  4 8 12 4 8 8 8 12 8 20 ...
+ $ ram_memory              : Factor w/ 7 levels "12","16","2",..: 7 2 7 7 7 7 2 7 7 4 ...
+ $ primary_storage_type    : Factor w/ 2 levels "HDD","SSD": 2 2 2 2 2 2 2 2 2 2 ...
+ $ primary_storage_capacity: num  512 1024 512 512 512 ...
+ $ gpu_brand               : Factor w/ 5 levels "amd","apple",..: 4 4 1 4 1 2 4 5 4 4 ...
+ $ gpu_type                : Factor w/ 3 levels "apple","dedicated",..: 3 3 2 3 3 1 3 2 3 3 ...
+ $ OS                      : Factor w/ 7 levels "android","chrome",..: 7 7 7 7 7 4 7 7 7 7 ...</code></pre>
+</div>
+</div>
+<p>There are no NA values in the dataset. All of them were imputed.</p>
 
 
 </section>
