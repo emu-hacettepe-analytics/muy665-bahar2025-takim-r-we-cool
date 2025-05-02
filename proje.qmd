@@ -1,20 +1,11 @@
 ---
-title: "Proje X (proje adını yazınız)"
+title: "MUY660-project"
+author: "R_we_cool"
+date: "2025"
+format: html
 number-sections: true
 ---
 
-**Proje sayfamıza hoş geldiniz.**
-
-*Projemizle ilgili güncellemelerden haberdar olmak için bu alanı takip edin.*
-
-(Aşağıdaki başlıklar örnek olarak verilmiştir; lütfen gerektiği şekilde düzenlemekten çekinmeyin.)
-
-# Proje Genel Bakış ve Kapsamı
-
----
-
----
-
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
@@ -22,66 +13,79 @@ knitr::opts_chunk$set(echo = TRUE)
 ## R Markdown
 
 ```{r}
-
 library(ggplot2)
 library(GGally)
 library(stringr)
 library(dplyr)
+library(car)
 getwd()
-setwd("C:/Users/Bora KOPARAN/OneDrive/Desktop/ders_icin")
 data <- read.csv("laptops.csv")
 head(data)
 ```
 
 ```{r}
-str(data)
+# Missing values are added to the data
+library(missForest)
+data_new = prodNA(data, noNA = 0.075)
+sum(is.na(data_new)) # we can see the NA values are added 
+
 ```
 
 ```{r}
-summary(data)
+str(data_new)
 ```
 
 ```{r}
-dim(data)
+summary(data_new)
+```
+
+```{r}
+sum(is.na(data_new))
+sum(duplicated(data_new)) # no duplicated 
+dim(data_new)
 ```
 
 ```{r}
 # Calculate descriptive statistics
-descriptive_stats <- data %>%
-  summarise(across(where(is.numeric), list(mean = mean, sd = sd), na.rm = TRUE))
+descriptive_stats <- data_new %>%
+  summarise(across(where(is.numeric), list(
+    mean = ~mean(.x, na.rm = TRUE),
+    sd = ~sd(.x, na.rm = TRUE)
+  )))
+
 
 print(descriptive_stats)
 ```
 
 ```{r}
 # Convert relevant columns to factors
-data$brand <- as.factor(data$brand)
-data$Model <- as.factor(data$Model)
-data$processor_brand <- as.factor(data$processor_brand)
-data$processor_tier <- as.factor(data$processor_tier)
-data$primary_storage_type <- as.factor(data$primary_storage_type)
-data$secondary_storage_type <- as.factor(data$secondary_storage_type)
-data$gpu_brand <- as.factor(data$gpu_brand)
-data$gpu_type <- as.factor(data$gpu_type)
-data$OS <- as.factor(data$OS)
-data$is_touch_screen <- as.factor(data$is_touch_screen)
-data$year_of_warranty <- as.factor(data$year_of_warranty)
-data$ram_memory <- as.factor(data$ram_memory)
-data$num_cores <- as.factor(data$num_cores)
+data_new$brand <- as.factor(data_new$brand)
+data_new$Model <- as.factor(data_new$Model)
+data_new$processor_brand <- as.factor(data_new$processor_brand)
+data_new$processor_tier <- as.factor(data_new$processor_tier)
+data_new$primary_storage_type <- as.factor(data_new$primary_storage_type)
+data_new$secondary_storage_type <- as.factor(data_new$secondary_storage_type)
+data_new$gpu_brand <- as.factor(data_new$gpu_brand)
+data_new$gpu_type <- as.factor(data_new$gpu_type)
+data_new$OS <- as.factor(data_new$OS)
+data_new$is_touch_screen <- as.factor(data_new$is_touch_screen)
+data_new$year_of_warranty <- as.factor(data_new$year_of_warranty)
+data_new$ram_memory <- as.factor(data_new$ram_memory)
+data_new$num_cores <- as.factor(data_new$num_cores)
 
 # Convert relevant columns to numeric
-data$Price <- as.numeric(data$Price)
-data$Rating <- as.numeric(data$Rating)
-data$num_threads <- as.numeric(data$num_threads)
-data$primary_storage_capacity <- as.numeric(data$primary_storage_capacity)
-data$secondary_storage_capacity <- as.numeric(data$secondary_storage_capacity)
-data$display_size <- as.numeric(data$display_size)
-data$resolution_width <- as.numeric(data$resolution_width)
-data$resolution_height <- as.numeric(data$resolution_height)
+data_new$Price <- as.numeric(data_new$Price)
+data_new$Rating <- as.numeric(data_new$Rating)
+data_new$num_threads <- as.numeric(data_new$num_threads)
+data_new$primary_storage_capacity <- as.numeric(data_new$primary_storage_capacity)
+data_new$secondary_storage_capacity <- as.numeric(data_new$secondary_storage_capacity)
+data_new$display_size <- as.numeric(data_new$display_size)
+data_new$resolution_width <- as.numeric(data_new$resolution_width)
+data_new$resolution_height <- as.numeric(data_new$resolution_height)
 
 # View the structure of the cleaned data frame
-str(data)
-summary(data)
+str(data_new)
+summary(data_new)
 ```
 
 "Are there any notable differences in the frequencies of processor tiers?"
@@ -94,19 +98,19 @@ ggplot(f_data,aes(x=reorder(Var1,Freq),y=Freq,fill=Var1))+geom_bar(stat="identit
   labs(title="Bar Plot of Processor Brands",y="Frequencies",x="Levels")
 ```
 
-When the bar plot was examined, the majority of the processor tiers is core i5. Theoretically, it might be said that most of the customers are satisfied with the performance of the core i5.
+When the bar plot was examined, the majority of the processor tiers is corre i5. Theoretically, it might be said that most of the customers are satisfied with the performance of the core i5.
 
 Histogram of Laptop Ratings (dependent variable)
 
 ```{r}
-ggplot(data, aes(x=Rating)) + geom_histogram(binwidth=5, fill='green3', color='black') + theme_minimal() + ggtitle('Histogram of Laptop Ratings')
+ggplot(data_new, aes(x=Rating)) + geom_histogram(binwidth=5, fill='green3', color='black') + theme_minimal() + ggtitle('Histogram of Laptop Ratings')
 
 ```
 
 What is the impact of GPU brand (e.g., NVIDIA, AMD) on laptops' Ratings? Null Hypothesis (H0): There is no significant difference in ratings between different GPU brands. Alternative Hypothesis (H1): There is a significant difference in ratings between different GPU
 
 ```{r}
-summary_table_rating <- data %>%
+summary_table_rating <- data_new %>%
   group_by(gpu_brand) %>%
   summarise(average_rating = mean(Rating, na.rm = TRUE))
 
@@ -122,7 +126,7 @@ ggplot(summary_table_rating, aes(x=gpu_brand, y=average_rating, fill=gpu_brand))
 What is the impact of GPU brand (e.g., NVIDIA, AMD) on laptop prices?
 
 ```{r}
-summary_table_price <- data %>%
+summary_table_price <- data_new %>%
   group_by(gpu_brand) %>%
   summarise(average_price = mean(Price, na.rm = TRUE))
 
@@ -138,7 +142,7 @@ ggplot(summary_table_price, aes(x=gpu_brand, y=average_price, fill=gpu_brand)) +
 How the price of laptops differs from according to their processor brand and gpu type?
 
 ```{r}
-ggplot(data, aes(x = processor_brand, y = Price, color = gpu_type)) +
+ggplot(data_new, aes(x = processor_brand, y = Price, color = gpu_type)) +
   geom_point(alpha = 0.6) +
   labs(title = 'Price vs Processor Brand by GPU Type', x = 'Processor Brand', y = 'Price') +
   theme_minimal() +
@@ -147,21 +151,21 @@ ggplot(data, aes(x = processor_brand, y = Price, color = gpu_type)) +
 
 Plot showing the relationship between processor brand and price, colored by GPU type
 
-How the rating of laptops differs from according to the it processor brand and gpu type?
+How the rating of laptops differs from according to theit processor brand and gpu type?
 
 ```{r}
-ggplot(data, aes(x = processor_brand, y = Rating, color = gpu_type)) +
+ggplot(data_new, aes(x = processor_brand, y = Rating, color = gpu_type)) +
   geom_point(alpha = 0.6) +
-  labs(title = 'Rating vs Processor Brand by GPU Type', x = 'Processor Brand', y = 'Rating') +
+  labs(title = 'Rating vs Processor Brand by GPU Type', x = 'Processor Brand', y = 'Price') +
   theme_minimal() +
-  scale_y_continuous(labels = scales::dollar_format(prefix = ''))
+  scale_y_continuous(labels = scales::dollar_format(prefix = '$'))
 
 ```
 
 Is there a relationship between number of cores and laptops' ratings according to processor brand?
 
 ```{r}
-ggplot(data, aes(x = num_cores, y = Rating, color = processor_brand)) +
+ggplot(data_new, aes(x = num_cores, y = Rating, color = processor_brand)) +
   geom_point() +
   labs(title = "Number of Cores vs. Rating",
        x = "Number of Cores",
@@ -175,8 +179,8 @@ It might be said that, there is an linear relationships number of cores and rati
 Is there a correlation between price and rating?
 
 ```{r}
-cor(data$Price, data$Rating, use='complete.obs')
-ggplot(data, aes(x=Price, y=Rating)) +
+cor(data_new$Price, data_new$Rating, use='complete.obs')
+ggplot(data_new, aes(x=Price, y=Rating)) +
   geom_point() +
   geom_smooth(method='lm', col='blue') +
   ggtitle('Scatter Plot of Price vs Rating') +
@@ -189,7 +193,7 @@ As observed, there is a moderate to positive correlation between the two variabl
 How do ratings vary with different primary storage types and capacities?
 
 ```{r}
-ggplot(data, aes(x=primary_storage_capacity, y=Rating, fill=primary_storage_type)) +
+ggplot(data_new, aes(x=primary_storage_capacity, y=Rating, fill=primary_storage_type)) +
   geom_boxplot() +
   ggtitle('Ratings by Primary Storage Type and Capacity') +
   xlab('Primary Storage Capacity') +
@@ -203,7 +207,7 @@ How do ratings vary with different combinations of processor brand, GPU brand, a
 
 ```{r}
 library(dplyr)
-summary_table <- data %>%
+summary_table <- data_new %>%
   group_by(processor_brand, gpu_brand, ram_memory) %>%
   summarise(average_rating = mean(Rating, na.rm = TRUE))
 ggplot(summary_table, aes(x=ram_memory, y=interaction(processor_brand, gpu_brand), fill=average_rating)) +
@@ -220,7 +224,7 @@ laptops with higher RAM capacities and combinations of AMD or Intel processors w
 How do different laptop brands (e.g., Dell, HP, Lenovo) affect the average rating? Hypothesis: Certain brands, such as Apple, have higher average ratings compared to others.
 
 ```{r}
-summary_table_rating <- data %>%
+summary_table_rating <- data_new %>%
   group_by(brand) %>%
   summarise(average_rating = mean(Rating, na.rm = TRUE))
 
@@ -238,15 +242,15 @@ The brand of a laptop significantly impacts its average rating, with Asus and Ac
 *4. Exploration of the missingness mechanism and impute missing values and validate it.*
 
 ```{r}
-sum(is.na(data))# to check the number of NA values in dataset
+sum(is.na(data_new))# to check the number of NA values in dataset
 ```
 
 ```{r}
 #fixing index column
-data$index <- c(1:991)
-sum(is.na(data$index))
+data_new$index <- c(1:991)
+sum(is.na(data_new$index))
 #removing columns which are unnecessary
-laptops <- data[,-c(3,13,14,17,18,19,20,22)]
+laptops <- data_new[,-c(3,13,14,17,18,19,20,22)]
 head(laptops)
 
 str(laptops)
@@ -468,7 +472,6 @@ How do ratings vary with different primary storage types and capacities? To perf
 
 anova_result <- aov(Rating ~ primary_storage_capacity * primary_storage_type, data = completed_data)
 residuals <- residuals(anova_result)
-qqline(residuals)
 summary(anova_result)
 ```
 
@@ -675,1557 +678,3 @@ print(paste("Accuracy:", accuracy))
 
 Since the accuracy is 1. we need to try regulaziton.
 
-LASSO
-
-```{r}
-# Lasso model conduction
-lasso_model <- cv.glmnet(train_x, train_y, alpha = 1, family = "gaussian")
-
-# choosing the best lambda value
-best_lambda <- lasso_model$lambda.min
-best_lambda
-
-# retrain the model
-lasso_best <- glmnet(train_x, train_y, alpha = 1, lambda = best_lambda)
-
-# prediction
-y_pred <- predict(lasso_best, test_x)
-
-# MSE, MAE ve MAPE
-mse <- mean((test_y - y_pred)^2)
-mae <- mean(abs(test_y - y_pred))
-mape <- mean(abs((test_y - y_pred) / test_y)) * 100
-rmse <- sqrt(mse)
-list(MSE = mse, MAE = mae, MAPE = mape, RMSE = rmse)
-
-# prediction
-y_pred <- predict(lasso_best, train_x)
-
-# MSE, MAE ve MAPE 
-mse <- mean((train_y - y_pred)^2)
-mae <- mean(abs(train_y - y_pred))
-mape <- mean(abs((train_y - y_pred) / train_y)) * 100
-rmse <- sqrt(mse)
-list(MSE = mse, MAE = mae, MAPE = mape, RMSE = rmse)
-
-
-```
-
-RANDOM FOREST
-
-```{r}
-library(randomForest)
-# Random Forest model conduction
-rf_model <- randomForest(Rating ~ ., data = train, importance = TRUE)
-print(rf_model)
-
-
-# predictions for train set
-train_predictions <- predict(rf_model, train)
-
-# performance metrics for train set
-train_mse <- mean((train$Rating - train_predictions)^2)
-cat("Eğitim seti MSE:", train_mse, "\n")
-
-# prediction for test set
-test_predictions <- predict(rf_model, test)
-
-# performance metrics for test set
-test_mse <- mean((test$Rating - test_predictions)^2)
-cat("Test seti MSE:", test_mse, "\n")
-
-importance(rf_model)
-varImpPlot(rf_model)
-
-# MSE 
-train_mse <- mean((train$Rating - train_predictions)^2)
-test_mse <- mean((test$Rating - test_predictions)^2)
-
-# RMSE 
-train_rmse <- sqrt(train_mse)
-test_rmse <- sqrt(test_mse)
-
-# results
-cat("Eğitim seti - MSE:", train_mse, "\n")
-cat("Eğitim seti - RMSE:", train_rmse, "\n")
-
-cat("Test seti - MSE:", test_mse, "\n")
-cat("Test seti - RMSE:", test_rmse, "\n")
-# MAE 
-train_mae <- mean(abs(train$Rating - train_predictions))
-test_mae <- mean(abs(test$Rating - test_predictions))
-
-# MAPE hesaplama
-train_mape <- mean(abs((train$Rating - train_predictions) / train$Rating)) * 100
-test_mape <- mean(abs((test$Rating - test_predictions) / test$Rating)) * 100
-
-# Results
-cat("Eğitim seti - MAE:", train_mae, "\n")
-cat("Eğitim seti - MAPE:", train_mape, "\n")
-
-cat("Test seti - MAE:", test_mae, "\n")
-cat("Test seti - MAPE:", test_mape, "\n")
-```
-
-#RANDOM FOREST
-
-```{r}
-library(randomForest)
-# Train the Random Forest model
-rfModel <- randomForest(Rating ~ ., data = train, importance = TRUE, ntree = 500)
-
-# Evaluate the model
-predictions <- predict(rfModel, test[,-5])
-rmse <- sqrt(mean((predictions - test$Rating)^2))
-r_squared <- 1 - (sum((predictions - test$Rating)^2) / sum((test$Rating - mean(test$Rating))^2))
-
-# Calculate accuracy-like metric
-threshold <- 0.10 # 10% threshold
-accurate_predictions <- abs(predictions - test$Rating) <= (threshold * test$Rating)
-accuracy <- mean(accurate_predictions)
-
-# Print RMSE, R-squared, and Accuracy
-print(paste("RMSE: ", rmse))
-print(paste("R-squared: ", r_squared))
-print(paste("Accuracy: ", accuracy))
-
-
-```
-
-According to random forestmodel the accuracy was conducted as 0.86
-
-#NEURAL NETWORK
-
-```{r}
-
-data <- completed_data
-data <- data %>%
-  mutate(across(where(is.character), as.factor)) %>%
-  mutate(across(where(is.factor), ~ as.numeric(as.factor(.))))
-
-# Veriyi eğitim ve test setlerine bölelim
-set.seed(123)
-trainIndex <- createDataPartition(data$Rating, p = .8, 
-                                  list = FALSE, 
-                                 times = 1)
-dataTrain <- data[trainIndex, ]
-dataTest <- data[-trainIndex, ]
-
-
-train$num_cores<- as.numeric(train$num_cores)
-train$num_threads<- as.numeric(train$num_threads)
-train$ram_memory<- as.numeric(train$ram_memory)
-
-test$num_cores<- as.numeric(test$num_cores)
-test$num_threads<- as.numeric(test$num_threads)
-test$ram_memory<- as.numeric(test$ram_memory)
-
-scale01 <- function(x){
-  (x - min(x)) / (max(x) - min(x))
-}
-
-# Apply the scale01 function only to numeric columns
-train_data_scaled <- train %>%
-  mutate(across(where(is.numeric), scale01))
-
-test_data_scaled <- test %>%
-  mutate(across(where(is.numeric), scale01))
-library(neuralnet)
-# Summarize the scaled test data
-
-nn2 <- neuralnet(Rating~brand+Price+processor_brand+processor_tier+num_cores+num_threads+primary_storage_capacity+gpu_type+OS, 
-                 data = dataTrain, hidden = c(2), 
-                 act.fct = "logistic", learningrate = 0.05, 
-                 learningrate.factor = c(-0.5, 1.2), 
-                 linear.output = FALSE, 
-                 lifesign = "minimal", 
-                 stepmax = 2e6, rep = 1)
-summary(nn2)
-plot(nn2, rep = 'best', 
-     intercept = TRUE, 
-     show.weights = TRUE, 
-     information = FALSE,
-     col.hidden = 'black',
-     col.intercept = 'green4',
-     col.hidden.synapse = 'blue',
-     col.synapse = 'red',
-     col.entry = 'black',
-     col.entry.synapse = 'coral3',
-     font.entry = 1,  # smaller font for variable names
-     font.hidden = 1,  # smaller font for hidden layers
-     font.output = 1,  # smaller font for output layers
-     fill = 'lightblue',  # node fill color
-     radius = 0.1,  # node radius
-     space = 50000)  # increased spacing between nodes
-
-# weights
-weights <- nn2$result.matrix
-
-
-print(weights)
-
-# summary of weights
-weights_summary <- as.data.frame(weights)
-print(weights_summary)
-```
-
-```{r}
-# Prediction for test set
-test_predictions <- compute(nn2, test_x)
-test_predictions <- test_predictions$net.result
-
-# Tahminleri orijinal skala aralığına geri döndürmek gerekebilir
-min_rating <- min(test$Rating)
-max_rating <- max(test$Rating)
-test_predictions <- test_predictions * (max_rating - min_rating) + min_rating
-
-
-# MSE, MAE, MAPE ve RMSE 
-mse <- mean((test_y - test_predictions)^2)
-mae <- mean(abs(test_y - test_predictions))
-mape <- mean(abs((test_y - test_predictions) / test_y)) * 100
-rmse <- sqrt(mse)
-
-list(MSE = mse, MAE = mae, MAPE = mape, RMSE = rmse)
-
-
-
-# Prediction for test set
-train_predictions <- compute(nn2, train_x)
-train_predictions <- train_predictions$net.result
-
-
-min_rating <- min(train$Rating)
-max_rating <- max(train$Rating)
-train_predictions <- train_predictions * (max_rating - min_rating) + min_rating
-
-# MSE, MAE, MAPE ve RMSE 
-mse <- mean((train_y - train_predictions)^2)
-mae <- mean(abs(train_y - train_predictions))
-mape <- mean(abs((train_y - train_predictions) / train_y)) * 100
-rmse <- sqrt(mse)
-
-list(MSE = mse, MAE = mae, MAPE = mape, RMSE = rmse)
-
-```
-
-```{r}
-library(NeuralNetTools)
-garson(nn2)
-
-```
-
-SUPPORT VECTOR MACHINE
-
-```{r}
-library(e1071)
-# SVM model conduction
-svm_model <- svm(Rating ~ ., data = train, kernel = "radial", cost = 1, epsilon = 0.1)
-
-# summary of the model
-summary(svm_model)
-
-# Prediction for test set
-svm_predictions <- predict(svm_model, test)
-
-# MSE, MAE, MAPE ve RMSE
-mse <- mean((test_y - svm_predictions)^2)
-mae <- mean(abs(test_y - svm_predictions))
-mape <- mean(abs((test_y - svm_predictions) / test_y)) * 100
-rmse <- sqrt(mse)
-
-list(MSE = mse, MAE = mae, MAPE = mape, RMSE = rmse)
-
-
-# prediction for train set
-svm_predictions <- predict(svm_model, train)
-# MSE, MAE, MAPE ve RMSE 
-mse <- mean((train_y - svm_predictions)^2)
-mae <- mean(abs(train_y - svm_predictions))
-mape <- mean(abs((train_y - svm_predictions) / train_y)) * 100
-rmse <- sqrt(mse)
-
-list(MSE = mse, MAE = mae, MAPE = mape, RMSE = rmse)
-
-
-```
-
-###XGBOOST
-
-```{r}
-sum(is.na(laptopsTest$Rating))#14 NA values
-table(laptopsTest$Rating) #mode == "integrated"
-# Step 1: Convert the factor column to character
-laptopsTest$Rating <- as.character(laptopsTest$Rating)
-# Step 2: Replace NA values with "integrated"
-laptopsTest$Rating[is.na(laptopsTest$Rating)] <- "59"
-# Step 3: Convert the column back to factor
-laptopsTest$Rating <- as.factor(laptopsTest$Rating)
-Rating <-laptopsTest$Rating
-Rating
-length(Rating)
-
-test$Rating <- Rating
-str(test$Rating)
-test$Rating <- as.numeric(test$Rating)
-```
-
-```{r}
-str(train)
-str(test)
-```
-
-```{r}
-library(readr)
-library(dplyr)
-library(caret)
-library(xgboost)
-library(pROC)
-# Kategorik değişkenleri sayısal verilere dönüştürelim
-data <- completed_data
-data <- data %>%
-  mutate(across(where(is.character), as.factor)) %>%
-  mutate(across(where(is.factor), ~ as.numeric(as.factor(.))))
-
-# Veriyi eğitim ve test setlerine bölelim
-set.seed(123)
-trainIndex <- createDataPartition(data$Rating, p = .8, 
-                                  list = FALSE, 
-                                 times = 1)
-dataTrain <- data[trainIndex, ]
-dataTest <- data[-trainIndex, ]
-
-# X ve y değişkenlerini ayıralım
-train_x <- dataTrain[,-4]
-train_y <- dataTrain$Rating
-test_x <- dataTest[,-4]
-test_y <- dataTest$Rating
-
-# XGBoost için veri dönüşümleri
-dtrain <- xgb.DMatrix(data = as.matrix(train_x), label = train_y)
-dtest <- xgb.DMatrix(data = as.matrix(test_x), label = test_y)
-
-# Model parametreleri
-params <- list(
-  booster = "gbtree",
-  objective = "reg:squarederror",
-  eta = 0.1,
-  max_depth = 6
-)
-
-# Modelin eğitimi
-xgb_model <- xgboost(params = params, data = dtrain, nrounds = 100, verbose = 0)
-
-# Test verisi üzerinde tahmin yapma
-pred <- predict(xgb_model, dtest)
-
-# Tahminlerin doğruluğunu değerlendirelim
-# Sınıflandırma için uygun bir threshold belirleyelim
-threshold <- median(data$Rating)
-pred_class <- ifelse(pred >= threshold, 1, 0)
-test_y_class <- ifelse(test_y >= threshold, 1, 0)
-
-# Performans ölçütlerini hesaplayalım
-conf_matrix <- confusionMatrix(factor(pred_class), factor(test_y_class))
-accuracy <- conf_matrix$overall['Accuracy']
-sensitivity <- conf_matrix$byClass['Sensitivity']
-
-# Değişken önem sıralamasını almak
-importance_matrix <- xgb.importance(colnames(train_x), model = xgb_model)
-
-# Değişken önem sıralamasını görselleştirmek
-xgb.plot.importance(importance_matrix = importance_matrix[1:10],col = "green4",main = "Variable Importance")  
-
-
-```
-
-```{r}
-# Eğitim verisi üzerinde tahmin yapma
-xgb_predictions <- predict(xgb_model, dtest)
-# MSE, MAE, MAPE ve RMSE hesaplama
-mse <- mean((test_y - xgb_predictions)^2)
-mae <- mean(abs(test_y - xgb_predictions))
-mape <- mean(abs((test_y - xgb_predictions) / test_y)) * 100
-rmse <- sqrt(mse)
-
-list(MSE = mse, MAE = mae, MAPE = mape, RMSE = rmse)
-
-# Test verisi üzerinde tahmin yapma
-train_pred <- predict(xgb_model, dtrain)
-# MSE, MAE, MAPE ve RMSE hesaplama
-mse <- mean((train_y - train_pred )^2)
-mae <- mean(abs(train_y - train_pred ))
-mape <- mean(abs((train_y - train_pred ) / train_y)) * 100
-rmse <- sqrt(mse)
-
-list(MSE = mse, MAE = mae, MAPE = mape, RMSE = rmse)
-
-
-
-
-```
-
-```{r}
-#variable importance
-xgb.plot.importance(model = xgb_model)
-
-```
-
-```{r}
-svm_model <- svm(Rating_Class ~ ., data = train, kernel = "linear",cost = 0.1,scale = FALSE)
-# Evaluate the model
-predictions <- predict(svm_model, test)
-accuracy <- mean(predictions == test$Rating_Class)
-print(paste("Accuracy:", accuracy))
-
-# Extract relevant variables
-X <- train_data[, -which(names(train_data) == "Rating_Class")]
-
-# Predict the classes
-train_data$predicted <- predict(svm_model, X)
-
-# Create a ggplot object
-p <- ggplot(train_data, aes(x = Price, y = Rating, color = factor(predicted))) +
-  geom_point() +
-  scale_color_manual(values = c("blue", "red")) +  # Adjust colors as needed
-  labs(title = "SVM Classification Plot",
-       x = "Price",
-       y = "Rating",
-       color = "Predicted Class")
-
-
-```
-
-# 
-
----
-title: "412-project"
-author: "Bilghean Aydoğdu"
-date: "2024-04-26"
-output: html_document
----
-
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
-```
-
-## R Markdown
-
-```{r}
-
-library(ggplot2)
-library(GGally)
-library(stringr)
-library(dplyr)
-getwd()
-setwd("C:/Users/Bora KOPARAN/OneDrive/Desktop/ders_icin")
-data <- read.csv("laptops.csv")
-head(data)
-```
-
-```{r}
-str(data)
-```
-
-```{r}
-summary(data)
-```
-
-```{r}
-dim(data)
-```
-
-```{r}
-# Calculate descriptive statistics
-descriptive_stats <- data %>%
-  summarise(across(where(is.numeric), list(mean = mean, sd = sd), na.rm = TRUE))
-
-print(descriptive_stats)
-```
-
-```{r}
-# Convert relevant columns to factors
-data$brand <- as.factor(data$brand)
-data$Model <- as.factor(data$Model)
-data$processor_brand <- as.factor(data$processor_brand)
-data$processor_tier <- as.factor(data$processor_tier)
-data$primary_storage_type <- as.factor(data$primary_storage_type)
-data$secondary_storage_type <- as.factor(data$secondary_storage_type)
-data$gpu_brand <- as.factor(data$gpu_brand)
-data$gpu_type <- as.factor(data$gpu_type)
-data$OS <- as.factor(data$OS)
-data$is_touch_screen <- as.factor(data$is_touch_screen)
-data$year_of_warranty <- as.factor(data$year_of_warranty)
-data$ram_memory <- as.factor(data$ram_memory)
-data$num_cores <- as.factor(data$num_cores)
-
-# Convert relevant columns to numeric
-data$Price <- as.numeric(data$Price)
-data$Rating <- as.numeric(data$Rating)
-data$num_threads <- as.numeric(data$num_threads)
-data$primary_storage_capacity <- as.numeric(data$primary_storage_capacity)
-data$secondary_storage_capacity <- as.numeric(data$secondary_storage_capacity)
-data$display_size <- as.numeric(data$display_size)
-data$resolution_width <- as.numeric(data$resolution_width)
-data$resolution_height <- as.numeric(data$resolution_height)
-
-# View the structure of the cleaned data frame
-str(data)
-summary(data)
-```
-
-"Are there any notable differences in the frequencies of processor tiers?"
-
-```{r}
-library(ggplot2)
-f=table(data$processor_tier)
-f_data=data.frame(f) 
-ggplot(f_data,aes(x=reorder(Var1,Freq),y=Freq,fill=Var1))+geom_bar(stat="identity")+
-  labs(title="Bar Plot of Processor Brands",y="Frequencies",x="Levels")
-```
-
-When the bar plot was examined, the majority of the processor tiers is core i5. Theoretically, it might be said that most of the customers are satisfied with the performance of the core i5.
-
-Histogram of Laptop Ratings (dependent variable)
-
-```{r}
-ggplot(data, aes(x=Rating)) + geom_histogram(binwidth=5, fill='green3', color='black') + theme_minimal() + ggtitle('Histogram of Laptop Ratings')
-
-```
-
-What is the impact of GPU brand (e.g., NVIDIA, AMD) on laptops' Ratings? Null Hypothesis (H0): There is no significant difference in ratings between different GPU brands. Alternative Hypothesis (H1): There is a significant difference in ratings between different GPU
-
-```{r}
-summary_table_rating <- data %>%
-  group_by(gpu_brand) %>%
-  summarise(average_rating = mean(Rating, na.rm = TRUE))
-
-ggplot(summary_table_rating, aes(x=gpu_brand, y=average_rating, fill=gpu_brand)) +
-  geom_bar(stat='identity') +
-  ggtitle('Average Ratings by GPU Brand') +
-  xlab('GPU Brand') +
-  ylab('Average Rating') +
-  theme_minimal() +
-  theme(axis.text.x = element_text(angle = 45, hjust = 1))
-```
-
-What is the impact of GPU brand (e.g., NVIDIA, AMD) on laptop prices?
-
-```{r}
-summary_table_price <- data %>%
-  group_by(gpu_brand) %>%
-  summarise(average_price = mean(Price, na.rm = TRUE))
-
-ggplot(summary_table_price, aes(x=gpu_brand, y=average_price, fill=gpu_brand)) +
-  geom_bar(stat='identity') +
-  ggtitle('Average Prices by GPU Brand') +
-  xlab('GPU Brand') +
-  ylab('Average Price') +
-  theme_minimal() +
-  theme(axis.text.x = element_text(angle = 45, hjust = 1))
-```
-
-How the price of laptops differs from according to their processor brand and gpu type?
-
-```{r}
-ggplot(data, aes(x = processor_brand, y = Price, color = gpu_type)) +
-  geom_point(alpha = 0.6) +
-  labs(title = 'Price vs Processor Brand by GPU Type', x = 'Processor Brand', y = 'Price') +
-  theme_minimal() +
-  scale_y_continuous(labels = scales::dollar_format(prefix = '$'))
-```
-
-Plot showing the relationship between processor brand and price, colored by GPU type
-
-How the rating of laptops differs from according to the it processor brand and gpu type?
-
-```{r}
-ggplot(data, aes(x = processor_brand, y = Rating, color = gpu_type)) +
-  geom_point(alpha = 0.6) +
-  labs(title = 'Rating vs Processor Brand by GPU Type', x = 'Processor Brand', y = 'Rating') +
-  theme_minimal() +
-  scale_y_continuous(labels = scales::dollar_format(prefix = ''))
-
-```
-
-Is there a relationship between number of cores and laptops' ratings according to processor brand?
-
-```{r}
-ggplot(data, aes(x = num_cores, y = Rating, color = processor_brand)) +
-  geom_point() +
-  labs(title = "Number of Cores vs. Rating",
-       x = "Number of Cores",
-       y = "Rating") +
-  theme_minimal()
-
-```
-
-It might be said that, there is an linear relationships number of cores and ratings.
-
-Is there a correlation between price and rating?
-
-```{r}
-cor(data$Price, data$Rating, use='complete.obs')
-ggplot(data, aes(x=Price, y=Rating)) +
-  geom_point() +
-  geom_smooth(method='lm', col='blue') +
-  ggtitle('Scatter Plot of Price vs Rating') +
-  xlab('Price') +
-  ylab('Rating')
-```
-
-As observed, there is a moderate to positive correlation between the two variables, with a correlation coefficient of approximately 0.661.
-
-How do ratings vary with different primary storage types and capacities?
-
-```{r}
-ggplot(data, aes(x=primary_storage_capacity, y=Rating, fill=primary_storage_type)) +
-  geom_boxplot() +
-  ggtitle('Ratings by Primary Storage Type and Capacity') +
-  xlab('Primary Storage Capacity') +
-  ylab('Rating') +
-  theme(axis.text.x = element_text(angle = 45, hjust = 1))
-```
-
-The box plot indicates a clear preference for laptops with SSDs over HDDs, particularly those with higher storage capacities, as evidenced by higher and more consistent ratings.
-
-How do ratings vary with different combinations of processor brand, GPU brand, and RAM memory?
-
-```{r}
-library(dplyr)
-summary_table <- data %>%
-  group_by(processor_brand, gpu_brand, ram_memory) %>%
-  summarise(average_rating = mean(Rating, na.rm = TRUE))
-ggplot(summary_table, aes(x=ram_memory, y=interaction(processor_brand, gpu_brand), fill=average_rating)) +
-  geom_tile() +
-  scale_fill_gradient(low='blue', high='red') +
-  ggtitle('Heatmap of Ratings by Processor Brand, GPU Brand, and RAM Memory') +
-  xlab('RAM Memory (GB)') +
-  ylab('Processor Brand and GPU Brand') +
-  theme(axis.text.x = element_text(angle = 45, hjust = 1))
-```
-
-laptops with higher RAM capacities and combinations of AMD or Intel processors with NVIDIA GPUs tend to receive higher ratings.
-
-How do different laptop brands (e.g., Dell, HP, Lenovo) affect the average rating? Hypothesis: Certain brands, such as Apple, have higher average ratings compared to others.
-
-```{r}
-summary_table_rating <- data %>%
-  group_by(brand) %>%
-  summarise(average_rating = mean(Rating, na.rm = TRUE))
-
-ggplot(summary_table_rating, aes(x=brand, y=average_rating, fill=brand)) +
-  geom_bar(stat='identity') +
-  ggtitle('Average Ratings by Laptop Brand') +
-  xlab('Laptop Brand') +
-  ylab('Average Rating') +
-  theme_minimal() +
-  theme(axis.text.x = element_text(angle = 45, hjust = 1))
-```
-
-The brand of a laptop significantly impacts its average rating, with Asus and Acer leading in customer satisfaction, while Axl and Avita lag behind.
-
-*4. Exploration of the missingness mechanism and impute missing values and validate it.*
-
-```{r}
-sum(is.na(data))# to check the number of NA values in dataset
-```
-
-```{r}
-#fixing index column
-data$index <- c(1:991)
-sum(is.na(data$index))
-#removing columns which are unnecessary
-laptops <- data[,-c(3,13,14,17,18,19,20,22)]
-head(laptops)
-
-str(laptops)
-
-
-```
-
-```         
-**Imputation Part**
-```
-
-```{r}
-library(mice)
-imputation_methods <- c("", "cart", "", "", "cart", "cart", "", "cart", "cart", "cart", "", "cart", "cart","cart")
-imputed_data <- mice(laptops, method = imputation_methods, m = 5, maxit = 5, seed = 123)
-
-completed_data <- complete(imputed_data, 1)
-
-
-sum(is.na(completed_data))
-
-
-```
-
-#brand column
-
-```{r}
-sum(is.na(completed_data$brand))
-table(completed_data$brand)
-# Step 1: Convert the factor column to character
-completed_data$brand <- as.character(completed_data$brand)
-# Step 2: Replace NA values with mode == "asus"
-completed_data$brand[is.na(completed_data$brand)] <- "asus"
-# Step 3: Convert the column back to factor
-completed_data$brand <- as.factor(completed_data$brand)
-
-summary(completed_data$brand)# Verify the changes
-
-```
-
-#Price column
-
-```{r}
-mean(na.omit(laptops$Price)) #77562
-completed_data$Price <- ifelse(is.na(completed_data$Price), 77562, laptops$Price)
-sum(is.na(completed_data$Price))
-str(completed_data$Price)
-```
-
-#Rating column
-
-```{r}
-mean(na.omit(laptops$Rating))
-completed_data$Rating <- ifelse(is.na(completed_data$Rating), 63.82, laptops$Rating)
-str(laptops$Rating)
-```
-
-#Proccesor_brand
-
-```{r}
-sum(is.na(completed_data$processor_brand))
-table(laptops$processor_brand)
-# Step 1: Convert the factor column to character
-completed_data$processor_brand <- as.character(completed_data$processor_brand)
-# Step 2: Replace NA values with mode == "intel"
-completed_data$processor_brand[is.na(completed_data$processor_brand)] <- "intel"
-# Step 3: Convert the column back to factor
-completed_data$processor_brand <- as.factor(completed_data$processor_brand)
-
-summary(completed_data$processor_tier)# Verify the changes
-sum(is.na(completed_data$processor_brand))
-```
-
-#Processor_tier
-
-```{r}
-# Step 1: Convert the factor column to character
-completed_data$processor_tier <- as.character(completed_data$processor_tier)
-# Step 2: Replace NA values with mode == "core i5"
-completed_data$processor_tier[is.na(completed_data$processor_tier)] <- "core i5"
-# Step 3: Convert the column back to factor
-completed_data$processor_tier <- as.factor(completed_data$processor_tier)
-
-summary(completed_data$processor_tier)# Verify the changes
-
-```
-
-#num_cores
-
-```{r}
-sum(is.na(completed_data$num_cores)) # 24 NA values
-table(laptops$num_cores) # we will impute mode == "6" for NA values 
-# Step 1: Convert the factor column to character
-completed_data$num_cores <- as.character(completed_data$num_cores)
-# Step 2: Replace NA values with mode == "6
-completed_data$num_cores[is.na(completed_data$num_cores)] <- "6"
-# Step 3: Convert the column back to factor
-completed_data$num_cores <- as.factor(completed_data$num_cores)
-
-summary(completed_data$num_cores)# Verify the changes
-```
-
-#num_threads
-
-```{r}
-sum(is.na(completed_data$num_threads)) # 79 NA values
-# Step 1: Calculate the median of the primary_storage_capacity column, ignoring NA values
-median_num_threads <- median(laptops$num_threads, na.rm = TRUE)
-# Step 2: Replace NA values with the calculated median
-completed_data$num_threads[is.na(completed_data$num_threads)] <- median_num_threads
-
-summary(completed_data$num_threads)# Verify the change
-```
-
-#ram_memory
-
-```{r}
-sum(is.na(completed_data$ram_memory)) # 23 NA values
-table(laptops$ram_memory) # we will impute mode == "16" for NA values 
-# Step 1: Convert the factor column to character
-completed_data$ram_memory <- as.character(completed_data$ram_memory)
-# Step 2: Replace NA values with mode == "16"
-completed_data$ram_memory[is.na(completed_data$ram_memory)] <- "16"
-# Step 3: Convert the column back to factor
-completed_data$ram_memory <- as.factor(completed_data$ram_memory)
-
-summary(completed_data$ram_memory)# Verify the changes
-
-
-```
-
-#primary_storage_type
-
-```{r}
-sum(is.na(completed_data$primary_storage_type)) #21 NA values
-table(laptops$primary_storage_type) # we will impute mode == "SSD" for NA values 
-# Step 1: Convert the factor column to character
-completed_data$primary_storage_type <- as.character(completed_data$primary_storage_type)
-# Step 2: Replace NA values with mode == "SSD"
-completed_data$primary_storage_type[is.na(completed_data$primary_storage_type)] <- "SSD"
-# Step 3: Convert the column back to factor
-completed_data$primary_storage_type <- as.factor(completed_data$primary_storage_type)
-
-summary(completed_data$primary_storage_type)# Verify the changes
-```
-
-# 
-
-```{r}
-sum(is.na(completed_data$primary_storage_capacity))
-# Step 1: Calculate the median of the primary_storage_capacity column, ignoring NA values
-median_num_cores <- median(laptops$primary_storage_capacity, na.rm = TRUE)
-# Step 2: Replace NA values with the calculated median
-completed_data$primary_storage_capacity[is.na(completed_data$primary_storage_capacity)] <- median_num_cores
-
-summary(completed_data$primary_storage_capacity)# Verify the changes
-```
-
-#gpu_brand
-
-```{r}
-sum(is.na(completed_data$gpu_brand))# 30 NA values
-table(laptops$gpu_brand)#mode == "intel"
-# Step 1: Convert the factor column to character
-completed_data$gpu_brand <- as.character(completed_data$gpu_brand)
-# Step 2: Replace NA values with "intel"
-completed_data$gpu_brand[is.na(completed_data$gpu_brand)] <- "intel"
-# Step 3: Convert the column back to factor
-completed_data$gpu_brand <- as.factor(completed_data$gpu_brand)
-
-summary(completed_data$gpu_brand)# Verify the changes
-```
-
-#gpu_type
-
-```{r}
-sum(is.na(completed_data$gpu_type))#29 NA values
-table(laptops$gpu_type) #mode == "integrated"
-# Step 1: Convert the factor column to character
-completed_data$gpu_type <- as.character(completed_data$gpu_type)
-# Step 2: Replace NA values with "integrated"
-completed_data$gpu_type[is.na(completed_data$gpu_type)] <- "integrated"
-# Step 3: Convert the column back to factor
-completed_data$gpu_type <- as.factor(completed_data$gpu_type)
-
-summary(completed_data$gpu_type)
-
-```
-
-#OS
-
-```{r}
-sum(is.na(completed_data$OS))
-table(laptops$OS) #mode == "windows"
-# Step 1: Convert the factor column to character
-completed_data$OS <- as.character(completed_data$OS)
-# Step 2: Replace NA values with "windows"
-completed_data$OS[is.na(completed_data$OS)] <- "windows"
-# Step 3: Convert the column back to factor
-completed_data$OS <- as.factor(completed_data$OS)
-
-summary(completed_data$OS)
-```
-
-```{r}
-sum(is.na(completed_data))
-str(completed_data)
-```
-
-There are no NA values in the dataset. All of them were imputed.
-
-```         
-**Corfimatory Data Analyses**
-```
-
-How do ratings vary with different primary storage types and capacities? To perform this analyses ANOVA test was conducted.
-
-```{r}
-
-anova_result <- aov(Rating ~ primary_storage_capacity * primary_storage_type, data = completed_data)
-residuals <- residuals(anova_result)
-qqline(residuals)
-summary(anova_result)
-```
-
-Before dive into ANOVA normality assumption was checked and it might be said that the assumption was satisfied.
-
-Is there a correlation between price and rating? Null Hypothesis (H0): There is no significant correlation between price and rating.
-
-Alternative Hypothesis (H1): There is a significant correlation between price and rating.
-
-```{r}
-# Calculate correlation coefficient
-correlation <- cor(completed_data$Price, completed_data$Rating)
-print(correlation)
-
-# Perform a correlation test to get p-value
-cor_test <- cor.test(completed_data$Price, completed_data$Rating)
-print(cor_test)
-```
-
-Since the p-value is less than 0.05, we reject H0, which means there is not enough evidence to say that there is no significant correlation between price and rating.
-
-What is the impact of GPU brand (e.g., NVIDIA, AMD) on laptops' Ratings? Null Hypothesis (H0): There is no significant difference in ratings between different GPU brands. Alternative Hypothesis (H1): There is a significant difference in ratings between different GPU
-
-```{r}
-# Assumptions
-residuals <- anova_result1$residuals
-# Shapiro-Wilk test for normality
-shapiro_test_result <- shapiro.test(residuals)
-print(shapiro_test_result)
-
-levene_test_result <- leveneTest(Rating ~ gpu_brand, data = completed_data)
-print(levene_test_result)
-
-```
-
-```{r}
-# Conduct ANOVA
-anova_result1 <- aov(Rating ~ gpu_brand, data = completed_data)
-summary(anova_result1)
-
-```
-
-As given at ouput,low p-value and the high F-statistic, we can reject the null hypothesis. This result suggests that there is not enough evidence to say that GPU brand does not have significantly impacts laptop ratings.
-
-How the rating of laptops differs from according to theit processor brand and gpu type?
-
-```{r}
-# Conduct ANOVA for processor brand
-anova_result2 <- aov(Rating ~ processor_brand*gpu_type, data = completed_data)
-summary(anova_result2)
-
-# Checking assumptions
-
-# Normality: Q-Q plot and Shapiro-Wilk test
-qqnorm(residuals(anova_result2))
-qqline(residuals(anova_result2), col = "red")
-shapiro.test(residuals(anova_result2))
-
-# Homogeneity of variances: Levene's test
-if (!require(car)) install.packages("car")
-library(car)
-leveneTest(Rating ~ processor_brand*gpu_type, data = completed_data)
-
-# Running ANOVA
-anova_result2 <- aov(Rating ~ processor_brand*gpu_type, data = completed_data)
-summary(anova_result2)
-
-# Post-hoc pairwise comparisons: Tukey's HSD test
-tukey_result <- TukeyHSD(anova_result2)
-print(tukey_result)
-plot(tukey_result)
-
-```
-
-How do ratings vary with different combinations of processor brand, GPU brand, and RAM memory?
-
-```{r}
-#Assumptions
-# Load necessary libraries
-library(car)
-library(ggplot2)
-
-# 1. Linearity: Scatter plots
-pairs(~Rating + processor_brand + gpu_brand + ram_memory, data = completed_data)
-
-# 2. Independence: Fit an initial model and perform Durbin-Watson test
-initial_model <- lm(Rating ~ processor_brand + gpu_brand + ram_memory, data = completed_data)
-durbinWatsonTest(initial_model) # no auto correlation
-
-# 4. Normality: Histogram and Q-Q plot for the response variable
-hist(completed_data$Rating, main = "Histogram of Rating", xlab = "Rating", breaks = 20)
-qqnorm(completed_data$Rating)
-qqline(completed_data$Rating, col = "red")
-
-# 5. No Multicollinearity: Correlation matrix and VIF
-numeric_vars <- completed_data[, sapply(completed_data, is.numeric)]
-cor_matrix <- cor(numeric_vars, use = "complete.obs")
-print(cor_matrix)
-
-# VIF for the initial model
-vif(initial_model)
-
-
-```
-
-```{r}
-# Fit multiple linear regression model
-model <- lm(Rating ~ processor_brand + gpu_brand + ram_memory + processor_brand:gpu_brand + processor_brand:ram_memory + gpu_brand:ram_memory, data = completed_data)
-
-# Summary of the regression model
-summary(model)
-
-# Test for overall significance of the model
-anova(model)
-
-```
-
-###ONE-HOT ENCODING
-
-```{r}
-library(vtreat)
-# Identify categorical variables 
-categorical_vars <- names(completed_data)[sapply(completed_data, is.factor)]
-
-# Apply one-hot encoding using vtreat
-treatplan <- designTreatmentsZ(completed_data, varlist = categorical_vars)
-completed_data <- prepare(treatplan, completed_data)
-```
-
-###CROSS VALIDATION
-
-```{r}
-library(caret)
-library(MASS)
-library(caret)
-str(completed_data)
-set.seed(412)
-train_ind = completed_data$Rating %>%
-createDataPartition(p = 0.8, list = FALSE) 
-train  = completed_data[train_ind, ]
-test = completed_data[-train_ind, ]
-
-d_original=dim(completed_data)
-d_train=dim(train)
-d_test=dim(test)
-dimens=cbind(d_original,d_train,d_test)
-rownames(dimens)=c("number of rows","number of columns")
-dimens
-
-```
-
-```{r}
-str(test)
-str(train)
-```
-
-```{r}
-#k fold CV
-train_control <- trainControl(method="cv", number=10)
-
-model <- train(Rating ~ ., data=completed_data, method="lm", trControl=train_control)
-
-
-print(model)
-
-
-```
-
-MULTIPLE REGRESSION
-
-```{r}
-# Convert categorical variables to dummy variables
-train_processed <- dummyVars(~ ., data = train, fullRank = TRUE)
-train_data <- predict(train_processed, newdata = train) %>%
-  as.data.frame()
-
-# Ensure the target variable 'Rating' is included and is numeric
-train_data$Rating <- as.numeric(train$Rating)
-
-# Fit the linear regression model
-formula <- Rating ~ . - index
-lm_model <- lm(formula, data = train_data)
-
-# Print the summary of the model
-summary(lm_model)
-
-# Make predictions on the training set
-train_data$predicted <- predict(lm_model, newdata = train_data)
-
-# Choose a threshold to convert continuous predictions to binary
-threshold <- 0.5
-train_data$predicted_class <- ifelse(train_data$predicted > threshold, 1, 0)
-train_data$actual_class <- ifelse(train_data$Rating > threshold, 1, 0)
-
-# Create confusion matrix
-confusion_matrix <- table(Predicted = train_data$predicted_class, Actual = train_data$actual_class)
-print(confusion_matrix)
-
-# Calculate accuracy
-accuracy <- sum(diag(confusion_matrix)) / sum(confusion_matrix)
-print(paste("Accuracy:", accuracy))
-
-```
-
-Since the accuracy is 1. we need to try regulaziton.
-
-LASSO
-
-```{r}
-# Lasso model conduction
-lasso_model <- cv.glmnet(train_x, train_y, alpha = 1, family = "gaussian")
-
-# choosing the best lambda value
-best_lambda <- lasso_model$lambda.min
-best_lambda
-
-# retrain the model
-lasso_best <- glmnet(train_x, train_y, alpha = 1, lambda = best_lambda)
-
-# prediction
-y_pred <- predict(lasso_best, test_x)
-
-# MSE, MAE ve MAPE
-mse <- mean((test_y - y_pred)^2)
-mae <- mean(abs(test_y - y_pred))
-mape <- mean(abs((test_y - y_pred) / test_y)) * 100
-rmse <- sqrt(mse)
-list(MSE = mse, MAE = mae, MAPE = mape, RMSE = rmse)
-
-# prediction
-y_pred <- predict(lasso_best, train_x)
-
-# MSE, MAE ve MAPE 
-mse <- mean((train_y - y_pred)^2)
-mae <- mean(abs(train_y - y_pred))
-mape <- mean(abs((train_y - y_pred) / train_y)) * 100
-rmse <- sqrt(mse)
-list(MSE = mse, MAE = mae, MAPE = mape, RMSE = rmse)
-
-
-```
-
-RANDOM FOREST
-
-```{r}
-library(randomForest)
-# Random Forest model conduction
-rf_model <- randomForest(Rating ~ ., data = train, importance = TRUE)
-print(rf_model)
-
-
-# predictions for train set
-train_predictions <- predict(rf_model, train)
-
-# performance metrics for train set
-train_mse <- mean((train$Rating - train_predictions)^2)
-cat("Eğitim seti MSE:", train_mse, "\n")
-
-# prediction for test set
-test_predictions <- predict(rf_model, test)
-
-# performance metrics for test set
-test_mse <- mean((test$Rating - test_predictions)^2)
-cat("Test seti MSE:", test_mse, "\n")
-
-importance(rf_model)
-varImpPlot(rf_model)
-
-# MSE 
-train_mse <- mean((train$Rating - train_predictions)^2)
-test_mse <- mean((test$Rating - test_predictions)^2)
-
-# RMSE 
-train_rmse <- sqrt(train_mse)
-test_rmse <- sqrt(test_mse)
-
-# results
-cat("Eğitim seti - MSE:", train_mse, "\n")
-cat("Eğitim seti - RMSE:", train_rmse, "\n")
-
-cat("Test seti - MSE:", test_mse, "\n")
-cat("Test seti - RMSE:", test_rmse, "\n")
-# MAE 
-train_mae <- mean(abs(train$Rating - train_predictions))
-test_mae <- mean(abs(test$Rating - test_predictions))
-
-# MAPE hesaplama
-train_mape <- mean(abs((train$Rating - train_predictions) / train$Rating)) * 100
-test_mape <- mean(abs((test$Rating - test_predictions) / test$Rating)) * 100
-
-# Results
-cat("Eğitim seti - MAE:", train_mae, "\n")
-cat("Eğitim seti - MAPE:", train_mape, "\n")
-
-cat("Test seti - MAE:", test_mae, "\n")
-cat("Test seti - MAPE:", test_mape, "\n")
-```
-
-#RANDOM FOREST
-
-```{r}
-library(randomForest)
-# Train the Random Forest model
-rfModel <- randomForest(Rating ~ ., data = train, importance = TRUE, ntree = 500)
-
-# Evaluate the model
-predictions <- predict(rfModel, test[,-5])
-rmse <- sqrt(mean((predictions - test$Rating)^2))
-r_squared <- 1 - (sum((predictions - test$Rating)^2) / sum((test$Rating - mean(test$Rating))^2))
-
-# Calculate accuracy-like metric
-threshold <- 0.10 # 10% threshold
-accurate_predictions <- abs(predictions - test$Rating) <= (threshold * test$Rating)
-accuracy <- mean(accurate_predictions)
-
-# Print RMSE, R-squared, and Accuracy
-print(paste("RMSE: ", rmse))
-print(paste("R-squared: ", r_squared))
-print(paste("Accuracy: ", accuracy))
-
-
-```
-
-According to random forestmodel the accuracy was conducted as 0.86
-
-#NEURAL NETWORK
-
-```{r}
-
-data <- completed_data
-data <- data %>%
-  mutate(across(where(is.character), as.factor)) %>%
-  mutate(across(where(is.factor), ~ as.numeric(as.factor(.))))
-
-# Veriyi eğitim ve test setlerine bölelim
-set.seed(123)
-trainIndex <- createDataPartition(data$Rating, p = .8, 
-                                  list = FALSE, 
-                                 times = 1)
-dataTrain <- data[trainIndex, ]
-dataTest <- data[-trainIndex, ]
-
-
-train$num_cores<- as.numeric(train$num_cores)
-train$num_threads<- as.numeric(train$num_threads)
-train$ram_memory<- as.numeric(train$ram_memory)
-
-test$num_cores<- as.numeric(test$num_cores)
-test$num_threads<- as.numeric(test$num_threads)
-test$ram_memory<- as.numeric(test$ram_memory)
-
-scale01 <- function(x){
-  (x - min(x)) / (max(x) - min(x))
-}
-
-# Apply the scale01 function only to numeric columns
-train_data_scaled <- train %>%
-  mutate(across(where(is.numeric), scale01))
-
-test_data_scaled <- test %>%
-  mutate(across(where(is.numeric), scale01))
-library(neuralnet)
-# Summarize the scaled test data
-
-nn2 <- neuralnet(Rating~brand+Price+processor_brand+processor_tier+num_cores+num_threads+primary_storage_capacity+gpu_type+OS, 
-                 data = dataTrain, hidden = c(2), 
-                 act.fct = "logistic", learningrate = 0.05, 
-                 learningrate.factor = c(-0.5, 1.2), 
-                 linear.output = FALSE, 
-                 lifesign = "minimal", 
-                 stepmax = 2e6, rep = 1)
-summary(nn2)
-plot(nn2, rep = 'best', 
-     intercept = TRUE, 
-     show.weights = TRUE, 
-     information = FALSE,
-     col.hidden = 'black',
-     col.intercept = 'green4',
-     col.hidden.synapse = 'blue',
-     col.synapse = 'red',
-     col.entry = 'black',
-     col.entry.synapse = 'coral3',
-     font.entry = 1,  # smaller font for variable names
-     font.hidden = 1,  # smaller font for hidden layers
-     font.output = 1,  # smaller font for output layers
-     fill = 'lightblue',  # node fill color
-     radius = 0.1,  # node radius
-     space = 50000)  # increased spacing between nodes
-
-# weights
-weights <- nn2$result.matrix
-
-
-print(weights)
-
-# summary of weights
-weights_summary <- as.data.frame(weights)
-print(weights_summary)
-```
-
-```{r}
-# Prediction for test set
-test_predictions <- compute(nn2, test_x)
-test_predictions <- test_predictions$net.result
-
-# Tahminleri orijinal skala aralığına geri döndürmek gerekebilir
-min_rating <- min(test$Rating)
-max_rating <- max(test$Rating)
-test_predictions <- test_predictions * (max_rating - min_rating) + min_rating
-
-
-# MSE, MAE, MAPE ve RMSE 
-mse <- mean((test_y - test_predictions)^2)
-mae <- mean(abs(test_y - test_predictions))
-mape <- mean(abs((test_y - test_predictions) / test_y)) * 100
-rmse <- sqrt(mse)
-
-list(MSE = mse, MAE = mae, MAPE = mape, RMSE = rmse)
-
-
-
-# Prediction for test set
-train_predictions <- compute(nn2, train_x)
-train_predictions <- train_predictions$net.result
-
-
-min_rating <- min(train$Rating)
-max_rating <- max(train$Rating)
-train_predictions <- train_predictions * (max_rating - min_rating) + min_rating
-
-# MSE, MAE, MAPE ve RMSE 
-mse <- mean((train_y - train_predictions)^2)
-mae <- mean(abs(train_y - train_predictions))
-mape <- mean(abs((train_y - train_predictions) / train_y)) * 100
-rmse <- sqrt(mse)
-
-list(MSE = mse, MAE = mae, MAPE = mape, RMSE = rmse)
-
-```
-
-```{r}
-library(NeuralNetTools)
-garson(nn2)
-
-```
-
-SUPPORT VECTOR MACHINE
-
-```{r}
-library(e1071)
-# SVM model conduction
-svm_model <- svm(Rating ~ ., data = train, kernel = "radial", cost = 1, epsilon = 0.1)
-
-# summary of the model
-summary(svm_model)
-
-# Prediction for test set
-svm_predictions <- predict(svm_model, test)
-
-# MSE, MAE, MAPE ve RMSE
-mse <- mean((test_y - svm_predictions)^2)
-mae <- mean(abs(test_y - svm_predictions))
-mape <- mean(abs((test_y - svm_predictions) / test_y)) * 100
-rmse <- sqrt(mse)
-
-list(MSE = mse, MAE = mae, MAPE = mape, RMSE = rmse)
-
-
-# prediction for train set
-svm_predictions <- predict(svm_model, train)
-# MSE, MAE, MAPE ve RMSE 
-mse <- mean((train_y - svm_predictions)^2)
-mae <- mean(abs(train_y - svm_predictions))
-mape <- mean(abs((train_y - svm_predictions) / train_y)) * 100
-rmse <- sqrt(mse)
-
-list(MSE = mse, MAE = mae, MAPE = mape, RMSE = rmse)
-
-
-```
-
-###XGBOOST
-
-```{r}
-sum(is.na(laptopsTest$Rating))#14 NA values
-table(laptopsTest$Rating) #mode == "integrated"
-# Step 1: Convert the factor column to character
-laptopsTest$Rating <- as.character(laptopsTest$Rating)
-# Step 2: Replace NA values with "integrated"
-laptopsTest$Rating[is.na(laptopsTest$Rating)] <- "59"
-# Step 3: Convert the column back to factor
-laptopsTest$Rating <- as.factor(laptopsTest$Rating)
-Rating <-laptopsTest$Rating
-Rating
-length(Rating)
-
-test$Rating <- Rating
-str(test$Rating)
-test$Rating <- as.numeric(test$Rating)
-```
-
-```{r}
-str(train)
-str(test)
-```
-
-```{r}
-library(readr)
-library(dplyr)
-library(caret)
-library(xgboost)
-library(pROC)
-# Kategorik değişkenleri sayısal verilere dönüştürelim
-data <- completed_data
-data <- data %>%
-  mutate(across(where(is.character), as.factor)) %>%
-  mutate(across(where(is.factor), ~ as.numeric(as.factor(.))))
-
-# Veriyi eğitim ve test setlerine bölelim
-set.seed(123)
-trainIndex <- createDataPartition(data$Rating, p = .8, 
-                                  list = FALSE, 
-                                 times = 1)
-dataTrain <- data[trainIndex, ]
-dataTest <- data[-trainIndex, ]
-
-# X ve y değişkenlerini ayıralım
-train_x <- dataTrain[,-4]
-train_y <- dataTrain$Rating
-test_x <- dataTest[,-4]
-test_y <- dataTest$Rating
-
-# XGBoost için veri dönüşümleri
-dtrain <- xgb.DMatrix(data = as.matrix(train_x), label = train_y)
-dtest <- xgb.DMatrix(data = as.matrix(test_x), label = test_y)
-
-# Model parametreleri
-params <- list(
-  booster = "gbtree",
-  objective = "reg:squarederror",
-  eta = 0.1,
-  max_depth = 6
-)
-
-# Modelin eğitimi
-xgb_model <- xgboost(params = params, data = dtrain, nrounds = 100, verbose = 0)
-
-# Test verisi üzerinde tahmin yapma
-pred <- predict(xgb_model, dtest)
-
-# Tahminlerin doğruluğunu değerlendirelim
-# Sınıflandırma için uygun bir threshold belirleyelim
-threshold <- median(data$Rating)
-pred_class <- ifelse(pred >= threshold, 1, 0)
-test_y_class <- ifelse(test_y >= threshold, 1, 0)
-
-# Performans ölçütlerini hesaplayalım
-conf_matrix <- confusionMatrix(factor(pred_class), factor(test_y_class))
-accuracy <- conf_matrix$overall['Accuracy']
-sensitivity <- conf_matrix$byClass['Sensitivity']
-
-# Değişken önem sıralamasını almak
-importance_matrix <- xgb.importance(colnames(train_x), model = xgb_model)
-
-# Değişken önem sıralamasını görselleştirmek
-xgb.plot.importance(importance_matrix = importance_matrix[1:10],col = "green4",main = "Variable Importance")  
-
-
-```
-
-```{r}
-# Eğitim verisi üzerinde tahmin yapma
-xgb_predictions <- predict(xgb_model, dtest)
-# MSE, MAE, MAPE ve RMSE hesaplama
-mse <- mean((test_y - xgb_predictions)^2)
-mae <- mean(abs(test_y - xgb_predictions))
-mape <- mean(abs((test_y - xgb_predictions) / test_y)) * 100
-rmse <- sqrt(mse)
-
-list(MSE = mse, MAE = mae, MAPE = mape, RMSE = rmse)
-
-# Test verisi üzerinde tahmin yapma
-train_pred <- predict(xgb_model, dtrain)
-# MSE, MAE, MAPE ve RMSE hesaplama
-mse <- mean((train_y - train_pred )^2)
-mae <- mean(abs(train_y - train_pred ))
-mape <- mean(abs((train_y - train_pred ) / train_y)) * 100
-rmse <- sqrt(mse)
-
-list(MSE = mse, MAE = mae, MAPE = mape, RMSE = rmse)
-
-
-
-
-```
-
-```{r}
-#variable importance
-xgb.plot.importance(model = xgb_model)
-
-```
-
-```{r}
-svm_model <- svm(Rating_Class ~ ., data = train, kernel = "linear",cost = 0.1,scale = FALSE)
-# Evaluate the model
-predictions <- predict(svm_model, test)
-accuracy <- mean(predictions == test$Rating_Class)
-print(paste("Accuracy:", accuracy))
-
-# Extract relevant variables
-X <- train_data[, -which(names(train_data) == "Rating_Class")]
-
-# Predict the classes
-train_data$predicted <- predict(svm_model, X)
-
-# Create a ggplot object
-p <- ggplot(train_data, aes(x = Price, y = Rating, color = factor(predicted))) +
-  geom_point() +
-  scale_color_manual(values = c("blue", "red")) +  # Adjust colors as needed
-  labs(title = "SVM Classification Plot",
-       x = "Price",
-       y = "Rating",
-       color = "Predicted Class")
-
-
-```
-
-# Veri
-
-xxxxxx
-
-## Veri Kaynağı
-
-xxxxxx
-
-## Veri Hakkında Genel Bilgiler
-
-xxxxxx
-
-## Tercih Sebebi
-
-xxxxxx
-
-## Ön İşleme
-
-xxxxxx
-
-# Analiz
-
-xxxxxx
-
-## Keşifsel Veri Analizi
-
-xxxxxx
-
-## Trend Analizi
-
-xxxxxx
-
-## Model Uydurma
-
-xxxxxx
-
-## Sonuçlar
-
-xxxxxx
-
-# Sonuçlar ve Ana Çıkarımlar
-
-xxxxxx
