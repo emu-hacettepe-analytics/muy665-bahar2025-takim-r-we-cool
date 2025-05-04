@@ -22,6 +22,7 @@ library(GGally)
 library(stringr)
 library(dplyr)
 library(car)
+library(scales)
 getwd()
 data_new <- read.csv("laptops.csv")
 head(data_new)
@@ -53,6 +54,7 @@ print(descriptive_stats)
 ## Ön İşleme
 
 ```{r}
+
 # Convert relevant columns to factors
 data_new$brand <- as.factor(data_new$brand)
 data_new$Model <- as.factor(data_new$Model)
@@ -69,7 +71,7 @@ data_new$ram_memory <- as.factor(data_new$ram_memory)
 data_new$num_cores <- as.factor(data_new$num_cores)
 
 # Convert relevant columns to numeric
-data_new$Price <- as.numeric(data_new$Price)
+data_new$Price <- as.numeric(data_new$Price/83)
 data_new$Rating <- as.numeric(data_new$Rating)
 data_new$num_threads <- as.numeric(data_new$num_threads)
 data_new$primary_storage_capacity <- as.numeric(data_new$primary_storage_capacity)
@@ -128,7 +130,7 @@ ggplot(summary_table_price, aes(x=gpu_brand, y=average_price, fill=gpu_brand)) +
   geom_bar(stat='identity') +
   ggtitle('GPU Markasına Gore Fiyatlar') +
   xlab('GPU Markası') +
-  ylab('Fiyat (EUR)') +
+  ylab('Ortalama Fiyat ($)') +
   theme_minimal() +
   theme(axis.text.x = element_text(angle = 45, hjust = 1))
 ```
@@ -140,7 +142,7 @@ ggplot(data_new, aes(x = processor_brand, y = Price, color = gpu_type)) +
   geom_point(alpha = 0.6) +
   labs(title = ' GPU Tipine Gore Fiyat ve İşlemci Markası İlişkisi', x = 'İşlemci Markası', y = 'Fiyat') +
   theme_minimal() +
-  scale_y_continuous(labels = scales::dollar_format(prefix = 'EUR '))
+  scale_y_continuous(labels = scales::dollar_format(prefix = '$ '))
 ```
 
 İşlemci markası ile fiyat arasındaki ilişkiyi GPU türüne göre renklendirilmiş olarak gösteren grafik
@@ -174,12 +176,16 @@ Fiyat ile puanlama arasında bir korelasyon var mı?
 
 ```{r}
 cor(data_new$Price, data_new$Rating, use='complete.obs')
-ggplot(data_new, aes(x=Price, y=Rating)) +
+
+ggplot(data_new, aes(x = Price, y = Rating)) +
   geom_point() +
-  geom_smooth(method='lm', col='blue') +
-  ggtitle('Scatter Plot of Fiyat ve Ratingin Scatter Plot Gosterimi') +
+  geom_smooth(method = 'lm', col = 'blue') +
+  ggtitle('Fiyat ve Rating Arasındaki İlişki (Scatter Plot)') +
   xlab('Fiyat') +
-  ylab('Rating')
+  ylab('Rating') +
+  scale_x_continuous(breaks = seq(0, 6000, by = 500),
+                     labels = comma)
+
 ```
 
 Gözlemlendiği üzere, iki değişken arasında yaklaşık 0.661 korelasyon katsayısı ile orta düzeyde pozitif bir ilişki vardır.
