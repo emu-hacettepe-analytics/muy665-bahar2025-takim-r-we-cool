@@ -2,7 +2,9 @@
 title: "MUY665 PROJE"
 author: "R_we_cool"
 date: "2025"
-format: html
+format:
+  html:
+    theme: flatly   
 number-sections: true
 ---
 
@@ -42,7 +44,7 @@ Analiz için kullanılan `laptops.csv` veri seti, Hindistan pazarında satılan 
 ### Anahtar Değişkenler
 
 | Değişken | Tür | Açıklama |
-|----|----|----|
+|-------------------|-------------------|----------------------------------|
 | `brand` | Faktör | Laptop markası (HP, Lenovo, Asus, vb.) |
 | `processor_tier` | Faktör | İşlemci seviyesi (Core i3/i5/i7, Ryzen 3/5/7) |
 | `gpu_brand` | Faktör | Ekran kartı markası (Intel, AMD, NVIDIA) |
