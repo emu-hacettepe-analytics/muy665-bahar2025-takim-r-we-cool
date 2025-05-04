@@ -193,6 +193,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#veri-analizi" id="toc-veri-analizi" class="nav-link" data-scroll-target="#veri-analizi"><span class="header-section-number">2.5</span> Veri Analizi</a></li>
   </ul></li>
   <li><a href="#çıkarımlar-ve-sonuçlar" id="toc-çıkarımlar-ve-sonuçlar" class="nav-link" data-scroll-target="#çıkarımlar-ve-sonuçlar"><span class="header-section-number">3</span> Çıkarımlar ve Sonuçlar</a></li>
+  <li><a href="#model-uygulama-opsiyonel" id="toc-model-uygulama-opsiyonel" class="nav-link" data-scroll-target="#model-uygulama-opsiyonel"><span class="header-section-number">4</span> Model Uygulama (OPSİYONEL)</a>
+  <ul class="collapse">
+  <li><a href="#lineer-regresyon-modeli-ile-rating-tahmini" id="toc-lineer-regresyon-modeli-ile-rating-tahmini" class="nav-link" data-scroll-target="#lineer-regresyon-modeli-ile-rating-tahmini"><span class="header-section-number">4.1</span> Lineer Regresyon Modeli ile Rating Tahmini</a></li>
+  <li><a href="#tahmin-başarısı-ve-hata-metrikleri" id="toc-tahmin-başarısı-ve-hata-metrikleri" class="nav-link" data-scroll-target="#tahmin-başarısı-ve-hata-metrikleri"><span class="header-section-number">4.2</span> Tahmin Başarısı ve Hata Metrikleri</a></li>
+  <li><a href="#gerçek-ve-tahmin-edilen-rating-dağılımı-grafik" id="toc-gerçek-ve-tahmin-edilen-rating-dağılımı-grafik" class="nav-link" data-scroll-target="#gerçek-ve-tahmin-edilen-rating-dağılımı-grafik"><span class="header-section-number">4.3</span> Gerçek ve Tahmin Edilen Rating Dağılımı (Grafik)</a></li>
+  <li><a href="#yorum" id="toc-yorum" class="nav-link" data-scroll-target="#yorum"><span class="header-section-number">4.4</span> Yorum</a></li>
+  </ul></li>
   </ul>
 </nav>
 </nav>
@@ -416,8 +423,8 @@ Attaching package: 'kableExtra'</code></pre>
 <span id="cb16-11"><a href="#cb16-11" aria-hidden="true" tabindex="-1"></a>  <span class="at">class =</span> <span class="st">'stripe hover cell-border'</span>  <span class="co"># Daha sıkışık bir görünüm için</span></span>
 <span id="cb16-12"><a href="#cb16-12" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div class="datatables html-widget html-fill-item" id="htmlwidget-1c4675d16774944811b2" style="width:100%;height:auto;"></div>
-<script type="application/json" data-for="htmlwidget-1c4675d16774944811b2">{"x":{"filter":"none","vertical":false,"caption":"<caption>Veri Setinin İlk 10 Satırı<\/caption>","data":[["1","2","3","4","5","6","7","8","9","10"],[1,2,3,4,5,6,7,8,9,10],["tecno","tecno","hp","acer","lenovo","apple","infinix","asus","hp","infinix"],["Tecno Megabook T1 Laptop (11th Gen Core i3/ 8GB/ 512GB SSD/ Win11 Home)","Tecno Megabook T1 Laptop (11th Gen Core i7/ 16GB/ 1TB SSD/ Win11 Home)","HP Victus 15-fb0157AX Gaming Laptop (AMD Ryzen 5 5600H/ 8GB/ 512GB SSD/ Win11/ 4GB Graph)","Acer Extensa EX214-53 Laptop (12th Gen Core i5/ 8GB/ 512GB SSD/ Win11 Home)","Lenovo V15 82KDA01BIH Laptop (AMD Ryzen 3 5300U/ 8GB/ 512GB SSD/ Win11 Home)","Apple MacBook Air 2020 MGND3HN Laptop (Apple M1/ 8GB/ 256GB SSD/ MacOS)","Infinix INBook Y2 Plus Laptop (11th Gen Core i5/ 16GB/ 512GB SSD/ Win 11 Home)","Asus TUF Gaming F15 FX506HF-HN024W Gaming Laptop (11th Gen Core i5/ 8GB/ 512GB SSD/ Win11/ 4GB Graph)","HP 15s-fq5007TU Laptop (12th Gen Core i3/ 8GB/ 512GB SSD/ Win11 Home)","Infinix Zerobook 2023 Laptop (13th Gen Core i9/ 32GB/ 1TB SSD/ Win 11 Home)"],[289.0361445783133,433.6144578313253,615.6626506024096,481.8072289156627,344.3373493975903,855.3012048192771,421.5662650602409,602.289156626506,445.6626506024097,722.7710843373494],[63,67,73,62,62,45,56,70,60,71],["intel","intel","amd","intel","amd","apple","intel","intel","intel","intel"],["core i3","core i7","ryzen 5","core i5","ryzen 3","m1","core i5","core i5","core i3","core i9"],[2,4,6,12,4,8,4,6,6,14],[4,8,12,16,8,8,8,12,8,20],[8,16,8,8,8,8,16,8,8,32],["SSD","SSD","SSD","SSD","SSD","SSD","SSD","SSD","SSD","SSD"],[512,1024,512,512,512,256,512,512,512,1024],["No secondary storage","No secondary storage","No secondary storage","No secondary storage","No secondary storage","No secondary storage","No secondary storage","No secondary storage","No secondary storage","No secondary storage"],[0,0,0,0,0,0,0,0,0,0],["intel","intel","amd","intel","amd","apple","intel","nvidia","intel","intel"],["integrated","integrated","dedicated","integrated","integrated","apple","integrated","dedicated","integrated","integrated"],["False","False","False","False","False","False","False","False","False","False"],[15.6,15.6,15.6,14,15.6,13.3,15.6,15.6,15.6,15.6],[1920,1920,1920,1920,1920,2560,1920,1920,1920,1920],[1080,1080,1080,1080,1080,1600,1080,1080,1080,1080],["windows","windows","windows","windows","windows","mac","windows","windows","windows","windows"],["1","1","1","1","1","1","1","1","1","1"]],"container":"<table class=\"stripe hover cell-border\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>index<\/th>\n      <th>brand<\/th>\n      <th>Model<\/th>\n      <th>Price<\/th>\n      <th>Rating<\/th>\n      <th>processor_brand<\/th>\n      <th>processor_tier<\/th>\n      <th>num_cores<\/th>\n      <th>num_threads<\/th>\n      <th>ram_memory<\/th>\n      <th>primary_storage_type<\/th>\n      <th>primary_storage_capacity<\/th>\n      <th>secondary_storage_type<\/th>\n      <th>secondary_storage_capacity<\/th>\n      <th>gpu_brand<\/th>\n      <th>gpu_type<\/th>\n      <th>is_touch_screen<\/th>\n      <th>display_size<\/th>\n      <th>resolution_width<\/th>\n      <th>resolution_height<\/th>\n      <th>OS<\/th>\n      <th>year_of_warranty<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"pageLength":5,"scrollX":true,"autoWidth":false,"columnDefs":[{"className":"dt-right","targets":[1,4,5,8,9,10,12,14,18,19,20]},{"orderable":false,"targets":0},{"name":" ","targets":0},{"name":"index","targets":1},{"name":"brand","targets":2},{"name":"Model","targets":3},{"name":"Price","targets":4},{"name":"Rating","targets":5},{"name":"processor_brand","targets":6},{"name":"processor_tier","targets":7},{"name":"num_cores","targets":8},{"name":"num_threads","targets":9},{"name":"ram_memory","targets":10},{"name":"primary_storage_type","targets":11},{"name":"primary_storage_capacity","targets":12},{"name":"secondary_storage_type","targets":13},{"name":"secondary_storage_capacity","targets":14},{"name":"gpu_brand","targets":15},{"name":"gpu_type","targets":16},{"name":"is_touch_screen","targets":17},{"name":"display_size","targets":18},{"name":"resolution_width","targets":19},{"name":"resolution_height","targets":20},{"name":"OS","targets":21},{"name":"year_of_warranty","targets":22}],"order":[],"orderClasses":false,"lengthMenu":[5,10,25,50,100]}},"evals":[],"jsHooks":[]}</script>
+<div class="datatables html-widget html-fill-item" id="htmlwidget-29a8ef0d4442af3711a1" style="width:100%;height:auto;"></div>
+<script type="application/json" data-for="htmlwidget-29a8ef0d4442af3711a1">{"x":{"filter":"none","vertical":false,"caption":"<caption>Veri Setinin İlk 10 Satırı<\/caption>","data":[["1","2","3","4","5","6","7","8","9","10"],[1,2,3,4,5,6,7,8,9,10],["tecno","tecno","hp","acer","lenovo","apple","infinix","asus","hp","infinix"],["Tecno Megabook T1 Laptop (11th Gen Core i3/ 8GB/ 512GB SSD/ Win11 Home)","Tecno Megabook T1 Laptop (11th Gen Core i7/ 16GB/ 1TB SSD/ Win11 Home)","HP Victus 15-fb0157AX Gaming Laptop (AMD Ryzen 5 5600H/ 8GB/ 512GB SSD/ Win11/ 4GB Graph)","Acer Extensa EX214-53 Laptop (12th Gen Core i5/ 8GB/ 512GB SSD/ Win11 Home)","Lenovo V15 82KDA01BIH Laptop (AMD Ryzen 3 5300U/ 8GB/ 512GB SSD/ Win11 Home)","Apple MacBook Air 2020 MGND3HN Laptop (Apple M1/ 8GB/ 256GB SSD/ MacOS)","Infinix INBook Y2 Plus Laptop (11th Gen Core i5/ 16GB/ 512GB SSD/ Win 11 Home)","Asus TUF Gaming F15 FX506HF-HN024W Gaming Laptop (11th Gen Core i5/ 8GB/ 512GB SSD/ Win11/ 4GB Graph)","HP 15s-fq5007TU Laptop (12th Gen Core i3/ 8GB/ 512GB SSD/ Win11 Home)","Infinix Zerobook 2023 Laptop (13th Gen Core i9/ 32GB/ 1TB SSD/ Win 11 Home)"],[289.0361445783133,433.6144578313253,615.6626506024096,481.8072289156627,344.3373493975903,855.3012048192771,421.5662650602409,602.289156626506,445.6626506024097,722.7710843373494],[63,67,73,62,62,45,56,70,60,71],["intel","intel","amd","intel","amd","apple","intel","intel","intel","intel"],["core i3","core i7","ryzen 5","core i5","ryzen 3","m1","core i5","core i5","core i3","core i9"],[2,4,6,12,4,8,4,6,6,14],[4,8,12,16,8,8,8,12,8,20],[8,16,8,8,8,8,16,8,8,32],["SSD","SSD","SSD","SSD","SSD","SSD","SSD","SSD","SSD","SSD"],[512,1024,512,512,512,256,512,512,512,1024],["No secondary storage","No secondary storage","No secondary storage","No secondary storage","No secondary storage","No secondary storage","No secondary storage","No secondary storage","No secondary storage","No secondary storage"],[0,0,0,0,0,0,0,0,0,0],["intel","intel","amd","intel","amd","apple","intel","nvidia","intel","intel"],["integrated","integrated","dedicated","integrated","integrated","apple","integrated","dedicated","integrated","integrated"],["False","False","False","False","False","False","False","False","False","False"],[15.6,15.6,15.6,14,15.6,13.3,15.6,15.6,15.6,15.6],[1920,1920,1920,1920,1920,2560,1920,1920,1920,1920],[1080,1080,1080,1080,1080,1600,1080,1080,1080,1080],["windows","windows","windows","windows","windows","mac","windows","windows","windows","windows"],["1","1","1","1","1","1","1","1","1","1"]],"container":"<table class=\"stripe hover cell-border\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>index<\/th>\n      <th>brand<\/th>\n      <th>Model<\/th>\n      <th>Price<\/th>\n      <th>Rating<\/th>\n      <th>processor_brand<\/th>\n      <th>processor_tier<\/th>\n      <th>num_cores<\/th>\n      <th>num_threads<\/th>\n      <th>ram_memory<\/th>\n      <th>primary_storage_type<\/th>\n      <th>primary_storage_capacity<\/th>\n      <th>secondary_storage_type<\/th>\n      <th>secondary_storage_capacity<\/th>\n      <th>gpu_brand<\/th>\n      <th>gpu_type<\/th>\n      <th>is_touch_screen<\/th>\n      <th>display_size<\/th>\n      <th>resolution_width<\/th>\n      <th>resolution_height<\/th>\n      <th>OS<\/th>\n      <th>year_of_warranty<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"pageLength":5,"scrollX":true,"autoWidth":false,"columnDefs":[{"className":"dt-right","targets":[1,4,5,8,9,10,12,14,18,19,20]},{"orderable":false,"targets":0},{"name":" ","targets":0},{"name":"index","targets":1},{"name":"brand","targets":2},{"name":"Model","targets":3},{"name":"Price","targets":4},{"name":"Rating","targets":5},{"name":"processor_brand","targets":6},{"name":"processor_tier","targets":7},{"name":"num_cores","targets":8},{"name":"num_threads","targets":9},{"name":"ram_memory","targets":10},{"name":"primary_storage_type","targets":11},{"name":"primary_storage_capacity","targets":12},{"name":"secondary_storage_type","targets":13},{"name":"secondary_storage_capacity","targets":14},{"name":"gpu_brand","targets":15},{"name":"gpu_type","targets":16},{"name":"is_touch_screen","targets":17},{"name":"display_size","targets":18},{"name":"resolution_width","targets":19},{"name":"resolution_height","targets":20},{"name":"OS","targets":21},{"name":"year_of_warranty","targets":22}],"order":[],"orderClasses":false,"lengthMenu":[5,10,25,50,100]}},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 <div class="cell">
@@ -812,8 +819,116 @@ override using the `.groups` argument.</code></pre>
 </ul>
 <p><strong>Genel Sonuç:</strong> Bilgisayar puanı sadece fiyata değil; SSD varlığı, RAM kapasitesi ve ekran kartı özellikleri gibi teknik faktörlere dayanmaktadır. Bu bağlamda üreticilerin fiyatı artırmak yerine doğru konfigürasyonlara odaklanmaları, müşteri memnuniyetini artırmada daha etkili olacaktır.</p>
 <p>Rating açısından değerlendirildiğinde LG ve MSI en yüksek ortalama ratinge sahipken jio ve primebook markaları en düşük ortalama ratinge sahiptir. Apple marka laptoplar ise fiyat açısından pahalı olmasına rağmen rating olarak bu sıralamanın ortalarında kalmaktadır. Paramızı boşa harcamayıp daha fiyat performans laptoplar alalım. :)</p>
+</section>
+<section id="model-uygulama-opsiyonel" class="level2" data-number="4">
+<h2 data-number="4" class="anchored" data-anchor-id="model-uygulama-opsiyonel"><span class="header-section-number">4</span> Model Uygulama (OPSİYONEL)</h2>
+<section id="lineer-regresyon-modeli-ile-rating-tahmini" class="level3" data-number="4.1">
+<h3 data-number="4.1" class="anchored" data-anchor-id="lineer-regresyon-modeli-ile-rating-tahmini"><span class="header-section-number">4.1</span> Lineer Regresyon Modeli ile Rating Tahmini</h3>
+<p>Lineer regresyon, bir bağımlı değişkeni (burada <code>Rating</code>) bir veya daha fazla bağımsız değişken (örneğin <code>Price</code>, <code>ram_memory</code>, <code>gpu_brand</code>) yardımıyla tahmin etmeye çalışan istatistiksel bir yöntemdir.</p>
+<p>Bu modellemede amaç: &gt; <em>“Bir laptopun fiyatı, RAM kapasitesi ve GPU markası bilindiğinde bu laptopun kullanıcıdan alacağı puanı (Rating) ne kadar doğru tahmin edebiliriz?”</em> sorusuna cevap aramaktır.</p>
+<p><strong>Neden bu değişkenler seçildi?</strong> - <code>Price</code>: Kullanıcıların fiyat–memnuniyet ilişkisini ölçmek için. - <code>ram_memory</code>: RAM, performans açısından kritik bir unsur. - <code>gpu_brand</code>: Grafik kartı, oyun ve görsel işlemler için önemli, kullanıcı etkisini gösterebilir.</p>
+<p>Aşağıda bu değişkenleri içeren basit bir lineer regresyon modeli kurulmuştur:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(Metrics)</span>
+<span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-3"><a href="#cb45-3" aria-hidden="true" tabindex="-1"></a><span class="co"># RAM verisini sayısala çevirme</span></span>
+<span id="cb45-4"><a href="#cb45-4" aria-hidden="true" tabindex="-1"></a>data_new<span class="sc">$</span>ram_memory_num <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(<span class="fu">gsub</span>(<span class="st">"GB"</span>, <span class="st">""</span>, <span class="fu">as.character</span>(data_new<span class="sc">$</span>ram_memory)))</span>
+<span id="cb45-5"><a href="#cb45-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-6"><a href="#cb45-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Lineer regresyon modeli</span></span>
+<span id="cb45-7"><a href="#cb45-7" aria-hidden="true" tabindex="-1"></a>model <span class="ot">&lt;-</span> <span class="fu">lm</span>(Rating <span class="sc">~</span> Price <span class="sc">+</span> ram_memory_num <span class="sc">+</span> gpu_brand, <span class="at">data =</span> data_new)</span>
+<span id="cb45-8"><a href="#cb45-8" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(model)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+lm(formula = Rating ~ Price + ram_memory_num + gpu_brand, data = data_new)
+
+Residuals:
+     Min       1Q   Median       3Q      Max 
+-20.3150  -3.3130   0.5818   3.5962  13.8527 
+
+Coefficients:
+                  Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept)      5.181e+01  5.596e-01  92.585  &lt; 2e-16 ***
+Price            5.302e-03  3.662e-04  14.477  &lt; 2e-16 ***
+ram_memory_num   5.170e-01  4.104e-02  12.599  &lt; 2e-16 ***
+gpu_brandapple  -1.672e+01  1.583e+00 -10.564  &lt; 2e-16 ***
+gpu_brandarm    -2.471e+01  2.735e+00  -9.035  &lt; 2e-16 ***
+gpu_brandintel  -2.696e+00  4.880e-01  -5.525 4.22e-08 ***
+gpu_brandnvidia  5.930e+00  5.569e-01  10.649  &lt; 2e-16 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 5.389 on 984 degrees of freedom
+Multiple R-squared:  0.722, Adjusted R-squared:  0.7203 
+F-statistic: 425.9 on 6 and 984 DF,  p-value: &lt; 2.2e-16</code></pre>
+</div>
+</div>
+</section>
+<section id="tahmin-başarısı-ve-hata-metrikleri" class="level3" data-number="4.2">
+<h3 data-number="4.2" class="anchored" data-anchor-id="tahmin-başarısı-ve-hata-metrikleri"><span class="header-section-number">4.2</span> Tahmin Başarısı ve Hata Metrikleri</h3>
+<p>Modelin performansını değerlendirmek için iki hata metriği hesaplanır:</p>
+<ul>
+<li><strong>RMSE (Root Mean Square Error):</strong> Hataların karelerinin ortalamasının kareköküdür. Ortalama hata büyüklüğünü gösterir.</li>
+<li><strong>MAE (Mean Absolute Error):</strong> Gerçek değerlerle tahminler arasındaki mutlak farkların ortalamasıdır.</li>
+</ul>
+<p>Bu metrikler ne kadar küçükse modelin tahmin başarısı o kadar iyidir.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a>predicted <span class="ot">&lt;-</span> <span class="fu">predict</span>(model, <span class="at">newdata =</span> data_new)</span>
+<span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a>rmse_val <span class="ot">&lt;-</span> <span class="fu">rmse</span>(data_new<span class="sc">$</span>Rating, predicted)</span>
+<span id="cb47-3"><a href="#cb47-3" aria-hidden="true" tabindex="-1"></a>mae_val <span class="ot">&lt;-</span> <span class="fu">mae</span>(data_new<span class="sc">$</span>Rating, predicted)</span>
+<span id="cb47-4"><a href="#cb47-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb47-5"><a href="#cb47-5" aria-hidden="true" tabindex="-1"></a><span class="fu">paste</span>(<span class="st">"RMSE:"</span>, <span class="fu">round</span>(rmse_val, <span class="dv">2</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "RMSE: 5.37"</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="fu">paste</span>(<span class="st">"MAE:"</span>, <span class="fu">round</span>(mae_val, <span class="dv">2</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "MAE: 4.17"</code></pre>
+</div>
+</div>
+</section>
+<section id="gerçek-ve-tahmin-edilen-rating-dağılımı-grafik" class="level3" data-number="4.3">
+<h3 data-number="4.3" class="anchored" data-anchor-id="gerçek-ve-tahmin-edilen-rating-dağılımı-grafik"><span class="header-section-number">4.3</span> Gerçek ve Tahmin Edilen Rating Dağılımı (Grafik)</h3>
+<p>Aşağıdaki grafik, her gözlem için gerçek <code>Rating</code> değeri ile modelin tahmin ettiği değeri karşılaştırır. 45°’lik kırmızı kesikli çizgi, mükemmel tahminleri temsil eder. Noktalar bu çizgiye ne kadar yakınsa model o kadar başarılıdır.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb51"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="fu">data.frame</span>(<span class="at">Gercek =</span> data_new<span class="sc">$</span>Rating, <span class="at">Tahmin =</span> predicted), <span class="fu">aes</span>(<span class="at">x =</span> Gercek, <span class="at">y =</span> Tahmin)) <span class="sc">+</span></span>
+<span id="cb51-2"><a href="#cb51-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">alpha =</span> <span class="fl">0.5</span>, <span class="at">color =</span> <span class="st">"steelblue"</span>) <span class="sc">+</span></span>
+<span id="cb51-3"><a href="#cb51-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_abline</span>(<span class="at">slope =</span> <span class="dv">1</span>, <span class="at">intercept =</span> <span class="dv">0</span>, <span class="at">linetype =</span> <span class="st">"dashed"</span>, <span class="at">color =</span> <span class="st">"red"</span>) <span class="sc">+</span></span>
+<span id="cb51-4"><a href="#cb51-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Gercek vs Tahmin Edilen Rating"</span>, <span class="at">x =</span> <span class="st">"Gercek Rating"</span>, <span class="at">y =</span> <span class="st">"Tahmin Edilen Rating"</span>) <span class="sc">+</span></span>
+<span id="cb51-5"><a href="#cb51-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="proje_files/figure-html/unnamed-chunk-20-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Bu grafik modelimizin <strong>tahmin ettiği</strong> <code>Rating</code> değerleri ile <strong>gerçek</strong> <code>Rating</code> değerlerini karşılaştırır:</p>
+<ul>
+<li><strong>X Ekseni:</strong> Gerçek kullanıcı puanları (Rating).<br>
+</li>
+<li><strong>Y Ekseni:</strong> Modelin tahmin ettiği puanlar (<code>predicted</code>).</li>
+</ul>
+<p>Grafikteki elemanlar:</p>
+<p>1. <strong>Noktalar</strong>: Her nokta bir laptop modelini temsil eder; konumu gerçek ve tahmin edilen puanları gösterir.<br>
+2. <strong>Kırmızı kesikli çizgi (45° doğrusu)</strong>:<br>
+- Bu çizgi, “tahmin = gerçek” durumunu gösterir.<br>
+- Noktalar bu çizgiye ne kadar yakınsa model o kadar isabetli tahmin yapmış demektir.<br>
+- Çizgiden uzak noktalar, modelin o gözlemde hata yaptığını gösterir.<br>
+- Noktalar çoğunlukla çizgi etrafında toplanmışsa, model hataları küçüktür.<br>
+- Çizgiden uzak sapmalar, özellikle hangi konfigürasyonlarda hatanın büyük olduğunu işaret eder.</p>
+</section>
+<section id="yorum" class="level3" data-number="4.4">
+<h3 data-number="4.4" class="anchored" data-anchor-id="yorum"><span class="header-section-number">4.4</span> Yorum</h3>
+<ul>
+<li>Model sonuçları, özellikle <code>ram_memory</code> ve <code>gpu_brand</code> değişkenlerinin <code>Rating</code> üzerinde anlamlı etkiler yarattığını göstermektedir.</li>
+<li>RMSE ve MAE değerleri modelin hatalarının makul düzeyde olduğunu işaret etmektedir.</li>
+<li>Gerçek ve tahmin edilen değerler arasındaki dağılım, modelin genel eğilimleri yakalayabildiğini ancak varyansın tamamen açıklanamadığını göstermektedir.</li>
+</ul>
 
 
+</section>
 </section>
 
 <a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a></main> <!-- /main -->

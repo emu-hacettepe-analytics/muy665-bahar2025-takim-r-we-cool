@@ -344,3 +344,77 @@ Bu proje kapsamında yapılan analizler doğrultusunda aşağıdaki önemli çı
 **Genel Sonuç:** Bilgisayar puanı sadece fiyata değil; SSD varlığı, RAM kapasitesi ve ekran kartı özellikleri gibi teknik faktörlere dayanmaktadır. Bu bağlamda üreticilerin fiyatı artırmak yerine doğru konfigürasyonlara odaklanmaları, müşteri memnuniyetini artırmada daha etkili olacaktır.
 
 Rating açısından değerlendirildiğinde LG ve MSI en yüksek ortalama ratinge sahipken jio ve primebook markaları en düşük ortalama ratinge sahiptir. Apple marka laptoplar ise fiyat açısından pahalı olmasına rağmen rating olarak bu sıralamanın ortalarında kalmaktadır. Paramızı boşa harcamayıp daha fiyat performans laptoplar alalım. :)
+
+## Model Uygulama (OPSİYONEL)
+
+### Lineer Regresyon Modeli ile Rating Tahmini
+
+Lineer regresyon, bir bağımlı değişkeni (burada `Rating`) bir veya daha fazla bağımsız değişken (örneğin `Price`, `ram_memory`, `gpu_brand`) yardımıyla tahmin etmeye çalışan istatistiksel bir yöntemdir.
+
+Bu modellemede amaç: \> *"Bir laptopun fiyatı, RAM kapasitesi ve GPU markası bilindiğinde bu laptopun kullanıcıdan alacağı puanı (Rating) ne kadar doğru tahmin edebiliriz?"* sorusuna cevap aramaktır.
+
+**Neden bu değişkenler seçildi?** - `Price`: Kullanıcıların fiyat–memnuniyet ilişkisini ölçmek için. - `ram_memory`: RAM, performans açısından kritik bir unsur. - `gpu_brand`: Grafik kartı, oyun ve görsel işlemler için önemli, kullanıcı etkisini gösterebilir.
+
+Aşağıda bu değişkenleri içeren basit bir lineer regresyon modeli kurulmuştur:
+
+```{r}
+library(Metrics)
+
+# RAM verisini sayısala çevirme
+data_new$ram_memory_num <- as.numeric(gsub("GB", "", as.character(data_new$ram_memory)))
+
+# Lineer regresyon modeli
+model <- lm(Rating ~ Price + ram_memory_num + gpu_brand, data = data_new)
+summary(model)
+```
+
+### Tahmin Başarısı ve Hata Metrikleri
+
+Modelin performansını değerlendirmek için iki hata metriği hesaplanır:
+
+-   **RMSE (Root Mean Square Error):** Hataların karelerinin ortalamasının kareköküdür. Ortalama hata büyüklüğünü gösterir.
+-   **MAE (Mean Absolute Error):** Gerçek değerlerle tahminler arasındaki mutlak farkların ortalamasıdır.
+
+Bu metrikler ne kadar küçükse modelin tahmin başarısı o kadar iyidir.
+
+```{r}
+predicted <- predict(model, newdata = data_new)
+rmse_val <- rmse(data_new$Rating, predicted)
+mae_val <- mae(data_new$Rating, predicted)
+
+paste("RMSE:", round(rmse_val, 2))
+paste("MAE:", round(mae_val, 2))
+```
+
+### Gerçek ve Tahmin Edilen Rating Dağılımı (Grafik)
+
+Aşağıdaki grafik, her gözlem için gerçek `Rating` değeri ile modelin tahmin ettiği değeri karşılaştırır. 45°'lik kırmızı kesikli çizgi, mükemmel tahminleri temsil eder. Noktalar bu çizgiye ne kadar yakınsa model o kadar başarılıdır.
+
+```{r}
+ggplot(data.frame(Gercek = data_new$Rating, Tahmin = predicted), aes(x = Gercek, y = Tahmin)) +
+  geom_point(alpha = 0.5, color = "steelblue") +
+  geom_abline(slope = 1, intercept = 0, linetype = "dashed", color = "red") +
+  labs(title = "Gercek vs Tahmin Edilen Rating", x = "Gercek Rating", y = "Tahmin Edilen Rating") +
+  theme_minimal()
+```
+
+Bu grafik modelimizin **tahmin ettiği** `Rating` değerleri ile **gerçek** `Rating` değerlerini karşılaştırır:
+
+-   **X Ekseni:** Gerçek kullanıcı puanları (Rating).\
+-   **Y Ekseni:** Modelin tahmin ettiği puanlar (`predicted`).
+
+Grafikteki elemanlar:
+
+1\. **Noktalar**: Her nokta bir laptop modelini temsil eder; konumu gerçek ve tahmin edilen puanları gösterir.\
+2. **Kırmızı kesikli çizgi (45° doğrusu)**:\
+- Bu çizgi, “tahmin = gerçek” durumunu gösterir.\
+- Noktalar bu çizgiye ne kadar yakınsa model o kadar isabetli tahmin yapmış demektir.\
+- Çizgiden uzak noktalar, modelin o gözlemde hata yaptığını gösterir.\
+- Noktalar çoğunlukla çizgi etrafında toplanmışsa, model hataları küçüktür.\
+- Çizgiden uzak sapmalar, özellikle hangi konfigürasyonlarda hatanın büyük olduğunu işaret eder.
+
+### Yorum
+
+-   Model sonuçları, özellikle `ram_memory` ve `gpu_brand` değişkenlerinin `Rating` üzerinde anlamlı etkiler yarattığını göstermektedir.
+-   RMSE ve MAE değerleri modelin hatalarının makul düzeyde olduğunu işaret etmektedir.
+-   Gerçek ve tahmin edilen değerler arasındaki dağılım, modelin genel eğilimleri yakalayabildiğini ancak varyansın tamamen açıklanamadığını göstermektedir.
