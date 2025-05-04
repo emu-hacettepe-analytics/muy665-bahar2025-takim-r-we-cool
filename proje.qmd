@@ -10,14 +10,6 @@ number-sections: true
 
 ## Veri Hakkında Genel Bilgiler
 
-## Ön İşleme
-
-## 
-
-```{r}
-
-```
-
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
@@ -37,23 +29,13 @@ head(data_new)
 
 ```{r}
 
-library(missForest)
 sum(is.na(data_new)) # we can see the NA values are added 
-
+sum(duplicated(data_new)) # no duplicated 
+dim(data_new)
 ```
 
 ```{r}
 str(data_new)
-```
-
-```{r}
-summary(data_new)
-```
-
-```{r}
-sum(is.na(data_new))
-sum(duplicated(data_new)) # no duplicated 
-dim(data_new)
 ```
 
 ```{r}
@@ -67,6 +49,8 @@ descriptive_stats <- data_new %>%
 
 print(descriptive_stats)
 ```
+
+## Ön İşleme
 
 ```{r}
 # Convert relevant columns to factors
@@ -100,7 +84,7 @@ data_new$resolution_height <- as.numeric(data_new$resolution_height)
 
 ```{r}
 library(ggplot2)
-f=table(data$processor_tier)
+f=table(data_new$processor_tier)
 f_data=data.frame(f) 
 ggplot(f_data,aes(x=reorder(Var1,Freq),y=Freq,fill=Var1))+geom_bar(stat="identity")+
   labs(title="İşlemci Alt Modeline Gore Bar Plot Çizimi",y="Frekans",x="İşlemci Alt Modeli")
@@ -111,8 +95,9 @@ ggplot(f_data,aes(x=reorder(Var1,Freq),y=Freq,fill=Var1))+geom_bar(stat="identit
 Laptop Puanlarının Histogramı
 
 ```{r}
-ggplot(data_new, aes(x=Rating)) + geom_histogram(binwidth=5, fill='green3', color='black') + theme_minimal() + ggtitle('Laptop Puanlarının Histogramı
-')
+ggplot(data_new, aes(x=Rating)) + geom_histogram(binwidth=5, fill='green3', color='black') + theme_minimal() + ggtitle('Laptop Ratinglerinin Histogramı
+')+ scale_x_continuous(breaks = seq(min(data_new$Rating), max(data_new$Rating), by = 5))  # Tick aralıklarını belirler
+
 
 ```
 
@@ -246,4 +231,27 @@ ggplot(summary_table_rating, aes(x=brand, y=average_rating, fill=brand)) +
   theme(axis.text.x = element_text(angle = 45, hjust = 1))
 ```
 
-Bir laptopun markası ortalama puanı önemli ölçüde etkiler. Asus ve Acer müşteri memnuniyetinde öne çıkarken, Axl ve Avita geride kalmaktadır.
+```{r}
+summary_table_rating <- data_new %>%
+  group_by(brand) %>%
+  summarise(average_rating = mean(Rating, na.rm = TRUE)) %>%
+  arrange(desc(average_rating))  # sıralama
+
+summary_table_rating$brand <- factor(summary_table_rating$brand, levels = summary_table_rating$brand)
+
+summary_table_rating <- summary_table_rating %>%
+  mutate(highlight = ifelse(brand == "apple", "apple", "Diger"))  # imleç sütunu ekle
+
+ggplot(summary_table_rating, aes(x = brand, y = average_rating, fill = highlight)) +
+  geom_bar(stat = 'identity') +
+  scale_fill_manual(values = c("apple" = "red", "Diger" = "gray")) +
+  ggtitle('Laptop Markasına Göre Ortalama Rating (Apple Vurgulu)') +
+  xlab('Laptop Markası') +
+  ylab('Ortalama Rating') +
+  theme_minimal() +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1),
+        legend.title = element_blank())
+
+```
+
+Bir laptopun markası ortalama puanı önemli ölçüde etkiler. Rating açısından değerlendirildiğinde LG ve MSI en yüksek ortalama ratinge sahipken jio ve primebook markaları en düşük ortalama ratinge sahiptir. Apple marka laptoplar ise fiyat açısından pahalı olmasına rağmen rating olarak bu sıralamanın ortalarında kalmaktadır. Paramızı boşa harcamayıp daha fiyat performans laptoplar alalım.

@@ -161,9 +161,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <ul>
   <li><a href="#genel-bakış-ve-kapsamı" id="toc-genel-bakış-ve-kapsamı" class="nav-link active" data-scroll-target="#genel-bakış-ve-kapsamı"><span class="header-section-number">1</span> Genel Bakış ve Kapsamı</a></li>
   <li><a href="#veri-hakkında-genel-bilgiler" id="toc-veri-hakkında-genel-bilgiler" class="nav-link" data-scroll-target="#veri-hakkında-genel-bilgiler"><span class="header-section-number">2</span> Veri Hakkında Genel Bilgiler</a></li>
-  <li><a href="#ön-işleme" id="toc-ön-işleme" class="nav-link" data-scroll-target="#ön-işleme"><span class="header-section-number">3</span> Ön İşleme</a></li>
-  <li><a href="#section" id="toc-section" class="nav-link" data-scroll-target="#section"><span class="header-section-number">4</span> </a></li>
-  <li><a href="#section-1" id="toc-section-1" class="nav-link" data-scroll-target="#section-1"><span class="header-section-number">5</span> </a></li>
+  <li><a href="#section" id="toc-section" class="nav-link" data-scroll-target="#section"><span class="header-section-number">3</span> </a></li>
+  <li><a href="#ön-işleme" id="toc-ön-işleme" class="nav-link" data-scroll-target="#ön-işleme"><span class="header-section-number">4</span> Ön İşleme</a></li>
   </ul>
 </nav>
 </nav>
@@ -211,14 +210,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="veri-hakkında-genel-bilgiler" class="level2" data-number="2">
 <h2 data-number="2" class="anchored" data-anchor-id="veri-hakkında-genel-bilgiler"><span class="header-section-number">2</span> Veri Hakkında Genel Bilgiler</h2>
 </section>
-<section id="ön-işleme" class="level2" data-number="3">
-<h2 data-number="3" class="anchored" data-anchor-id="ön-işleme"><span class="header-section-number">3</span> Ön İşleme</h2>
-</section>
-<section id="section" class="level2" data-number="4">
-<h2 data-number="4" class="anchored" data-anchor-id="section"><span class="header-section-number">4</span> </h2>
-</section>
-<section id="section-1" class="level2" data-number="5">
-<h2 data-number="5" class="anchored" data-anchor-id="section-1"><span class="header-section-number">5</span> </h2>
+<section id="section" class="level2" data-number="3">
+<h2 data-number="3" class="anchored" data-anchor-id="section"><span class="header-section-number">3</span> </h2>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(GGally)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -260,8 +253,8 @@ Attaching package: 'car'</code></pre>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "C:/Users/Bora KOPARAN/OneDrive/Belgeler/GitHub/muy665-bahar2025-takim-r-we-cool"</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"laptops.csv"</span>)</span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>data_new <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"laptops.csv"</span>)</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(data_new)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  index  brand
 1     1  tecno
@@ -308,15 +301,21 @@ Attaching package: 'car'</code></pre>
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(missForest)</span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>data_new <span class="ot">=</span>data</span>
-<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(<span class="fu">is.na</span>(data_new)) <span class="co"># we can see the NA values are added </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(<span class="fu">is.na</span>(data_new)) <span class="co"># we can see the NA values are added </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0</code></pre>
 </div>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(<span class="fu">duplicated</span>(data_new)) <span class="co"># no duplicated </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(data_new)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 991  22</code></pre>
+</div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(data_new)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(data_new)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>'data.frame':   991 obs. of  22 variables:
  $ index                     : int  1 2 3 4 5 6 7 8 9 10 ...
@@ -344,76 +343,15 @@ Attaching package: 'car'</code></pre>
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(data_new)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>     index           brand              Model               Price       
- Min.   :   1.0   Length:991         Length:991         Min.   :  9800  
- 1st Qu.: 258.5   Class :character   Class :character   1st Qu.: 43595  
- Median : 507.0   Mode  :character   Mode  :character   Median : 61900  
- Mean   : 505.9                                         Mean   : 77267  
- 3rd Qu.: 754.5                                         3rd Qu.: 89245  
- Max.   :1002.0                                         Max.   :454490  
-     Rating      processor_brand    processor_tier       num_cores     
- Min.   :24.00   Length:991         Length:991         Min.   : 2.000  
- 1st Qu.:58.00   Class :character   Class :character   1st Qu.: 6.000  
- Median :64.00   Mode  :character   Mode  :character   Median : 8.000  
- Mean   :63.93                                         Mean   : 8.128  
- 3rd Qu.:71.00                                         3rd Qu.:10.000  
- Max.   :89.00                                         Max.   :24.000  
-  num_threads      ram_memory    primary_storage_type primary_storage_capacity
- Min.   : 0.00   Min.   : 2.00   Length:991           Min.   :  32.0          
- 1st Qu.: 8.00   1st Qu.: 8.00   Class :character     1st Qu.: 512.0          
- Median :12.00   Median :16.00   Mode  :character     Median : 512.0          
- Mean   :12.19   Mean   :13.05                        Mean   : 610.9          
- 3rd Qu.:16.00   3rd Qu.:16.00                        3rd Qu.: 512.0          
- Max.   :32.00   Max.   :36.00                        Max.   :2048.0          
- secondary_storage_type secondary_storage_capacity  gpu_brand        
- Length:991             Min.   :  0.000            Length:991        
- Class :character       1st Qu.:  0.000            Class :character  
- Mode  :character       Median :  0.000            Mode  :character  
-                        Mean   :  4.004                              
-                        3rd Qu.:  0.000                              
-                        Max.   :512.000                              
-   gpu_type         is_touch_screen     display_size   resolution_width
- Length:991         Length:991         Min.   :10.10   Min.   :1080    
- Class :character   Class :character   1st Qu.:14.00   1st Qu.:1920    
- Mode  :character   Mode  :character   Median :15.60   Median :1920    
-                                       Mean   :15.17   Mean   :2004    
-                                       3rd Qu.:15.60   3rd Qu.:1920    
-                                       Max.   :18.00   Max.   :3840    
- resolution_height      OS            year_of_warranty  
- Min.   : 768      Length:991         Length:991        
- 1st Qu.:1080      Class :character   Class :character  
- Median :1080      Mode  :character   Mode  :character  
- Mean   :1181                                           
- 3rd Qu.:1200                                           
- Max.   :2560                                           </code></pre>
-</div>
-</div>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(<span class="fu">is.na</span>(data_new))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 0</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(<span class="fu">duplicated</span>(data_new)) <span class="co"># no duplicated </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 0</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(data_new)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 991  22</code></pre>
-</div>
-</div>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate descriptive statistics</span></span>
-<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>descriptive_stats <span class="ot">&lt;-</span> data_new <span class="sc">%&gt;%</span></span>
-<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="fu">across</span>(<span class="fu">where</span>(is.numeric), <span class="fu">list</span>(</span>
-<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">mean =</span> <span class="sc">~</span><span class="fu">mean</span>(.x, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
-<span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">sd =</span> <span class="sc">~</span><span class="fu">sd</span>(.x, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb27-6"><a href="#cb27-6" aria-hidden="true" tabindex="-1"></a>  )))</span>
-<span id="cb27-7"><a href="#cb27-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-8"><a href="#cb27-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-9"><a href="#cb27-9" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(descriptive_stats)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate descriptive statistics</span></span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>descriptive_stats <span class="ot">&lt;-</span> data_new <span class="sc">%&gt;%</span></span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="fu">across</span>(<span class="fu">where</span>(is.numeric), <span class="fu">list</span>(</span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">mean =</span> <span class="sc">~</span><span class="fu">mean</span>(.x, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">sd =</span> <span class="sc">~</span><span class="fu">sd</span>(.x, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a>  )))</span>
+<span id="cb23-7"><a href="#cb23-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-8"><a href="#cb23-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-9"><a href="#cb23-9" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(descriptive_stats)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  index_mean index_sd Price_mean Price_sd Rating_mean Rating_sd num_cores_mean
 1   505.8607 287.8995    77266.5 57384.91    63.93138  10.19057       8.128153
@@ -429,126 +367,97 @@ Attaching package: 'car'</code></pre>
 1               1181.227              263.884</code></pre>
 </div>
 </div>
+</section>
+<section id="ön-işleme" class="level2" data-number="4">
+<h2 data-number="4" class="anchored" data-anchor-id="ön-işleme"><span class="header-section-number">4</span> Ön İşleme</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Convert relevant columns to factors</span></span>
-<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>data_new<span class="sc">$</span>brand <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(data_new<span class="sc">$</span>brand)</span>
-<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>data_new<span class="sc">$</span>Model <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(data_new<span class="sc">$</span>Model)</span>
-<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a>data_new<span class="sc">$</span>processor_brand <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(data_new<span class="sc">$</span>processor_brand)</span>
-<span id="cb29-5"><a href="#cb29-5" aria-hidden="true" tabindex="-1"></a>data_new<span class="sc">$</span>processor_tier <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(data_new<span class="sc">$</span>processor_tier)</span>
-<span id="cb29-6"><a href="#cb29-6" aria-hidden="true" tabindex="-1"></a>data_new<span class="sc">$</span>primary_storage_type <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(data_new<span class="sc">$</span>primary_storage_type)</span>
-<span id="cb29-7"><a href="#cb29-7" aria-hidden="true" tabindex="-1"></a>data_new<span class="sc">$</span>secondary_storage_type <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(data_new<span class="sc">$</span>secondary_storage_type)</span>
-<span id="cb29-8"><a href="#cb29-8" aria-hidden="true" tabindex="-1"></a>data_new<span class="sc">$</span>gpu_brand <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(data_new<span class="sc">$</span>gpu_brand)</span>
-<span id="cb29-9"><a href="#cb29-9" aria-hidden="true" tabindex="-1"></a>data_new<span class="sc">$</span>gpu_type <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(data_new<span class="sc">$</span>gpu_type)</span>
-<span id="cb29-10"><a href="#cb29-10" aria-hidden="true" tabindex="-1"></a>data_new<span class="sc">$</span>OS <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(data_new<span class="sc">$</span>OS)</span>
-<span id="cb29-11"><a href="#cb29-11" aria-hidden="true" tabindex="-1"></a>data_new<span class="sc">$</span>is_touch_screen <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(data_new<span class="sc">$</span>is_touch_screen)</span>
-<span id="cb29-12"><a href="#cb29-12" aria-hidden="true" tabindex="-1"></a>data_new<span class="sc">$</span>year_of_warranty <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(data_new<span class="sc">$</span>year_of_warranty)</span>
-<span id="cb29-13"><a href="#cb29-13" aria-hidden="true" tabindex="-1"></a>data_new<span class="sc">$</span>ram_memory <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(data_new<span class="sc">$</span>ram_memory)</span>
-<span id="cb29-14"><a href="#cb29-14" aria-hidden="true" tabindex="-1"></a>data_new<span class="sc">$</span>num_cores <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(data_new<span class="sc">$</span>num_cores)</span>
-<span id="cb29-15"><a href="#cb29-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-16"><a href="#cb29-16" aria-hidden="true" tabindex="-1"></a><span class="co"># Convert relevant columns to numeric</span></span>
-<span id="cb29-17"><a href="#cb29-17" aria-hidden="true" tabindex="-1"></a>data_new<span class="sc">$</span>Price <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(data_new<span class="sc">$</span>Price)</span>
-<span id="cb29-18"><a href="#cb29-18" aria-hidden="true" tabindex="-1"></a>data_new<span class="sc">$</span>Rating <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(data_new<span class="sc">$</span>Rating)</span>
-<span id="cb29-19"><a href="#cb29-19" aria-hidden="true" tabindex="-1"></a>data_new<span class="sc">$</span>num_threads <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(data_new<span class="sc">$</span>num_threads)</span>
-<span id="cb29-20"><a href="#cb29-20" aria-hidden="true" tabindex="-1"></a>data_new<span class="sc">$</span>primary_storage_capacity <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(data_new<span class="sc">$</span>primary_storage_capacity)</span>
-<span id="cb29-21"><a href="#cb29-21" aria-hidden="true" tabindex="-1"></a>data_new<span class="sc">$</span>secondary_storage_capacity <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(data_new<span class="sc">$</span>secondary_storage_capacity)</span>
-<span id="cb29-22"><a href="#cb29-22" aria-hidden="true" tabindex="-1"></a>data_new<span class="sc">$</span>display_size <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(data_new<span class="sc">$</span>display_size)</span>
-<span id="cb29-23"><a href="#cb29-23" aria-hidden="true" tabindex="-1"></a>data_new<span class="sc">$</span>resolution_width <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(data_new<span class="sc">$</span>resolution_width)</span>
-<span id="cb29-24"><a href="#cb29-24" aria-hidden="true" tabindex="-1"></a>data_new<span class="sc">$</span>resolution_height <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(data_new<span class="sc">$</span>resolution_height)</span>
-<span id="cb29-25"><a href="#cb29-25" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-26"><a href="#cb29-26" aria-hidden="true" tabindex="-1"></a><span class="co"># View the structure of the cleaned data frame</span></span>
-<span id="cb29-27"><a href="#cb29-27" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(data_new)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>'data.frame':   991 obs. of  22 variables:
- $ index                     : int  1 2 3 4 5 6 7 8 9 10 ...
- $ brand                     : Factor w/ 26 levels "acer","apple",..: 22 22 11 1 15 2 13 3 11 13 ...
- $ Model                     : Factor w/ 991 levels "Acer 16 Predator Neo NH.QLTSI.001 Laptop (13th Gen Core i5/ 16GB/ 512GB SSD/ Win11/ 6GB Graph)",..: 972 973 622 53 833 92 656 151 481 658 ...
- $ Price                     : num  23990 35990 51100 39990 28580 ...
- $ Rating                    : num  63 67 73 62 62 45 56 70 60 71 ...
- $ processor_brand           : Factor w/ 4 levels "amd","apple",..: 3 3 1 3 1 2 3 3 3 3 ...
- $ processor_tier            : Factor w/ 15 levels "celeron","core i3",..: 2 4 13 3 12 7 3 3 2 5 ...
- $ num_cores                 : Factor w/ 12 levels "2","4","5","6",..: 1 2 4 8 2 5 2 4 4 9 ...
- $ num_threads               : num  4 8 12 16 8 8 8 12 8 20 ...
- $ ram_memory                : Factor w/ 7 levels "2","4","8","12",..: 3 5 3 3 3 3 5 3 3 6 ...
- $ primary_storage_type      : Factor w/ 2 levels "HDD","SSD": 2 2 2 2 2 2 2 2 2 2 ...
- $ primary_storage_capacity  : num  512 1024 512 512 512 ...
- $ secondary_storage_type    : Factor w/ 2 levels "No secondary storage",..: 1 1 1 1 1 1 1 1 1 1 ...
- $ secondary_storage_capacity: num  0 0 0 0 0 0 0 0 0 0 ...
- $ gpu_brand                 : Factor w/ 5 levels "amd","apple",..: 4 4 1 4 1 2 4 5 4 4 ...
- $ gpu_type                  : Factor w/ 3 levels "apple","dedicated",..: 3 3 2 3 3 1 3 2 3 3 ...
- $ is_touch_screen           : Factor w/ 2 levels "False","True": 1 1 1 1 1 1 1 1 1 1 ...
- $ display_size              : num  15.6 15.6 15.6 14 15.6 13.3 15.6 15.6 15.6 15.6 ...
- $ resolution_width          : num  1920 1920 1920 1920 1920 2560 1920 1920 1920 1920 ...
- $ resolution_height         : num  1080 1080 1080 1080 1080 1600 1080 1080 1080 1080 ...
- $ OS                        : Factor w/ 7 levels "android","chrome",..: 7 7 7 7 7 4 7 7 7 7 ...
- $ year_of_warranty          : Factor w/ 4 levels "1","2","3","No information": 1 1 1 1 1 1 1 1 1 1 ...</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(data_new)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>     index            brand    
- Min.   :   1.0   asus   :210  
- 1st Qu.: 258.5   hp     :205  
- Median : 507.0   lenovo :201  
- Mean   : 505.9   dell   :106  
- 3rd Qu.: 754.5   msi    : 90  
- Max.   :1002.0   acer   : 89  
-                  (Other): 90  
-                                                                                             Model    
- Acer 16 Predator Neo NH.QLTSI.001 Laptop (13th Gen Core i5/ 16GB/ 512GB SSD/ Win11/ 6GB Graph) :  1  
- Acer Aspire 3 14 A314-36M Laptop (Intel Core i3 N305/ 8GB/ 512GB SSD/ Win11 Home)              :  1  
- Acer Aspire 3 15 A315-510P Laptop (Intel Core i3 N305/ 8GB/ 512GB SSD/ Win11 Home)             :  1  
- Acer Aspire 3 15 A315-510P UN.KDHSI.019 Laptop (Intel Core i3 N305/ 8GB/ 512GB SSD/ Win11 Home):  1  
- Acer Aspire 3 A315-24P Laptop (Ryzen 3 7520U/ 8GB/ 256GB SSD/ Win11 Home)                      :  1  
- Acer Aspire 3 A315-24P NX.KDESI.003 Laptop (Ryzen 3 7520U/ 8GB/ 512GB SSD/ Win11 Home)         :  1  
- (Other)                                                                                        :985  
-     Price            Rating      processor_brand processor_tier   num_cores  
- Min.   :  9800   Min.   :24.00   amd  :267       core i5:335    6      :198  
- 1st Qu.: 43595   1st Qu.:58.00   apple: 15       core i7:159    10     :185  
- Median : 61900   Median :64.00   intel:705       ryzen 5:139    8      :182  
- Mean   : 77267   Mean   :63.93   other:  4       core i3:127    4      :129  
- 3rd Qu.: 89245   3rd Qu.:71.00                   ryzen 7: 77    2      : 93  
- Max.   :454490   Max.   :89.00                   celeron: 40    12     : 93  
-                                                  (Other):114    (Other):111  
-  num_threads    ram_memory primary_storage_type primary_storage_capacity
- Min.   : 0.00   2 :  1     HDD: 27              Min.   :  32.0          
- 1st Qu.: 8.00   4 : 25     SSD:964              1st Qu.: 512.0          
- Median :12.00   8 :402                          Median : 512.0          
- Mean   :12.19   12:  3                          Mean   : 610.9          
- 3rd Qu.:16.00   16:522                          3rd Qu.: 512.0          
- Max.   :32.00   32: 36                          Max.   :2048.0          
-                 36:  2                                                  
-          secondary_storage_type secondary_storage_capacity  gpu_brand  
- No secondary storage:976        Min.   :  0.000            amd   :167  
- SSD                 : 15        1st Qu.:  0.000            apple : 15  
-                                 Median :  0.000            arm   :  4  
-                                 Mean   :  4.004            intel :462  
-                                 3rd Qu.:  0.000            nvidia:343  
-                                 Max.   :512.000                        
-                                                                        
-       gpu_type   is_touch_screen  display_size   resolution_width
- apple     : 15   False:903       Min.   :10.10   Min.   :1080    
- dedicated :360   True : 88       1st Qu.:14.00   1st Qu.:1920    
- integrated:616                   Median :15.60   Median :1920    
-                                  Mean   :15.17   Mean   :2004    
-                                  3rd Qu.:15.60   3rd Qu.:1920    
-                                  Max.   :18.00   Max.   :3840    
-                                                                  
- resolution_height       OS            year_of_warranty
- Min.   : 768      android:  1   1             :900    
- 1st Qu.:1080      chrome : 16   2             : 63    
- Median :1080      dos    : 32   3             : 10    
- Mean   :1181      mac    : 15   No information: 18    
- 3rd Qu.:1200      other  :  2                         
- Max.   :2560      ubuntu :  1                         
-                   windows:924                         </code></pre>
-</div>
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Convert relevant columns to factors</span></span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>data_new<span class="sc">$</span>brand <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(data_new<span class="sc">$</span>brand)</span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>data_new<span class="sc">$</span>Model <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(data_new<span class="sc">$</span>Model)</span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a>data_new<span class="sc">$</span>processor_brand <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(data_new<span class="sc">$</span>processor_brand)</span>
+<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a>data_new<span class="sc">$</span>processor_tier <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(data_new<span class="sc">$</span>processor_tier)</span>
+<span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a>data_new<span class="sc">$</span>primary_storage_type <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(data_new<span class="sc">$</span>primary_storage_type)</span>
+<span id="cb25-7"><a href="#cb25-7" aria-hidden="true" tabindex="-1"></a>data_new<span class="sc">$</span>secondary_storage_type <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(data_new<span class="sc">$</span>secondary_storage_type)</span>
+<span id="cb25-8"><a href="#cb25-8" aria-hidden="true" tabindex="-1"></a>data_new<span class="sc">$</span>gpu_brand <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(data_new<span class="sc">$</span>gpu_brand)</span>
+<span id="cb25-9"><a href="#cb25-9" aria-hidden="true" tabindex="-1"></a>data_new<span class="sc">$</span>gpu_type <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(data_new<span class="sc">$</span>gpu_type)</span>
+<span id="cb25-10"><a href="#cb25-10" aria-hidden="true" tabindex="-1"></a>data_new<span class="sc">$</span>OS <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(data_new<span class="sc">$</span>OS)</span>
+<span id="cb25-11"><a href="#cb25-11" aria-hidden="true" tabindex="-1"></a>data_new<span class="sc">$</span>is_touch_screen <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(data_new<span class="sc">$</span>is_touch_screen)</span>
+<span id="cb25-12"><a href="#cb25-12" aria-hidden="true" tabindex="-1"></a>data_new<span class="sc">$</span>year_of_warranty <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(data_new<span class="sc">$</span>year_of_warranty)</span>
+<span id="cb25-13"><a href="#cb25-13" aria-hidden="true" tabindex="-1"></a>data_new<span class="sc">$</span>ram_memory <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(data_new<span class="sc">$</span>ram_memory)</span>
+<span id="cb25-14"><a href="#cb25-14" aria-hidden="true" tabindex="-1"></a>data_new<span class="sc">$</span>num_cores <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(data_new<span class="sc">$</span>num_cores)</span>
+<span id="cb25-15"><a href="#cb25-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-16"><a href="#cb25-16" aria-hidden="true" tabindex="-1"></a><span class="co"># Convert relevant columns to numeric</span></span>
+<span id="cb25-17"><a href="#cb25-17" aria-hidden="true" tabindex="-1"></a>data_new<span class="sc">$</span>Price <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(data_new<span class="sc">$</span>Price)</span>
+<span id="cb25-18"><a href="#cb25-18" aria-hidden="true" tabindex="-1"></a>data_new<span class="sc">$</span>Rating <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(data_new<span class="sc">$</span>Rating)</span>
+<span id="cb25-19"><a href="#cb25-19" aria-hidden="true" tabindex="-1"></a>data_new<span class="sc">$</span>num_threads <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(data_new<span class="sc">$</span>num_threads)</span>
+<span id="cb25-20"><a href="#cb25-20" aria-hidden="true" tabindex="-1"></a>data_new<span class="sc">$</span>primary_storage_capacity <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(data_new<span class="sc">$</span>primary_storage_capacity)</span>
+<span id="cb25-21"><a href="#cb25-21" aria-hidden="true" tabindex="-1"></a>data_new<span class="sc">$</span>secondary_storage_capacity <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(data_new<span class="sc">$</span>secondary_storage_capacity)</span>
+<span id="cb25-22"><a href="#cb25-22" aria-hidden="true" tabindex="-1"></a>data_new<span class="sc">$</span>display_size <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(data_new<span class="sc">$</span>display_size)</span>
+<span id="cb25-23"><a href="#cb25-23" aria-hidden="true" tabindex="-1"></a>data_new<span class="sc">$</span>resolution_width <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(data_new<span class="sc">$</span>resolution_width)</span>
+<span id="cb25-24"><a href="#cb25-24" aria-hidden="true" tabindex="-1"></a>data_new<span class="sc">$</span>resolution_height <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(data_new<span class="sc">$</span>resolution_height)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>İşlemci seviyeleri arasında dikkat çekici sıklık farkları var mı?</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
-<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>f<span class="ot">=</span><span class="fu">table</span>(data<span class="sc">$</span>processor_tier)</span>
-<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a>f_data<span class="ot">=</span><span class="fu">data.frame</span>(f) </span>
-<span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(f_data,<span class="fu">aes</span>(<span class="at">x=</span><span class="fu">reorder</span>(Var1,Freq),<span class="at">y=</span>Freq,<span class="at">fill=</span>Var1))<span class="sc">+</span><span class="fu">geom_bar</span>(<span class="at">stat=</span><span class="st">"identity"</span>)<span class="sc">+</span></span>
-<span id="cb33-5"><a href="#cb33-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title=</span><span class="st">"İşlemci Alt Modeline Gore Bar Plot Çizimi"</span>,<span class="at">y=</span><span class="st">"Frekans"</span>,<span class="at">x=</span><span class="st">"İşlemci Alt Modeli"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>f<span class="ot">=</span><span class="fu">table</span>(data_new<span class="sc">$</span>processor_tier)</span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>f_data<span class="ot">=</span><span class="fu">data.frame</span>(f) </span>
+<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(f_data,<span class="fu">aes</span>(<span class="at">x=</span><span class="fu">reorder</span>(Var1,Freq),<span class="at">y=</span>Freq,<span class="at">fill=</span>Var1))<span class="sc">+</span><span class="fu">geom_bar</span>(<span class="at">stat=</span><span class="st">"identity"</span>)<span class="sc">+</span></span>
+<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title=</span><span class="st">"İşlemci Alt Modeline Gore Bar Plot Çizimi"</span>,<span class="at">y=</span><span class="st">"Frekans"</span>,<span class="at">x=</span><span class="st">"İşlemci Alt Modeli"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="proje_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Çubuk grafik incelendiğinde, işlemci seviyeleri arasında en yaygın olanın Core i5 olduğu görülmektedir. Teorik olarak, çoğu müşterinin Core i5 performansından memnun olduğu söylenebilir.</p>
+<p>Laptop Puanlarının Histogramı</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(data_new, <span class="fu">aes</span>(<span class="at">x=</span>Rating)) <span class="sc">+</span> <span class="fu">geom_histogram</span>(<span class="at">binwidth=</span><span class="dv">5</span>, <span class="at">fill=</span><span class="st">'green3'</span>, <span class="at">color=</span><span class="st">'black'</span>) <span class="sc">+</span> <span class="fu">theme_minimal</span>() <span class="sc">+</span> <span class="fu">ggtitle</span>(<span class="st">'Laptop Ratinglerinin Histogramı</span></span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a><span class="st">'</span>)<span class="sc">+</span> <span class="fu">scale_x_continuous</span>(<span class="at">breaks =</span> <span class="fu">seq</span>(<span class="fu">min</span>(data_new<span class="sc">$</span>Rating), <span class="fu">max</span>(data_new<span class="sc">$</span>Rating), <span class="at">by =</span> <span class="dv">5</span>))  <span class="co"># Tick aralıklarını belirler</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="proje_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>GPU markasının (örneğin NVIDIA, AMD) laptop puanlarına etkisi nedir?</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>summary_table_rating <span class="ot">&lt;-</span> data_new <span class="sc">%&gt;%</span></span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(gpu_brand) <span class="sc">%&gt;%</span></span>
+<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">average_rating =</span> <span class="fu">mean</span>(Rating, <span class="at">na.rm =</span> <span class="cn">TRUE</span>))</span>
+<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-5"><a href="#cb28-5" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(summary_table_rating, <span class="fu">aes</span>(<span class="at">x=</span>gpu_brand, <span class="at">y=</span>average_rating, <span class="at">fill=</span>gpu_brand)) <span class="sc">+</span></span>
+<span id="cb28-6"><a href="#cb28-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">stat=</span><span class="st">'identity'</span>) <span class="sc">+</span></span>
+<span id="cb28-7"><a href="#cb28-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">'GPU Markasına Gore Ratingler'</span>) <span class="sc">+</span></span>
+<span id="cb28-8"><a href="#cb28-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">'GPU Markası'</span>) <span class="sc">+</span></span>
+<span id="cb28-9"><a href="#cb28-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">'Ortalama Rating'</span>) <span class="sc">+</span></span>
+<span id="cb28-10"><a href="#cb28-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
+<span id="cb28-11"><a href="#cb28-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">45</span>, <span class="at">hjust =</span> <span class="dv">1</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="proje_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>GPU markasının laptop fiyatlarına etkisi nedir?</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>summary_table_price <span class="ot">&lt;-</span> data_new <span class="sc">%&gt;%</span></span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(gpu_brand) <span class="sc">%&gt;%</span></span>
+<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">average_price =</span> <span class="fu">mean</span>(Price, <span class="at">na.rm =</span> <span class="cn">TRUE</span>))</span>
+<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-5"><a href="#cb29-5" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(summary_table_price, <span class="fu">aes</span>(<span class="at">x=</span>gpu_brand, <span class="at">y=</span>average_price, <span class="at">fill=</span>gpu_brand)) <span class="sc">+</span></span>
+<span id="cb29-6"><a href="#cb29-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">stat=</span><span class="st">'identity'</span>) <span class="sc">+</span></span>
+<span id="cb29-7"><a href="#cb29-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">'GPU Markasına Gore Fiyatlar'</span>) <span class="sc">+</span></span>
+<span id="cb29-8"><a href="#cb29-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">'GPU Markası'</span>) <span class="sc">+</span></span>
+<span id="cb29-9"><a href="#cb29-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">'Fiyat (EUR)'</span>) <span class="sc">+</span></span>
+<span id="cb29-10"><a href="#cb29-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
+<span id="cb29-11"><a href="#cb29-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">45</span>, <span class="at">hjust =</span> <span class="dv">1</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -557,11 +466,13 @@ Attaching package: 'car'</code></pre>
 </div>
 </div>
 </div>
-<p>Çubuk grafik incelendiğinde, işlemci seviyeleri arasında en yaygın olanın Core i5 olduğu görülmektedir. Teorik olarak, çoğu müşterinin Core i5 performansından memnun olduğu söylenebilir.</p>
-<p>Laptop Puanlarının Histogramı</p>
+<p>Laptop fiyatları, işlemci markası ve GPU türüne göre nasıl değişmektedir?</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(data_new, <span class="fu">aes</span>(<span class="at">x=</span>Rating)) <span class="sc">+</span> <span class="fu">geom_histogram</span>(<span class="at">binwidth=</span><span class="dv">5</span>, <span class="at">fill=</span><span class="st">'green3'</span>, <span class="at">color=</span><span class="st">'black'</span>) <span class="sc">+</span> <span class="fu">theme_minimal</span>() <span class="sc">+</span> <span class="fu">ggtitle</span>(<span class="st">'Laptop Puanlarının Histogramı</span></span>
-<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a><span class="st">'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(data_new, <span class="fu">aes</span>(<span class="at">x =</span> processor_brand, <span class="at">y =</span> Price, <span class="at">color =</span> gpu_type)) <span class="sc">+</span></span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">alpha =</span> <span class="fl">0.6</span>) <span class="sc">+</span></span>
+<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">' GPU Tipine Gore Fiyat ve İşlemci Markası İlişkisi'</span>, <span class="at">x =</span> <span class="st">'İşlemci Markası'</span>, <span class="at">y =</span> <span class="st">'Fiyat'</span>) <span class="sc">+</span></span>
+<span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
+<span id="cb30-5"><a href="#cb30-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">labels =</span> scales<span class="sc">::</span><span class="fu">dollar_format</span>(<span class="at">prefix =</span> <span class="st">'EUR '</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -570,19 +481,14 @@ Attaching package: 'car'</code></pre>
 </div>
 </div>
 </div>
-<p>GPU markasının (örneğin NVIDIA, AMD) laptop puanlarına etkisi nedir?</p>
+<p>İşlemci markası ile fiyat arasındaki ilişkiyi GPU türüne göre renklendirilmiş olarak gösteren grafik</p>
+<p>Laptop puanları, işlemci markası ve GPU türüne göre nasıl değişmektedir?</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>summary_table_rating <span class="ot">&lt;-</span> data_new <span class="sc">%&gt;%</span></span>
-<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(gpu_brand) <span class="sc">%&gt;%</span></span>
-<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">average_rating =</span> <span class="fu">mean</span>(Rating, <span class="at">na.rm =</span> <span class="cn">TRUE</span>))</span>
-<span id="cb35-4"><a href="#cb35-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb35-5"><a href="#cb35-5" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(summary_table_rating, <span class="fu">aes</span>(<span class="at">x=</span>gpu_brand, <span class="at">y=</span>average_rating, <span class="at">fill=</span>gpu_brand)) <span class="sc">+</span></span>
-<span id="cb35-6"><a href="#cb35-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">stat=</span><span class="st">'identity'</span>) <span class="sc">+</span></span>
-<span id="cb35-7"><a href="#cb35-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">'GPU Markasına Gore Ratingler'</span>) <span class="sc">+</span></span>
-<span id="cb35-8"><a href="#cb35-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">'GPU Markası'</span>) <span class="sc">+</span></span>
-<span id="cb35-9"><a href="#cb35-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">'Ortalama Rating'</span>) <span class="sc">+</span></span>
-<span id="cb35-10"><a href="#cb35-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
-<span id="cb35-11"><a href="#cb35-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">45</span>, <span class="at">hjust =</span> <span class="dv">1</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(data_new, <span class="fu">aes</span>(<span class="at">x =</span> processor_brand, <span class="at">y =</span> Rating, <span class="at">color =</span> gpu_type)) <span class="sc">+</span></span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">alpha =</span> <span class="fl">0.6</span>) <span class="sc">+</span></span>
+<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">' GPU Tipine Gore Rating ve İşlemci Markası İlişkisi'</span>, <span class="at">x =</span> <span class="st">'İşlemci Markası'</span>, <span class="at">y =</span> <span class="st">'Rating'</span>) <span class="sc">+</span></span>
+<span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
+<span id="cb31-5"><a href="#cb31-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">labels =</span> scales<span class="sc">::</span><span class="fu">dollar_format</span>(<span class="at">prefix =</span> <span class="st">''</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -591,19 +497,14 @@ Attaching package: 'car'</code></pre>
 </div>
 </div>
 </div>
-<p>GPU markasının laptop fiyatlarına etkisi nedir?</p>
+<p>Çekirdek sayısı ile laptop puanları arasında, işlemci markasına göre bir ilişki var mı?</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>summary_table_price <span class="ot">&lt;-</span> data_new <span class="sc">%&gt;%</span></span>
-<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(gpu_brand) <span class="sc">%&gt;%</span></span>
-<span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">average_price =</span> <span class="fu">mean</span>(Price, <span class="at">na.rm =</span> <span class="cn">TRUE</span>))</span>
-<span id="cb36-4"><a href="#cb36-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb36-5"><a href="#cb36-5" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(summary_table_price, <span class="fu">aes</span>(<span class="at">x=</span>gpu_brand, <span class="at">y=</span>average_price, <span class="at">fill=</span>gpu_brand)) <span class="sc">+</span></span>
-<span id="cb36-6"><a href="#cb36-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">stat=</span><span class="st">'identity'</span>) <span class="sc">+</span></span>
-<span id="cb36-7"><a href="#cb36-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">'GPU Markasına Gore Fiyatlar'</span>) <span class="sc">+</span></span>
-<span id="cb36-8"><a href="#cb36-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">'GPU Markası'</span>) <span class="sc">+</span></span>
-<span id="cb36-9"><a href="#cb36-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">'Fiyat (EUR)'</span>) <span class="sc">+</span></span>
-<span id="cb36-10"><a href="#cb36-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
-<span id="cb36-11"><a href="#cb36-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">45</span>, <span class="at">hjust =</span> <span class="dv">1</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(data_new, <span class="fu">aes</span>(<span class="at">x =</span> num_cores, <span class="at">y =</span> Rating, <span class="at">color =</span> processor_brand)) <span class="sc">+</span></span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Çekirdek Sayısı vs. Rating"</span>,</span>
+<span id="cb32-4"><a href="#cb32-4" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">"Çekirdek Sayısı"</span>,</span>
+<span id="cb32-5"><a href="#cb32-5" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"Rating"</span>) <span class="sc">+</span></span>
+<span id="cb32-6"><a href="#cb32-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -612,13 +513,22 @@ Attaching package: 'car'</code></pre>
 </div>
 </div>
 </div>
-<p>Laptop fiyatları, işlemci markası ve GPU türüne göre nasıl değişmektedir?</p>
+<p>Çekirdek sayısı ile puanlar arasında doğrusal bir ilişki olduğu söylenebilir.</p>
+<p>Fiyat ile puanlama arasında bir korelasyon var mı?</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(data_new, <span class="fu">aes</span>(<span class="at">x =</span> processor_brand, <span class="at">y =</span> Price, <span class="at">color =</span> gpu_type)) <span class="sc">+</span></span>
-<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">alpha =</span> <span class="fl">0.6</span>) <span class="sc">+</span></span>
-<span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">' GPU Tipine Gore Fiyat ve İşlemci Markası İlişkisi'</span>, <span class="at">x =</span> <span class="st">'İşlemci Markası'</span>, <span class="at">y =</span> <span class="st">'Fiyat'</span>) <span class="sc">+</span></span>
-<span id="cb37-4"><a href="#cb37-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
-<span id="cb37-5"><a href="#cb37-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">labels =</span> scales<span class="sc">::</span><span class="fu">dollar_format</span>(<span class="at">prefix =</span> <span class="st">'EUR '</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cor</span>(data_new<span class="sc">$</span>Price, data_new<span class="sc">$</span>Rating, <span class="at">use=</span><span class="st">'complete.obs'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.6614219</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(data_new, <span class="fu">aes</span>(<span class="at">x=</span>Price, <span class="at">y=</span>Rating)) <span class="sc">+</span></span>
+<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method=</span><span class="st">'lm'</span>, <span class="at">col=</span><span class="st">'blue'</span>) <span class="sc">+</span></span>
+<span id="cb35-4"><a href="#cb35-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">'Scatter Plot of Fiyat ve Ratingin Scatter Plot Gosterimi'</span>) <span class="sc">+</span></span>
+<span id="cb35-5"><a href="#cb35-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">'Fiyat'</span>) <span class="sc">+</span></span>
+<span id="cb35-6"><a href="#cb35-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">'Rating'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>`geom_smooth()` using formula = 'y ~ x'</code></pre>
+</div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -627,14 +537,15 @@ Attaching package: 'car'</code></pre>
 </div>
 </div>
 </div>
-<p>İşlemci markası ile fiyat arasındaki ilişkiyi GPU türüne göre renklendirilmiş olarak gösteren grafik</p>
-<p>Laptop puanları, işlemci markası ve GPU türüne göre nasıl değişmektedir?</p>
+<p>Gözlemlendiği üzere, iki değişken arasında yaklaşık 0.661 korelasyon katsayısı ile orta düzeyde pozitif bir ilişki vardır.</p>
+<p>Puanlar, farklı birincil depolama türleri ve kapasitelerine göre nasıl değişmektedir?</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(data_new, <span class="fu">aes</span>(<span class="at">x =</span> processor_brand, <span class="at">y =</span> Rating, <span class="at">color =</span> gpu_type)) <span class="sc">+</span></span>
-<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">alpha =</span> <span class="fl">0.6</span>) <span class="sc">+</span></span>
-<span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">' GPU Tipine Gore Rating ve İşlemci Markası İlişkisi'</span>, <span class="at">x =</span> <span class="st">'İşlemci Markası'</span>, <span class="at">y =</span> <span class="st">'Rating'</span>) <span class="sc">+</span></span>
-<span id="cb38-4"><a href="#cb38-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
-<span id="cb38-5"><a href="#cb38-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">labels =</span> scales<span class="sc">::</span><span class="fu">dollar_format</span>(<span class="at">prefix =</span> <span class="st">''</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(data_new, <span class="fu">aes</span>(<span class="at">x=</span>primary_storage_capacity, <span class="at">y=</span>Rating, <span class="at">fill=</span>primary_storage_type)) <span class="sc">+</span></span>
+<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>() <span class="sc">+</span></span>
+<span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">'Ratinge Gore Birincil Depolama Turleri ve Kapasiteler'</span>) <span class="sc">+</span></span>
+<span id="cb37-4"><a href="#cb37-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">'Birincil Depolama Kapasitesi'</span>) <span class="sc">+</span></span>
+<span id="cb37-5"><a href="#cb37-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">'Rating'</span>) <span class="sc">+</span></span>
+<span id="cb37-6"><a href="#cb37-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">45</span>, <span class="at">hjust =</span> <span class="dv">1</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -643,14 +554,24 @@ Attaching package: 'car'</code></pre>
 </div>
 </div>
 </div>
-<p>Çekirdek sayısı ile laptop puanları arasında, işlemci markasına göre bir ilişki var mı?</p>
+<p>Kutu grafiği, özellikle daha yüksek kapasiteli SSD’lerin, HDD’lere kıyasla daha yüksek ve tutarlı puanlarla kullanıcılar tarafından açıkça tercih edildiğini göstermektedir.</p>
+<p>Puanlar, işlemci markası, GPU markası ve RAM bellek kombinasyonlarına göre nasıl değişiyor?</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(data_new, <span class="fu">aes</span>(<span class="at">x =</span> num_cores, <span class="at">y =</span> Rating, <span class="at">color =</span> processor_brand)) <span class="sc">+</span></span>
-<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
-<span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Çekirdek Sayısı vs. Rating"</span>,</span>
-<span id="cb39-4"><a href="#cb39-4" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">"Çekirdek Sayısı"</span>,</span>
-<span id="cb39-5"><a href="#cb39-5" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"Rating"</span>) <span class="sc">+</span></span>
-<span id="cb39-6"><a href="#cb39-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a>summary_table <span class="ot">&lt;-</span> data_new <span class="sc">%&gt;%</span></span>
+<span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(processor_brand, gpu_brand, ram_memory) <span class="sc">%&gt;%</span></span>
+<span id="cb38-4"><a href="#cb38-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">average_rating =</span> <span class="fu">mean</span>(Rating, <span class="at">na.rm =</span> <span class="cn">TRUE</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>`summarise()` has grouped output by 'processor_brand', 'gpu_brand'. You can
+override using the `.groups` argument.</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(summary_table, <span class="fu">aes</span>(<span class="at">x=</span>ram_memory, <span class="at">y=</span><span class="fu">interaction</span>(processor_brand, gpu_brand), <span class="at">fill=</span>average_rating)) <span class="sc">+</span></span>
+<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_tile</span>() <span class="sc">+</span></span>
+<span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_gradient</span>(<span class="at">low=</span><span class="st">'blue'</span>, <span class="at">high=</span><span class="st">'red'</span>) <span class="sc">+</span></span>
+<span id="cb40-4"><a href="#cb40-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">'İşlemci Markası, GPU Markası ve Ram Kapasitesine Gore Isı Haritası Çizimi'</span>) <span class="sc">+</span></span>
+<span id="cb40-5"><a href="#cb40-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">'RAM Kapasitesi (GB)'</span>) <span class="sc">+</span></span>
+<span id="cb40-6"><a href="#cb40-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">'İşlemci Markası ve GPU Markası'</span>) <span class="sc">+</span></span>
+<span id="cb40-7"><a href="#cb40-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">45</span>, <span class="at">hjust =</span> <span class="dv">1</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -659,22 +580,20 @@ Attaching package: 'car'</code></pre>
 </div>
 </div>
 </div>
-<p>Çekirdek sayısı ile puanlar arasında doğrusal bir ilişki olduğu söylenebilir.</p>
-<p>Fiyat ile puanlama arasında bir korelasyon var mı?</p>
+<p>Daha yüksek RAM kapasitelerine ve AMD ya da Intel işlemcilerle NVIDIA GPU kombinasyonlarına sahip laptoplar, genellikle daha yüksek puanlar almaktadır.</p>
+<p>Farklı laptop markaları (örneğin Dell, HP, Lenovo) ortalama puanı nasıl etkiliyor? Hipotez: Apple gibi bazı markalar, diğerlerine kıyasla daha yüksek ortalama puanlara sahiptir.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cor</span>(data_new<span class="sc">$</span>Price, data_new<span class="sc">$</span>Rating, <span class="at">use=</span><span class="st">'complete.obs'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.6614219</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(data_new, <span class="fu">aes</span>(<span class="at">x=</span>Price, <span class="at">y=</span>Rating)) <span class="sc">+</span></span>
-<span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
-<span id="cb42-3"><a href="#cb42-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method=</span><span class="st">'lm'</span>, <span class="at">col=</span><span class="st">'blue'</span>) <span class="sc">+</span></span>
-<span id="cb42-4"><a href="#cb42-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">'Scatter Plot of Fiyat ve Ratingin Scatter Plot Gosterimi'</span>) <span class="sc">+</span></span>
-<span id="cb42-5"><a href="#cb42-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">'Fiyat'</span>) <span class="sc">+</span></span>
-<span id="cb42-6"><a href="#cb42-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">'Rating'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>`geom_smooth()` using formula = 'y ~ x'</code></pre>
-</div>
+<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a>summary_table_rating <span class="ot">&lt;-</span> data_new <span class="sc">%&gt;%</span></span>
+<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(brand) <span class="sc">%&gt;%</span></span>
+<span id="cb41-3"><a href="#cb41-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">average_rating =</span> <span class="fu">mean</span>(Rating, <span class="at">na.rm =</span> <span class="cn">TRUE</span>))</span>
+<span id="cb41-4"><a href="#cb41-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb41-5"><a href="#cb41-5" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(summary_table_rating, <span class="fu">aes</span>(<span class="at">x=</span>brand, <span class="at">y=</span>average_rating, <span class="at">fill=</span>brand)) <span class="sc">+</span></span>
+<span id="cb41-6"><a href="#cb41-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">stat=</span><span class="st">'identity'</span>) <span class="sc">+</span></span>
+<span id="cb41-7"><a href="#cb41-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">'Laptop Markasına Gore Ortalama Rating'</span>) <span class="sc">+</span></span>
+<span id="cb41-8"><a href="#cb41-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">'Laptop Markası'</span>) <span class="sc">+</span></span>
+<span id="cb41-9"><a href="#cb41-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">'Ortalama Rating'</span>) <span class="sc">+</span></span>
+<span id="cb41-10"><a href="#cb41-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
+<span id="cb41-11"><a href="#cb41-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">45</span>, <span class="at">hjust =</span> <span class="dv">1</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -683,15 +602,26 @@ Attaching package: 'car'</code></pre>
 </div>
 </div>
 </div>
-<p>Gözlemlendiği üzere, iki değişken arasında yaklaşık 0.661 korelasyon katsayısı ile orta düzeyde pozitif bir ilişki vardır.</p>
-<p>Puanlar, farklı birincil depolama türleri ve kapasitelerine göre nasıl değişmektedir?</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(data_new, <span class="fu">aes</span>(<span class="at">x=</span>primary_storage_capacity, <span class="at">y=</span>Rating, <span class="at">fill=</span>primary_storage_type)) <span class="sc">+</span></span>
-<span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>() <span class="sc">+</span></span>
-<span id="cb44-3"><a href="#cb44-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">'Ratinge Gore Birincil Depolama Turleri ve Kapasiteler'</span>) <span class="sc">+</span></span>
-<span id="cb44-4"><a href="#cb44-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">'Birincil Depolama Kapasitesi'</span>) <span class="sc">+</span></span>
-<span id="cb44-5"><a href="#cb44-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">'Rating'</span>) <span class="sc">+</span></span>
-<span id="cb44-6"><a href="#cb44-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">45</span>, <span class="at">hjust =</span> <span class="dv">1</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a>summary_table_rating <span class="ot">&lt;-</span> data_new <span class="sc">%&gt;%</span></span>
+<span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(brand) <span class="sc">%&gt;%</span></span>
+<span id="cb42-3"><a href="#cb42-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">average_rating =</span> <span class="fu">mean</span>(Rating, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb42-4"><a href="#cb42-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(average_rating))  <span class="co"># sıralama</span></span>
+<span id="cb42-5"><a href="#cb42-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb42-6"><a href="#cb42-6" aria-hidden="true" tabindex="-1"></a>summary_table_rating<span class="sc">$</span>brand <span class="ot">&lt;-</span> <span class="fu">factor</span>(summary_table_rating<span class="sc">$</span>brand, <span class="at">levels =</span> summary_table_rating<span class="sc">$</span>brand)</span>
+<span id="cb42-7"><a href="#cb42-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb42-8"><a href="#cb42-8" aria-hidden="true" tabindex="-1"></a>summary_table_rating <span class="ot">&lt;-</span> summary_table_rating <span class="sc">%&gt;%</span></span>
+<span id="cb42-9"><a href="#cb42-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">highlight =</span> <span class="fu">ifelse</span>(brand <span class="sc">==</span> <span class="st">"apple"</span>, <span class="st">"apple"</span>, <span class="st">"Diger"</span>))  <span class="co"># imleç sütunu ekle</span></span>
+<span id="cb42-10"><a href="#cb42-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb42-11"><a href="#cb42-11" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(summary_table_rating, <span class="fu">aes</span>(<span class="at">x =</span> brand, <span class="at">y =</span> average_rating, <span class="at">fill =</span> highlight)) <span class="sc">+</span></span>
+<span id="cb42-12"><a href="#cb42-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">stat =</span> <span class="st">'identity'</span>) <span class="sc">+</span></span>
+<span id="cb42-13"><a href="#cb42-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"apple"</span> <span class="ot">=</span> <span class="st">"red"</span>, <span class="st">"Diger"</span> <span class="ot">=</span> <span class="st">"gray"</span>)) <span class="sc">+</span></span>
+<span id="cb42-14"><a href="#cb42-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">'Laptop Markasına Göre Ortalama Rating (Apple Vurgulu)'</span>) <span class="sc">+</span></span>
+<span id="cb42-15"><a href="#cb42-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">'Laptop Markası'</span>) <span class="sc">+</span></span>
+<span id="cb42-16"><a href="#cb42-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">'Ortalama Rating'</span>) <span class="sc">+</span></span>
+<span id="cb42-17"><a href="#cb42-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
+<span id="cb42-18"><a href="#cb42-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">45</span>, <span class="at">hjust =</span> <span class="dv">1</span>),</span>
+<span id="cb42-19"><a href="#cb42-19" aria-hidden="true" tabindex="-1"></a>        <span class="at">legend.title =</span> <span class="fu">element_blank</span>())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -700,55 +630,7 @@ Attaching package: 'car'</code></pre>
 </div>
 </div>
 </div>
-<p>Kutu grafiği, özellikle daha yüksek kapasiteli SSD’lerin, HDD’lere kıyasla daha yüksek ve tutarlı puanlarla kullanıcılar tarafından açıkça tercih edildiğini göstermektedir.</p>
-<p>Puanlar, işlemci markası, GPU markası ve RAM bellek kombinasyonlarına göre nasıl değişiyor?</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
-<span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a>summary_table <span class="ot">&lt;-</span> data_new <span class="sc">%&gt;%</span></span>
-<span id="cb45-3"><a href="#cb45-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(processor_brand, gpu_brand, ram_memory) <span class="sc">%&gt;%</span></span>
-<span id="cb45-4"><a href="#cb45-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">average_rating =</span> <span class="fu">mean</span>(Rating, <span class="at">na.rm =</span> <span class="cn">TRUE</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>`summarise()` has grouped output by 'processor_brand', 'gpu_brand'. You can
-override using the `.groups` argument.</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(summary_table, <span class="fu">aes</span>(<span class="at">x=</span>ram_memory, <span class="at">y=</span><span class="fu">interaction</span>(processor_brand, gpu_brand), <span class="at">fill=</span>average_rating)) <span class="sc">+</span></span>
-<span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_tile</span>() <span class="sc">+</span></span>
-<span id="cb47-3"><a href="#cb47-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_gradient</span>(<span class="at">low=</span><span class="st">'blue'</span>, <span class="at">high=</span><span class="st">'red'</span>) <span class="sc">+</span></span>
-<span id="cb47-4"><a href="#cb47-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">'İşlemci Markası, GPU Markası ve Ram Kapasitesine Gore Isı Haritası Çizimi'</span>) <span class="sc">+</span></span>
-<span id="cb47-5"><a href="#cb47-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">'RAM Kapasitesi (GB)'</span>) <span class="sc">+</span></span>
-<span id="cb47-6"><a href="#cb47-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">'İşlemci Markası ve GPU Markası'</span>) <span class="sc">+</span></span>
-<span id="cb47-7"><a href="#cb47-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">45</span>, <span class="at">hjust =</span> <span class="dv">1</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="proje_files/figure-html/unnamed-chunk-18-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-</div>
-<p>Daha yüksek RAM kapasitelerine ve AMD ya da Intel işlemcilerle NVIDIA GPU kombinasyonlarına sahip laptoplar, genellikle daha yüksek puanlar almaktadır.</p>
-<p>Farklı laptop markaları (örneğin Dell, HP, Lenovo) ortalama puanı nasıl etkiliyor? Hipotez: Apple gibi bazı markalar, diğerlerine kıyasla daha yüksek ortalama puanlara sahiptir.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a>summary_table_rating <span class="ot">&lt;-</span> data_new <span class="sc">%&gt;%</span></span>
-<span id="cb48-2"><a href="#cb48-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(brand) <span class="sc">%&gt;%</span></span>
-<span id="cb48-3"><a href="#cb48-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">average_rating =</span> <span class="fu">mean</span>(Rating, <span class="at">na.rm =</span> <span class="cn">TRUE</span>))</span>
-<span id="cb48-4"><a href="#cb48-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb48-5"><a href="#cb48-5" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(summary_table_rating, <span class="fu">aes</span>(<span class="at">x=</span>brand, <span class="at">y=</span>average_rating, <span class="at">fill=</span>brand)) <span class="sc">+</span></span>
-<span id="cb48-6"><a href="#cb48-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">stat=</span><span class="st">'identity'</span>) <span class="sc">+</span></span>
-<span id="cb48-7"><a href="#cb48-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">'Laptop Markasına Gore Ortalama Rating'</span>) <span class="sc">+</span></span>
-<span id="cb48-8"><a href="#cb48-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">'Laptop Markası'</span>) <span class="sc">+</span></span>
-<span id="cb48-9"><a href="#cb48-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">'Ortalama Rating'</span>) <span class="sc">+</span></span>
-<span id="cb48-10"><a href="#cb48-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
-<span id="cb48-11"><a href="#cb48-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">45</span>, <span class="at">hjust =</span> <span class="dv">1</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="proje_files/figure-html/unnamed-chunk-19-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-</div>
-<p>Bir laptopun markası ortalama puanı önemli ölçüde etkiler. Asus ve Acer müşteri memnuniyetinde öne çıkarken, Axl ve Avita geride kalmaktadır.</p>
+<p>Bir laptopun markası ortalama puanı önemli ölçüde etkiler. Rating açısından değerlendirildiğinde LG ve MSI en yüksek ortalama ratinge sahipken jio ve primebook markaları en düşük ortalama ratinge sahiptir. Apple marka laptoplar ise fiyat açısından pahalı olmasına rağmen rating olarak bu sıralamanın ortalarında kalmaktadır. Paramızı boşa harcamayıp daha fiyat performans laptoplar alalım.</p>
 
 
 </section>
