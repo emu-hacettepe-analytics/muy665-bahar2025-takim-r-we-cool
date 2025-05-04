@@ -107,7 +107,7 @@ library(ggplot2)
 f=table(data$processor_tier)
 f_data=data.frame(f) 
 ggplot(f_data,aes(x=reorder(Var1,Freq),y=Freq,fill=Var1))+geom_bar(stat="identity")+
-  labs(title="Bar Plot of Processor Brands",y="Frequencies",x="Levels")
+  labs(title="İşlemci Alt Modeline Gore Bar Plot Çizimi",y="Frekans",x="İşlemci Alt Modeli")
 ```
 
 Çubuk grafik incelendiğinde, işlemci seviyeleri arasında en yaygın olanın Core i5 olduğu görülmektedir. Teorik olarak, çoğu müşterinin Core i5 performansından memnun olduğu söylenebilir.
@@ -115,7 +115,8 @@ ggplot(f_data,aes(x=reorder(Var1,Freq),y=Freq,fill=Var1))+geom_bar(stat="identit
 Laptop Puanlarının Histogramı
 
 ```{r}
-ggplot(data_new, aes(x=Rating)) + geom_histogram(binwidth=5, fill='green3', color='black') + theme_minimal() + ggtitle('Histogram of Laptop Ratings')
+ggplot(data_new, aes(x=Rating)) + geom_histogram(binwidth=5, fill='green3', color='black') + theme_minimal() + ggtitle('Laptop Puanlarının Histogramı
+')
 
 ```
 
@@ -128,9 +129,9 @@ summary_table_rating <- data_new %>%
 
 ggplot(summary_table_rating, aes(x=gpu_brand, y=average_rating, fill=gpu_brand)) +
   geom_bar(stat='identity') +
-  ggtitle('Average Ratings by GPU Brand') +
-  xlab('GPU Brand') +
-  ylab('Average Rating') +
+  ggtitle('GPU Markasına Gore Ratingler') +
+  xlab('GPU Markası') +
+  ylab('Ortalama Rating') +
   theme_minimal() +
   theme(axis.text.x = element_text(angle = 45, hjust = 1))
 ```
@@ -144,9 +145,9 @@ summary_table_price <- data_new %>%
 
 ggplot(summary_table_price, aes(x=gpu_brand, y=average_price, fill=gpu_brand)) +
   geom_bar(stat='identity') +
-  ggtitle('Average Prices by GPU Brand') +
-  xlab('GPU Brand') +
-  ylab('Average Price ($)') +
+  ggtitle('GPU Markasına Gore Fiyatlar') +
+  xlab('GPU Markası') +
+  ylab('Fiyat (EUR)') +
   theme_minimal() +
   theme(axis.text.x = element_text(angle = 45, hjust = 1))
 ```
@@ -156,9 +157,9 @@ Laptop fiyatları, işlemci markası ve GPU türüne göre nasıl değişmektedi
 ```{r}
 ggplot(data_new, aes(x = processor_brand, y = Price, color = gpu_type)) +
   geom_point(alpha = 0.6) +
-  labs(title = 'Price vs Processor Brand by GPU Type', x = 'Processor Brand', y = 'Price') +
+  labs(title = ' GPU Tipine Gore Fiyat ve İşlemci Markası İlişkisi', x = 'İşlemci Markası', y = 'Fiyat') +
   theme_minimal() +
-  scale_y_continuous(labels = scales::dollar_format(prefix = '$'))
+  scale_y_continuous(labels = scales::dollar_format(prefix = 'EUR '))
 ```
 
 İşlemci markası ile fiyat arasındaki ilişkiyi GPU türüne göre renklendirilmiş olarak gösteren grafik
@@ -168,7 +169,7 @@ Laptop puanları, işlemci markası ve GPU türüne göre nasıl değişmektedir
 ```{r}
 ggplot(data_new, aes(x = processor_brand, y = Rating, color = gpu_type)) +
   geom_point(alpha = 0.6) +
-  labs(title = 'Rating vs Processor Brand by GPU Type', x = 'Processor Brand', y = 'Rating') +
+  labs(title = ' GPU Tipine Gore Rating ve İşlemci Markası İlişkisi', x = 'İşlemci Markası', y = 'Rating') +
   theme_minimal() +
   scale_y_continuous(labels = scales::dollar_format(prefix = ''))
 
@@ -179,8 +180,8 @@ ggplot(data_new, aes(x = processor_brand, y = Rating, color = gpu_type)) +
 ```{r}
 ggplot(data_new, aes(x = num_cores, y = Rating, color = processor_brand)) +
   geom_point() +
-  labs(title = "Number of Cores vs. Rating",
-       x = "Number of Cores",
+  labs(title = "Çekirdek Sayısı vs. Rating",
+       x = "Çekirdek Sayısı",
        y = "Rating") +
   theme_minimal()
 
@@ -195,8 +196,8 @@ cor(data_new$Price, data_new$Rating, use='complete.obs')
 ggplot(data_new, aes(x=Price, y=Rating)) +
   geom_point() +
   geom_smooth(method='lm', col='blue') +
-  ggtitle('Scatter Plot of Price vs Rating') +
-  xlab('Price') +
+  ggtitle('Scatter Plot of Fiyat ve Ratingin Scatter Plot Gosterimi') +
+  xlab('Fiyat') +
   ylab('Rating')
 ```
 
@@ -207,8 +208,8 @@ Puanlar, farklı birincil depolama türleri ve kapasitelerine göre nasıl deği
 ```{r}
 ggplot(data_new, aes(x=primary_storage_capacity, y=Rating, fill=primary_storage_type)) +
   geom_boxplot() +
-  ggtitle('Ratings by Primary Storage Type and Capacity') +
-  xlab('Primary Storage Capacity') +
+  ggtitle('Ratinge Gore Birincil Depolama Turleri ve Kapasiteler') +
+  xlab('Birincil Depolama Kapasitesi') +
   ylab('Rating') +
   theme(axis.text.x = element_text(angle = 45, hjust = 1))
 ```
@@ -225,9 +226,9 @@ summary_table <- data_new %>%
 ggplot(summary_table, aes(x=ram_memory, y=interaction(processor_brand, gpu_brand), fill=average_rating)) +
   geom_tile() +
   scale_fill_gradient(low='blue', high='red') +
-  ggtitle('Heatmap of Ratings by Processor Brand, GPU Brand, and RAM Memory') +
-  xlab('RAM Memory (GB)') +
-  ylab('Processor Brand and GPU Brand') +
+  ggtitle('İşlemci Markası, GPU Markası ve Ram Kapasitesine Gore Isı Haritası Çizimi') +
+  xlab('RAM Kapasitesi (GB)') +
+  ylab('İşlemci Markası ve GPU Markası') +
   theme(axis.text.x = element_text(angle = 45, hjust = 1))
 ```
 
@@ -242,9 +243,9 @@ summary_table_rating <- data_new %>%
 
 ggplot(summary_table_rating, aes(x=brand, y=average_rating, fill=brand)) +
   geom_bar(stat='identity') +
-  ggtitle('Average Ratings by Laptop Brand') +
-  xlab('Laptop Brand') +
-  ylab('Average Rating') +
+  ggtitle('Laptop Markasına Gore Ortalama Rating') +
+  xlab('Laptop Markası') +
+  ylab('Ortalama Rating') +
   theme_minimal() +
   theme(axis.text.x = element_text(angle = 45, hjust = 1))
 ```
