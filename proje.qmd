@@ -25,10 +25,20 @@ library(car)
 library(scales)
 library(kableExtra)
 library(DT)
+library(tidyr)
 getwd()
 data_new <- read.csv("laptops.csv")
 data_new$Price <- as.numeric(data_new$Price/83)
-datatable(head(data_new, 10), caption = "Veri Setinin İlk 10 Satırı")
+datatable(
+  head(data_new, 10),
+  caption = "Veri Setinin İlk 10 Satırı",
+  options = list(
+    pageLength = 5,       # Her sayfada yalnızca 5 satır göster
+    scrollX    = TRUE,    # Yatay kaydırma çubuğu ekle
+    autoWidth  = FALSE     # Sütun genişliklerini otomatik ayarla
+  ),
+  class = 'stripe hover cell-border'  # Daha sıkışık bir görünüm için
+)
 
 ```
 
@@ -44,7 +54,6 @@ str(data_new)
 ```
 
 ```{r}
-# Calculate descriptive statistics
 descriptive_stats <- data_new %>%
   summarise(across(where(is.numeric), list(
     mean = ~mean(.x, na.rm = TRUE),
@@ -52,6 +61,7 @@ descriptive_stats <- data_new %>%
   )))
 kable(descriptive_stats, digits = 2, caption = "Tanımlayici İstatistikler") %>%
   kable_styling(bootstrap_options = c("striped", "hover", "condensed"), full_width = FALSE)
+
 
 #print(descriptive_stats)
 ```
