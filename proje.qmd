@@ -4,7 +4,7 @@ author: "R_we_cool"
 date: "2025"
 format:
   html:
-    theme: morph  
+    theme: lux  
 number-sections: true
 ---
 
