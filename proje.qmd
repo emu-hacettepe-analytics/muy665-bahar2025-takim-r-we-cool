@@ -6,11 +6,23 @@ format: html
 number-sections: true
 ---
 
+## Genel Bakış ve Kapsamı
+
+## Veri Hakkında Genel Bilgiler
+
+## Ön İşleme
+
+## 
+
+```{r}
+
+```
+
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-## R Markdown
+## 
 
 ```{r}
 library(ggplot2)
@@ -24,9 +36,9 @@ head(data)
 ```
 
 ```{r}
-# Missing values are added to the data
+
 library(missForest)
-data_new = prodNA(data, noNA = 0.075)
+data_new =data
 sum(is.na(data_new)) # we can see the NA values are added 
 
 ```
@@ -88,7 +100,7 @@ str(data_new)
 summary(data_new)
 ```
 
-"Are there any notable differences in the frequencies of processor tiers?"
+İşlemci seviyeleri arasında dikkat çekici sıklık farkları var mı?
 
 ```{r}
 library(ggplot2)
@@ -98,16 +110,16 @@ ggplot(f_data,aes(x=reorder(Var1,Freq),y=Freq,fill=Var1))+geom_bar(stat="identit
   labs(title="Bar Plot of Processor Brands",y="Frequencies",x="Levels")
 ```
 
-When the bar plot was examined, the majority of the processor tiers is corre i5. Theoretically, it might be said that most of the customers are satisfied with the performance of the core i5.
+Çubuk grafik incelendiğinde, işlemci seviyeleri arasında en yaygın olanın Core i5 olduğu görülmektedir. Teorik olarak, çoğu müşterinin Core i5 performansından memnun olduğu söylenebilir.
 
-Histogram of Laptop Ratings (dependent variable)
+Laptop Puanlarının Histogramı
 
 ```{r}
 ggplot(data_new, aes(x=Rating)) + geom_histogram(binwidth=5, fill='green3', color='black') + theme_minimal() + ggtitle('Histogram of Laptop Ratings')
 
 ```
 
-What is the impact of GPU brand (e.g., NVIDIA, AMD) on laptops' Ratings? Null Hypothesis (H0): There is no significant difference in ratings between different GPU brands. Alternative Hypothesis (H1): There is a significant difference in ratings between different GPU
+GPU markasının (örneğin NVIDIA, AMD) laptop puanlarına etkisi nedir?
 
 ```{r}
 summary_table_rating <- data_new %>%
@@ -123,7 +135,7 @@ ggplot(summary_table_rating, aes(x=gpu_brand, y=average_rating, fill=gpu_brand))
   theme(axis.text.x = element_text(angle = 45, hjust = 1))
 ```
 
-What is the impact of GPU brand (e.g., NVIDIA, AMD) on laptop prices?
+GPU markasının laptop fiyatlarına etkisi nedir?
 
 ```{r}
 summary_table_price <- data_new %>%
@@ -134,12 +146,12 @@ ggplot(summary_table_price, aes(x=gpu_brand, y=average_price, fill=gpu_brand)) +
   geom_bar(stat='identity') +
   ggtitle('Average Prices by GPU Brand') +
   xlab('GPU Brand') +
-  ylab('Average Price') +
+  ylab('Average Price ($)') +
   theme_minimal() +
   theme(axis.text.x = element_text(angle = 45, hjust = 1))
 ```
 
-How the price of laptops differs from according to their processor brand and gpu type?
+Laptop fiyatları, işlemci markası ve GPU türüne göre nasıl değişmektedir?
 
 ```{r}
 ggplot(data_new, aes(x = processor_brand, y = Price, color = gpu_type)) +
@@ -149,20 +161,20 @@ ggplot(data_new, aes(x = processor_brand, y = Price, color = gpu_type)) +
   scale_y_continuous(labels = scales::dollar_format(prefix = '$'))
 ```
 
-Plot showing the relationship between processor brand and price, colored by GPU type
+İşlemci markası ile fiyat arasındaki ilişkiyi GPU türüne göre renklendirilmiş olarak gösteren grafik
 
-How the rating of laptops differs from according to theit processor brand and gpu type?
+Laptop puanları, işlemci markası ve GPU türüne göre nasıl değişmektedir?
 
 ```{r}
 ggplot(data_new, aes(x = processor_brand, y = Rating, color = gpu_type)) +
   geom_point(alpha = 0.6) +
-  labs(title = 'Rating vs Processor Brand by GPU Type', x = 'Processor Brand', y = 'Price') +
+  labs(title = 'Rating vs Processor Brand by GPU Type', x = 'Processor Brand', y = 'Rating') +
   theme_minimal() +
-  scale_y_continuous(labels = scales::dollar_format(prefix = '$'))
+  scale_y_continuous(labels = scales::dollar_format(prefix = ''))
 
 ```
 
-Is there a relationship between number of cores and laptops' ratings according to processor brand?
+Çekirdek sayısı ile laptop puanları arasında, işlemci markasına göre bir ilişki var mı?
 
 ```{r}
 ggplot(data_new, aes(x = num_cores, y = Rating, color = processor_brand)) +
@@ -174,9 +186,9 @@ ggplot(data_new, aes(x = num_cores, y = Rating, color = processor_brand)) +
 
 ```
 
-It might be said that, there is an linear relationships number of cores and ratings.
+Çekirdek sayısı ile puanlar arasında doğrusal bir ilişki olduğu söylenebilir.
 
-Is there a correlation between price and rating?
+Fiyat ile puanlama arasında bir korelasyon var mı?
 
 ```{r}
 cor(data_new$Price, data_new$Rating, use='complete.obs')
@@ -188,9 +200,9 @@ ggplot(data_new, aes(x=Price, y=Rating)) +
   ylab('Rating')
 ```
 
-As observed, there is a moderate to positive correlation between the two variables, with a correlation coefficient of approximately 0.661.
+Gözlemlendiği üzere, iki değişken arasında yaklaşık 0.661 korelasyon katsayısı ile orta düzeyde pozitif bir ilişki vardır.
 
-How do ratings vary with different primary storage types and capacities?
+Puanlar, farklı birincil depolama türleri ve kapasitelerine göre nasıl değişmektedir?
 
 ```{r}
 ggplot(data_new, aes(x=primary_storage_capacity, y=Rating, fill=primary_storage_type)) +
@@ -201,9 +213,9 @@ ggplot(data_new, aes(x=primary_storage_capacity, y=Rating, fill=primary_storage_
   theme(axis.text.x = element_text(angle = 45, hjust = 1))
 ```
 
-The box plot indicates a clear preference for laptops with SSDs over HDDs, particularly those with higher storage capacities, as evidenced by higher and more consistent ratings.
+Kutu grafiği, özellikle daha yüksek kapasiteli SSD'lerin, HDD'lere kıyasla daha yüksek ve tutarlı puanlarla kullanıcılar tarafından açıkça tercih edildiğini göstermektedir.
 
-How do ratings vary with different combinations of processor brand, GPU brand, and RAM memory?
+Puanlar, işlemci markası, GPU markası ve RAM bellek kombinasyonlarına göre nasıl değişiyor?
 
 ```{r}
 library(dplyr)
@@ -219,9 +231,9 @@ ggplot(summary_table, aes(x=ram_memory, y=interaction(processor_brand, gpu_brand
   theme(axis.text.x = element_text(angle = 45, hjust = 1))
 ```
 
-laptops with higher RAM capacities and combinations of AMD or Intel processors with NVIDIA GPUs tend to receive higher ratings.
+Daha yüksek RAM kapasitelerine ve AMD ya da Intel işlemcilerle NVIDIA GPU kombinasyonlarına sahip laptoplar, genellikle daha yüksek puanlar almaktadır.
 
-How do different laptop brands (e.g., Dell, HP, Lenovo) affect the average rating? Hypothesis: Certain brands, such as Apple, have higher average ratings compared to others.
+Farklı laptop markaları (örneğin Dell, HP, Lenovo) ortalama puanı nasıl etkiliyor? Hipotez: Apple gibi bazı markalar, diğerlerine kıyasla daha yüksek ortalama puanlara sahiptir.
 
 ```{r}
 summary_table_rating <- data_new %>%
@@ -237,7 +249,4 @@ ggplot(summary_table_rating, aes(x=brand, y=average_rating, fill=brand)) +
   theme(axis.text.x = element_text(angle = 45, hjust = 1))
 ```
 
-The brand of a laptop significantly impacts its average rating, with Asus and Acer leading in customer satisfaction, while Axl and Avita lag behind.
-
-
-
+Bir laptopun markası ortalama puanı önemli ölçüde etkiler. Asus ve Acer müşteri memnuniyetinde öne çıkarken, Axl ve Avita geride kalmaktadır.
