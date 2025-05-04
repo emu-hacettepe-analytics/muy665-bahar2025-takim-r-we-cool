@@ -4,7 +4,7 @@ author: "R_we_cool"
 date: "2025"
 format:
   html:
-    theme: cosmo  
+    theme: morph  
 number-sections: true
 ---
 
@@ -27,6 +27,8 @@ Bu kapsamda aşağıdaki analiz adımları gerçekleştirilmiştir:
     Lineer regresyon modeli kurulmuş ve hata metrikleri (RMSE, MAE) ile model başarımı değerlendirilmiştir.
 
 Bu analizler sonucunda bilgisayar performansını etkileyen başlıca faktörler belirlenmiş ve kullanıcılar için daha verimli laptop seçim kriterleri ortaya koyulmuştur.
+
+İlgili veri seti "<https://www.kaggle.com/datasets/bhavikjikadara/brand-laptops-dataset?resource=download>" sitesinden alınmıştır.
 
 ## Veri Hakkında Genel Bilgiler
 
@@ -98,7 +100,7 @@ datatable(
 
 ```{r}
 
-sum(is.na(data_new)) # we can see the NA values are added 
+sum(is.na(data_new)) 
 sum(duplicated(data_new)) # no duplicated 
 dim(data_new)
 ```
