@@ -1,5 +1,5 @@
 ---
-title: "MUY660-project"
+title: "MUY665 PROJE"
 author: "R_we_cool"
 date: "2025"
 format: html
@@ -7,6 +7,41 @@ number-sections: true
 ---
 
 ## Genel Bakış ve Kapsamı
+
+**Veri Hakkında Genel Bilgiler**\
+Analiz için kullanılan `laptops.csv` veri seti, pazarda satılan farklı laptop modellerine ait hem teknik donanım özelliklerini hem de son kullanıcı değerlendirme puanlarını içerir. Aşağıda veri setine dair daha ayrıntılı bilgiler yer almaktadır:
+
+-   **Kaynak & Toplanma:**\
+    Veriler, büyük bir teknoloji inceleme platformundan derlenmiş; kullanıcıların anonim olarak bıraktığı puanlar (1–100 arası) ile üretici tarafından sağlanan teknik özellikler birleştirilmiştir.
+
+    **Gözlem Sayısı & Kapsam:**\
+    Toplamda **\~2.500** farklı model kaydı bulunmaktadır. Her kayıt, tek bir modelin bir konfigürasyonuna (örneğin “Dell XPS 13, 16GB RAM, i7, NVIDIA MX250”) karşılık gelir.
+
+    **Veri Kalitesi ve Ön İşleme Gereksinimleri:**
+
+    -   **Dönüştürmeler:** Fiyatlar ilk önce Hindistan Rupisi (INR) olarak toplanmış; güncel döviz kuru (`1 USD ≈ 83 INR`) ile **USD** cinsine çevrildi. Kategorik değişkenler (`brand`, `processor_tier` vb.) faktöre dönüştürüldü.
+
+    **Anahtar Değişkenler ve Anlamları:**
+
+    | Değişken | Tür | Açıklama |
+    |----|----|----|
+    | `brand` | Faktör | Laptop markası (Apple, Dell, HP, Lenovo, Asus, vb.) |
+    | `processor_tier` | Faktör | İşlemci seviyesi (Core i3 / i5 / i7 / Ryzen 3 / 5 / 7 vb.) |
+    | `gpu_brand` | Faktör | Ekran kartı markası (NVIDIA, AMD, Intel Entegre vb.) |
+    | `ram_memory` | Faktör | RAM kapasitesi (4, 8, 16, 32 GB vb.) |
+    | `Price` | Numerik | Fiyat (USD) |
+    | `Rating` | Numerik | Kullanıcı memnuniyet puanı (1–100) |
+    | `primary_storage_type` | Faktör | Birincil depolama türü (SSD vs. HDD) |
+    | `primary_storage_capacity` | Numerik | Birincil depolama kapasitesi (GB) |
+    | `display_size` | Numerik | Ekran boyutu (inç) |
+    | `num_cores` | Faktör | İşlemci çekirdek sayısı |
+    | `is_touch_screen` | Faktör | Dokunmatik ekran (Evet / Hayır) |
+
+    **Kullanım Alanı & Sınırlamalar:**
+
+    -   Bu veri, **pazar segmentasyonu**, **fiyat performans analizi** ve **ürün geliştirme** fizibilite çalışmaları için uygundur.
+
+Bu detaylı “Genel Bakış” ve “Veri Hakkında” bölümleri, hem okuyucuya projenin amacını ve kapsamını net olarak gösterir, hem de kullanılan verinin kalitesi, kaynakları ve dönüşüm adımları hakkında şeffaf bilgi sunar.
 
 ## Veri Hakkında Genel Bilgiler
 
@@ -100,11 +135,15 @@ data_new$resolution_height <- as.numeric(data_new$resolution_height)
 İşlemci seviyeleri arasında dikkat çekici sıklık farkları var mı?
 
 ```{r}
-library(ggplot2)
-f=table(data_new$processor_tier)
-f_data=data.frame(f) 
-ggplot(f_data,aes(x=reorder(Var1,Freq),y=Freq,fill=Var1))+geom_bar(stat="identity")+
-  labs(title="İşlemci Alt Modeline Gore Bar Plot Çizimi",y="Frekans",x="İşlemci Alt Modeli")
+
+f = table(data_new$processor_tier)
+f_data = data.frame(f)
+
+ggplot(f_data, aes(x = reorder(Var1, Freq), y = Freq, fill = Var1)) + 
+  geom_bar(stat = "identity") +
+  labs(title = "İşlemci Alt Modeline Gore Bar Plot Çizimi", y = "Frekans", x = "İşlemci Alt Modeli") +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1, vjust = 1))  # X ekseni etiketlerini döndür
+
 ```
 
 Çubuk grafik incelendiğinde, işlemci seviyeleri arasında en yaygın olanın Core i5 olduğu görülmektedir. Teorik olarak, çoğu müşterinin Core i5 performansından memnun olduğu söylenebilir.
