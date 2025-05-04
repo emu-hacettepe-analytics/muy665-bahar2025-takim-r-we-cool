@@ -24,7 +24,7 @@ Analiz için kullanılan `laptops.csv` veri seti, pazarda satılan farklı lapto
     **Anahtar Değişkenler ve Anlamları:**
 
     | Değişken | Tür | Açıklama |
-    |----|----|----|
+    |------------------------|------------------------|------------------------|
     | `brand` | Faktör | Laptop markası (Apple, Dell, HP, Lenovo, Asus, vb.) |
     | `processor_tier` | Faktör | İşlemci seviyesi (Core i3 / i5 / i7 / Ryzen 3 / 5 / 7 vb.) |
     | `gpu_brand` | Faktör | Ekran kartı markası (NVIDIA, AMD, Intel Entegre vb.) |
