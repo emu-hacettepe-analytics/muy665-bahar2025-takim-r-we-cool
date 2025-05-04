@@ -23,9 +23,13 @@ library(stringr)
 library(dplyr)
 library(car)
 library(scales)
+library(kableExtra)
+library(DT)
 getwd()
 data_new <- read.csv("laptops.csv")
-head(data_new)
+data_new$Price <- as.numeric(data_new$Price/83)
+datatable(head(data_new, 10), caption = "Veri Setinin İlk 10 Satırı")
+
 ```
 
 ```{r}
@@ -46,9 +50,10 @@ descriptive_stats <- data_new %>%
     mean = ~mean(.x, na.rm = TRUE),
     sd = ~sd(.x, na.rm = TRUE)
   )))
+kable(descriptive_stats, digits = 2, caption = "Tanımlayici İstatistikler") %>%
+  kable_styling(bootstrap_options = c("striped", "hover", "condensed"), full_width = FALSE)
 
-
-print(descriptive_stats)
+#print(descriptive_stats)
 ```
 
 ## Ön İşleme
@@ -71,7 +76,7 @@ data_new$ram_memory <- as.factor(data_new$ram_memory)
 data_new$num_cores <- as.factor(data_new$num_cores)
 
 # Convert relevant columns to numeric
-data_new$Price <- as.numeric(data_new$Price/83)
+data_new$Price <- as.numeric(data_new$Price)
 data_new$Rating <- as.numeric(data_new$Rating)
 data_new$num_threads <- as.numeric(data_new$num_threads)
 data_new$primary_storage_capacity <- as.numeric(data_new$primary_storage_capacity)
