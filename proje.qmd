@@ -31,14 +31,13 @@ library(stringr)
 library(dplyr)
 library(car)
 getwd()
-data <- read.csv("laptops.csv")
-head(data)
+data_new <- read.csv("laptops.csv")
+head(data_new)
 ```
 
 ```{r}
 
 library(missForest)
-data_new =data
 sum(is.na(data_new)) # we can see the NA values are added 
 
 ```
@@ -95,9 +94,6 @@ data_new$display_size <- as.numeric(data_new$display_size)
 data_new$resolution_width <- as.numeric(data_new$resolution_width)
 data_new$resolution_height <- as.numeric(data_new$resolution_height)
 
-# View the structure of the cleaned data frame
-str(data_new)
-summary(data_new)
 ```
 
 İşlemci seviyeleri arasında dikkat çekici sıklık farkları var mı?
