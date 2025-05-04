@@ -184,9 +184,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
    
   <ul>
   <li><a href="#genel-bakış-ve-kapsamı" id="toc-genel-bakış-ve-kapsamı" class="nav-link active" data-scroll-target="#genel-bakış-ve-kapsamı"><span class="header-section-number">1</span> Genel Bakış ve Kapsamı</a></li>
-  <li><a href="#veri-hakkında-genel-bilgiler" id="toc-veri-hakkında-genel-bilgiler" class="nav-link" data-scroll-target="#veri-hakkında-genel-bilgiler"><span class="header-section-number">2</span> Veri Hakkında Genel Bilgiler</a></li>
-  <li><a href="#section" id="toc-section" class="nav-link" data-scroll-target="#section"><span class="header-section-number">3</span> </a></li>
-  <li><a href="#ön-işleme" id="toc-ön-işleme" class="nav-link" data-scroll-target="#ön-işleme"><span class="header-section-number">4</span> Ön İşleme</a></li>
+  <li><a href="#veri-hakkında-genel-bilgiler" id="toc-veri-hakkında-genel-bilgiler" class="nav-link" data-scroll-target="#veri-hakkında-genel-bilgiler"><span class="header-section-number">2</span> Veri Hakkında Genel Bilgiler</a>
+  <ul class="collapse">
+  <li><a href="#kaynak-ve-dönüştürmeler" id="toc-kaynak-ve-dönüştürmeler" class="nav-link" data-scroll-target="#kaynak-ve-dönüştürmeler"><span class="header-section-number">2.1</span> Kaynak ve Dönüştürmeler</a></li>
+  <li><a href="#anahtar-değişkenler" id="toc-anahtar-değişkenler" class="nav-link" data-scroll-target="#anahtar-değişkenler"><span class="header-section-number">2.2</span> Anahtar Değişkenler</a></li>
+  <li><a href="#kullanım-alanı-ve-sınırlamalar" id="toc-kullanım-alanı-ve-sınırlamalar" class="nav-link" data-scroll-target="#kullanım-alanı-ve-sınırlamalar"><span class="header-section-number">2.3</span> Kullanım Alanı ve Sınırlamalar</a></li>
+  <li><a href="#ön-işleme-ve-kütüphanelerin-implementasyonu" id="toc-ön-işleme-ve-kütüphanelerin-implementasyonu" class="nav-link" data-scroll-target="#ön-işleme-ve-kütüphanelerin-implementasyonu"><span class="header-section-number">2.4</span> Ön İşleme ve Kütüphanelerin İmplementasyonu</a></li>
+  <li><a href="#veri-analizi" id="toc-veri-analizi" class="nav-link" data-scroll-target="#veri-analizi"><span class="header-section-number">2.5</span> Veri Analizi</a></li>
+  </ul></li>
+  <li><a href="#çıkarımlar-ve-sonuçlar" id="toc-çıkarımlar-ve-sonuçlar" class="nav-link" data-scroll-target="#çıkarımlar-ve-sonuçlar"><span class="header-section-number">3</span> Çıkarımlar ve Sonuçlar</a></li>
   </ul>
 </nav>
 </nav>
@@ -230,18 +236,37 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <section id="genel-bakış-ve-kapsamı" class="level2" data-number="1">
 <h2 data-number="1" class="anchored" data-anchor-id="genel-bakış-ve-kapsamı"><span class="header-section-number">1</span> Genel Bakış ve Kapsamı</h2>
-<p><strong>Veri Hakkında Genel Bilgiler</strong><br>
-Analiz için kullanılan <code>laptops.csv</code> veri seti, pazarda satılan farklı laptop modellerine ait hem teknik donanım özelliklerini hem de son kullanıcı değerlendirme puanlarını içerir. Aşağıda veri setine dair daha ayrıntılı bilgiler yer almaktadır:</p>
+<p>Bu projede, farklı markalara ve teknik donanım özelliklerine sahip 991 adet dizüstü bilgisayara ilişkin fiyat, donanım ve bilgisayar puanı (Rating) verileri incelenmiştir. Çalışmanın temel amacı, bilgisayar puanını etkileyen en önemli teknik özellikleri belirlemek ve fiyat–performans dengesi üzerine çıkarımlar yapmaktır.</p>
+<p>Bu kapsamda aşağıdaki analiz adımları gerçekleştirilmiştir:</p>
+<ol type="1">
+<li><p><strong>Veri İncelemesi ve Temizliği:</strong><br>
+Veri setindeki eksik değerler, kategorik ve sayısal veri dönüşümleri yapılmış, fiyatlar INR’den USD’ye çevrilmiştir.</p></li>
+<li><p><strong>Betimleyici İstatistikler ve Görselleştirme:</strong><br>
+Sayısal değişkenlerin ortalama ve standart sapmaları hesaplanmış; kategorik değişkenlerin dağılımları grafiklerle analiz edilmiştir.</p></li>
+<li><p><strong>İlişki Analizleri:</strong><br>
+Rating değişkeni ile donanım özellikleri arasındaki ilişkiler grafiksel olarak ve korelasyonla incelenmiştir.</p></li>
+<li><p><strong>Modelleme Aşaması:</strong><br>
+Lineer regresyon modeli kurulmuş ve hata metrikleri (RMSE, MAE) ile model başarımı değerlendirilmiştir.</p></li>
+</ol>
+<p>Bu analizler sonucunda bilgisayar performansını etkileyen başlıca faktörler belirlenmiş ve kullanıcılar için daha verimli laptop seçim kriterleri ortaya koyulmuştur.</p>
+</section>
+<section id="veri-hakkında-genel-bilgiler" class="level2" data-number="2">
+<h2 data-number="2" class="anchored" data-anchor-id="veri-hakkında-genel-bilgiler"><span class="header-section-number">2</span> Veri Hakkında Genel Bilgiler</h2>
+<p>Analiz için kullanılan <code>laptops.csv</code> veri seti, Hindistan pazarında satılan farklı laptop modellerine ait hem teknik donanım bilgilerini hem de bilgisayar puanlarını içermektedir.</p>
 <ul>
-<li><p><strong>Kaynak &amp; Toplanma:</strong><br>
-Veriler, büyük bir teknoloji inceleme platformundan derlenmiş; kullanıcıların anonim olarak bıraktığı puanlar (1–100 arası) ile üretici tarafından sağlanan teknik özellikler birleştirilmiştir.</p>
-<p><strong>Gözlem Sayısı &amp; Kapsam:</strong><br>
-Toplamda <strong>~2.500</strong> farklı model kaydı bulunmaktadır. Her kayıt, tek bir modelin bir konfigürasyonuna (örneğin “Dell XPS 13, 16GB RAM, i7, NVIDIA MX250”) karşılık gelir.</p>
-<p><strong>Veri Kalitesi ve Ön İşleme Gereksinimleri:</strong></p>
-<ul>
-<li><strong>Dönüştürmeler:</strong> Fiyatlar ilk önce Hindistan Rupisi (INR) olarak toplanmış; güncel döviz kuru (<code>1 USD ≈ 83 INR</code>) ile <strong>USD</strong> cinsine çevrildi. Kategorik değişkenler (<code>brand</code>, <code>processor_tier</code> vb.) faktöre dönüştürüldü.</li>
+<li><strong>Gözlem Sayısı:</strong> Toplamda <strong>991</strong> satır bulunmaktadır. Her satır bir dizüstü bilgisayar konfigürasyonuna (örneğin, “HP Pavilion 15”, 8GB RAM, Core i5, 512GB SSD) karşılık gelir.</li>
+<li><strong>Sütun Sayısı:</strong> Veri setinde <strong>22 değişken</strong> bulunmaktadır.</li>
 </ul>
-<p><strong>Anahtar Değişkenler ve Anlamları:</strong></p>
+<section id="kaynak-ve-dönüştürmeler" class="level3" data-number="2.1">
+<h3 data-number="2.1" class="anchored" data-anchor-id="kaynak-ve-dönüştürmeler"><span class="header-section-number">2.1</span> Kaynak ve Dönüştürmeler</h3>
+<ul>
+<li>Fiyatlar Hindistan Rupisi (INR) cinsindendir, analizde kullanılmak üzere <code>1 USD ≈ 83 INR</code> kuru ile USD’ye çevrilmiştir.</li>
+<li><code>brand</code>, <code>processor_tier</code>, <code>gpu_brand</code>, <code>primary_storage_type</code>, <code>ram_memory</code> gibi kategorik değişkenler faktör tipine dönüştürülmüştür.</li>
+<li>Tüm sayısal değişkenler (örneğin <code>Price</code>, <code>Rating</code>, <code>display_size</code>, <code>num_cores</code>) analizlerde kullanılmak üzere <code>numeric</code> tipe çevrilmiştir.</li>
+</ul>
+</section>
+<section id="anahtar-değişkenler" class="level3" data-number="2.2">
+<h3 data-number="2.2" class="anchored" data-anchor-id="anahtar-değişkenler"><span class="header-section-number">2.2</span> Anahtar Değişkenler</h3>
 <table class="caption-top table">
 <colgroup>
 <col style="width: 33%">
@@ -259,72 +284,71 @@ Toplamda <strong>~2.500</strong> farklı model kaydı bulunmaktadır. Her kayıt
 <tr class="odd">
 <td><code>brand</code></td>
 <td>Faktör</td>
-<td>Laptop markası (Apple, Dell, HP, Lenovo, Asus, vb.)</td>
+<td>Laptop markası (HP, Lenovo, Asus, vb.)</td>
 </tr>
 <tr class="even">
 <td><code>processor_tier</code></td>
 <td>Faktör</td>
-<td>İşlemci seviyesi (Core i3 / i5 / i7 / Ryzen 3 / 5 / 7 vb.)</td>
+<td>İşlemci seviyesi (Core i3/i5/i7, Ryzen 3/5/7)</td>
 </tr>
 <tr class="odd">
 <td><code>gpu_brand</code></td>
 <td>Faktör</td>
-<td>Ekran kartı markası (NVIDIA, AMD, Intel Entegre vb.)</td>
+<td>Ekran kartı markası (Intel, AMD, NVIDIA)</td>
 </tr>
 <tr class="even">
 <td><code>ram_memory</code></td>
 <td>Faktör</td>
-<td>RAM kapasitesi (4, 8, 16, 32 GB vb.)</td>
+<td>RAM kapasitesi (GB)</td>
 </tr>
 <tr class="odd">
 <td><code>Price</code></td>
-<td>Numerik</td>
-<td>Fiyat (USD)</td>
+<td>Sayısal</td>
+<td>Laptop fiyatı (USD)</td>
 </tr>
 <tr class="even">
 <td><code>Rating</code></td>
-<td>Numerik</td>
-<td>Kullanıcı memnuniyet puanı (1–100)</td>
+<td>Sayısal</td>
+<td>Bilgisayar puanı (1–100 puan arası)</td>
 </tr>
 <tr class="odd">
 <td><code>primary_storage_type</code></td>
 <td>Faktör</td>
-<td>Birincil depolama türü (SSD vs.&nbsp;HDD)</td>
+<td>Birincil depolama tipi (SSD, HDD)</td>
 </tr>
 <tr class="even">
 <td><code>primary_storage_capacity</code></td>
-<td>Numerik</td>
+<td>Sayısal</td>
 <td>Birincil depolama kapasitesi (GB)</td>
 </tr>
 <tr class="odd">
 <td><code>display_size</code></td>
-<td>Numerik</td>
+<td>Sayısal</td>
 <td>Ekran boyutu (inç)</td>
 </tr>
 <tr class="even">
 <td><code>num_cores</code></td>
-<td>Faktör</td>
+<td>Sayısal</td>
 <td>İşlemci çekirdek sayısı</td>
 </tr>
 <tr class="odd">
 <td><code>is_touch_screen</code></td>
 <td>Faktör</td>
-<td>Dokunmatik ekran (Evet / Hayır)</td>
+<td>Dokunmatik ekran var/yok</td>
 </tr>
 </tbody>
 </table>
-<p><strong>Kullanım Alanı &amp; Sınırlamalar:</strong></p>
+</section>
+<section id="kullanım-alanı-ve-sınırlamalar" class="level3" data-number="2.3">
+<h3 data-number="2.3" class="anchored" data-anchor-id="kullanım-alanı-ve-sınırlamalar"><span class="header-section-number">2.3</span> Kullanım Alanı ve Sınırlamalar</h3>
 <ul>
-<li>Bu veri, <strong>pazar segmentasyonu</strong>, <strong>fiyat performans analizi</strong> ve <strong>ürün geliştirme</strong> fizibilite çalışmaları için uygundur.</li>
-</ul></li>
+<li>Bu veri seti; ürün konumlandırma, fiyat performans analizi, müşteri beklentisi modelleme gibi iş analitiği çalışmalarına uygundur.</li>
+<li>Veri yalnızca Hindistan pazarındaki ürünleri yansıttığı için küresel genelleme sınırlı olabilir.</li>
 </ul>
-<p>Bu detaylı “Genel Bakış” ve “Veri Hakkında” bölümleri, hem okuyucuya projenin amacını ve kapsamını net olarak gösterir, hem de kullanılan verinin kalitesi, kaynakları ve dönüşüm adımları hakkında şeffaf bilgi sunar.</p>
+<p>Veri seti bu haliyle hem betimleyici analizler hem de tahmine dayalı modelleme çalışmaları için ideal bir yapıya sahiptir.</p>
 </section>
-<section id="veri-hakkında-genel-bilgiler" class="level2" data-number="2">
-<h2 data-number="2" class="anchored" data-anchor-id="veri-hakkında-genel-bilgiler"><span class="header-section-number">2</span> Veri Hakkında Genel Bilgiler</h2>
-</section>
-<section id="section" class="level2" data-number="3">
-<h2 data-number="3" class="anchored" data-anchor-id="section"><span class="header-section-number">3</span> </h2>
+<section id="ön-işleme-ve-kütüphanelerin-implementasyonu" class="level3" data-number="2.4">
+<h3 data-number="2.4" class="anchored" data-anchor-id="ön-işleme-ve-kütüphanelerin-implementasyonu"><span class="header-section-number">2.4</span> Ön İşleme ve Kütüphanelerin İmplementasyonu</h3>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(GGally)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -392,8 +416,8 @@ Attaching package: 'kableExtra'</code></pre>
 <span id="cb16-11"><a href="#cb16-11" aria-hidden="true" tabindex="-1"></a>  <span class="at">class =</span> <span class="st">'stripe hover cell-border'</span>  <span class="co"># Daha sıkışık bir görünüm için</span></span>
 <span id="cb16-12"><a href="#cb16-12" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div class="datatables html-widget html-fill-item" id="htmlwidget-fa5126a0b2cb2144a8a2" style="width:100%;height:auto;"></div>
-<script type="application/json" data-for="htmlwidget-fa5126a0b2cb2144a8a2">{"x":{"filter":"none","vertical":false,"caption":"<caption>Veri Setinin İlk 10 Satırı<\/caption>","data":[["1","2","3","4","5","6","7","8","9","10"],[1,2,3,4,5,6,7,8,9,10],["tecno","tecno","hp","acer","lenovo","apple","infinix","asus","hp","infinix"],["Tecno Megabook T1 Laptop (11th Gen Core i3/ 8GB/ 512GB SSD/ Win11 Home)","Tecno Megabook T1 Laptop (11th Gen Core i7/ 16GB/ 1TB SSD/ Win11 Home)","HP Victus 15-fb0157AX Gaming Laptop (AMD Ryzen 5 5600H/ 8GB/ 512GB SSD/ Win11/ 4GB Graph)","Acer Extensa EX214-53 Laptop (12th Gen Core i5/ 8GB/ 512GB SSD/ Win11 Home)","Lenovo V15 82KDA01BIH Laptop (AMD Ryzen 3 5300U/ 8GB/ 512GB SSD/ Win11 Home)","Apple MacBook Air 2020 MGND3HN Laptop (Apple M1/ 8GB/ 256GB SSD/ MacOS)","Infinix INBook Y2 Plus Laptop (11th Gen Core i5/ 16GB/ 512GB SSD/ Win 11 Home)","Asus TUF Gaming F15 FX506HF-HN024W Gaming Laptop (11th Gen Core i5/ 8GB/ 512GB SSD/ Win11/ 4GB Graph)","HP 15s-fq5007TU Laptop (12th Gen Core i3/ 8GB/ 512GB SSD/ Win11 Home)","Infinix Zerobook 2023 Laptop (13th Gen Core i9/ 32GB/ 1TB SSD/ Win 11 Home)"],[289.0361445783133,433.6144578313253,615.6626506024096,481.8072289156627,344.3373493975903,855.3012048192771,421.5662650602409,602.289156626506,445.6626506024097,722.7710843373494],[63,67,73,62,62,45,56,70,60,71],["intel","intel","amd","intel","amd","apple","intel","intel","intel","intel"],["core i3","core i7","ryzen 5","core i5","ryzen 3","m1","core i5","core i5","core i3","core i9"],[2,4,6,12,4,8,4,6,6,14],[4,8,12,16,8,8,8,12,8,20],[8,16,8,8,8,8,16,8,8,32],["SSD","SSD","SSD","SSD","SSD","SSD","SSD","SSD","SSD","SSD"],[512,1024,512,512,512,256,512,512,512,1024],["No secondary storage","No secondary storage","No secondary storage","No secondary storage","No secondary storage","No secondary storage","No secondary storage","No secondary storage","No secondary storage","No secondary storage"],[0,0,0,0,0,0,0,0,0,0],["intel","intel","amd","intel","amd","apple","intel","nvidia","intel","intel"],["integrated","integrated","dedicated","integrated","integrated","apple","integrated","dedicated","integrated","integrated"],["False","False","False","False","False","False","False","False","False","False"],[15.6,15.6,15.6,14,15.6,13.3,15.6,15.6,15.6,15.6],[1920,1920,1920,1920,1920,2560,1920,1920,1920,1920],[1080,1080,1080,1080,1080,1600,1080,1080,1080,1080],["windows","windows","windows","windows","windows","mac","windows","windows","windows","windows"],["1","1","1","1","1","1","1","1","1","1"]],"container":"<table class=\"stripe hover cell-border\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>index<\/th>\n      <th>brand<\/th>\n      <th>Model<\/th>\n      <th>Price<\/th>\n      <th>Rating<\/th>\n      <th>processor_brand<\/th>\n      <th>processor_tier<\/th>\n      <th>num_cores<\/th>\n      <th>num_threads<\/th>\n      <th>ram_memory<\/th>\n      <th>primary_storage_type<\/th>\n      <th>primary_storage_capacity<\/th>\n      <th>secondary_storage_type<\/th>\n      <th>secondary_storage_capacity<\/th>\n      <th>gpu_brand<\/th>\n      <th>gpu_type<\/th>\n      <th>is_touch_screen<\/th>\n      <th>display_size<\/th>\n      <th>resolution_width<\/th>\n      <th>resolution_height<\/th>\n      <th>OS<\/th>\n      <th>year_of_warranty<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"pageLength":5,"scrollX":true,"autoWidth":false,"columnDefs":[{"className":"dt-right","targets":[1,4,5,8,9,10,12,14,18,19,20]},{"orderable":false,"targets":0},{"name":" ","targets":0},{"name":"index","targets":1},{"name":"brand","targets":2},{"name":"Model","targets":3},{"name":"Price","targets":4},{"name":"Rating","targets":5},{"name":"processor_brand","targets":6},{"name":"processor_tier","targets":7},{"name":"num_cores","targets":8},{"name":"num_threads","targets":9},{"name":"ram_memory","targets":10},{"name":"primary_storage_type","targets":11},{"name":"primary_storage_capacity","targets":12},{"name":"secondary_storage_type","targets":13},{"name":"secondary_storage_capacity","targets":14},{"name":"gpu_brand","targets":15},{"name":"gpu_type","targets":16},{"name":"is_touch_screen","targets":17},{"name":"display_size","targets":18},{"name":"resolution_width","targets":19},{"name":"resolution_height","targets":20},{"name":"OS","targets":21},{"name":"year_of_warranty","targets":22}],"order":[],"orderClasses":false,"lengthMenu":[5,10,25,50,100]}},"evals":[],"jsHooks":[]}</script>
+<div class="datatables html-widget html-fill-item" id="htmlwidget-b2a538d7412c2daa9744" style="width:100%;height:auto;"></div>
+<script type="application/json" data-for="htmlwidget-b2a538d7412c2daa9744">{"x":{"filter":"none","vertical":false,"caption":"<caption>Veri Setinin İlk 10 Satırı<\/caption>","data":[["1","2","3","4","5","6","7","8","9","10"],[1,2,3,4,5,6,7,8,9,10],["tecno","tecno","hp","acer","lenovo","apple","infinix","asus","hp","infinix"],["Tecno Megabook T1 Laptop (11th Gen Core i3/ 8GB/ 512GB SSD/ Win11 Home)","Tecno Megabook T1 Laptop (11th Gen Core i7/ 16GB/ 1TB SSD/ Win11 Home)","HP Victus 15-fb0157AX Gaming Laptop (AMD Ryzen 5 5600H/ 8GB/ 512GB SSD/ Win11/ 4GB Graph)","Acer Extensa EX214-53 Laptop (12th Gen Core i5/ 8GB/ 512GB SSD/ Win11 Home)","Lenovo V15 82KDA01BIH Laptop (AMD Ryzen 3 5300U/ 8GB/ 512GB SSD/ Win11 Home)","Apple MacBook Air 2020 MGND3HN Laptop (Apple M1/ 8GB/ 256GB SSD/ MacOS)","Infinix INBook Y2 Plus Laptop (11th Gen Core i5/ 16GB/ 512GB SSD/ Win 11 Home)","Asus TUF Gaming F15 FX506HF-HN024W Gaming Laptop (11th Gen Core i5/ 8GB/ 512GB SSD/ Win11/ 4GB Graph)","HP 15s-fq5007TU Laptop (12th Gen Core i3/ 8GB/ 512GB SSD/ Win11 Home)","Infinix Zerobook 2023 Laptop (13th Gen Core i9/ 32GB/ 1TB SSD/ Win 11 Home)"],[289.0361445783133,433.6144578313253,615.6626506024096,481.8072289156627,344.3373493975903,855.3012048192771,421.5662650602409,602.289156626506,445.6626506024097,722.7710843373494],[63,67,73,62,62,45,56,70,60,71],["intel","intel","amd","intel","amd","apple","intel","intel","intel","intel"],["core i3","core i7","ryzen 5","core i5","ryzen 3","m1","core i5","core i5","core i3","core i9"],[2,4,6,12,4,8,4,6,6,14],[4,8,12,16,8,8,8,12,8,20],[8,16,8,8,8,8,16,8,8,32],["SSD","SSD","SSD","SSD","SSD","SSD","SSD","SSD","SSD","SSD"],[512,1024,512,512,512,256,512,512,512,1024],["No secondary storage","No secondary storage","No secondary storage","No secondary storage","No secondary storage","No secondary storage","No secondary storage","No secondary storage","No secondary storage","No secondary storage"],[0,0,0,0,0,0,0,0,0,0],["intel","intel","amd","intel","amd","apple","intel","nvidia","intel","intel"],["integrated","integrated","dedicated","integrated","integrated","apple","integrated","dedicated","integrated","integrated"],["False","False","False","False","False","False","False","False","False","False"],[15.6,15.6,15.6,14,15.6,13.3,15.6,15.6,15.6,15.6],[1920,1920,1920,1920,1920,2560,1920,1920,1920,1920],[1080,1080,1080,1080,1080,1600,1080,1080,1080,1080],["windows","windows","windows","windows","windows","mac","windows","windows","windows","windows"],["1","1","1","1","1","1","1","1","1","1"]],"container":"<table class=\"stripe hover cell-border\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>index<\/th>\n      <th>brand<\/th>\n      <th>Model<\/th>\n      <th>Price<\/th>\n      <th>Rating<\/th>\n      <th>processor_brand<\/th>\n      <th>processor_tier<\/th>\n      <th>num_cores<\/th>\n      <th>num_threads<\/th>\n      <th>ram_memory<\/th>\n      <th>primary_storage_type<\/th>\n      <th>primary_storage_capacity<\/th>\n      <th>secondary_storage_type<\/th>\n      <th>secondary_storage_capacity<\/th>\n      <th>gpu_brand<\/th>\n      <th>gpu_type<\/th>\n      <th>is_touch_screen<\/th>\n      <th>display_size<\/th>\n      <th>resolution_width<\/th>\n      <th>resolution_height<\/th>\n      <th>OS<\/th>\n      <th>year_of_warranty<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"pageLength":5,"scrollX":true,"autoWidth":false,"columnDefs":[{"className":"dt-right","targets":[1,4,5,8,9,10,12,14,18,19,20]},{"orderable":false,"targets":0},{"name":" ","targets":0},{"name":"index","targets":1},{"name":"brand","targets":2},{"name":"Model","targets":3},{"name":"Price","targets":4},{"name":"Rating","targets":5},{"name":"processor_brand","targets":6},{"name":"processor_tier","targets":7},{"name":"num_cores","targets":8},{"name":"num_threads","targets":9},{"name":"ram_memory","targets":10},{"name":"primary_storage_type","targets":11},{"name":"primary_storage_capacity","targets":12},{"name":"secondary_storage_type","targets":13},{"name":"secondary_storage_capacity","targets":14},{"name":"gpu_brand","targets":15},{"name":"gpu_type","targets":16},{"name":"is_touch_screen","targets":17},{"name":"display_size","targets":18},{"name":"resolution_width","targets":19},{"name":"resolution_height","targets":20},{"name":"OS","targets":21},{"name":"year_of_warranty","targets":22}],"order":[],"orderClasses":false,"lengthMenu":[5,10,25,50,100]}},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 <div class="cell">
@@ -508,8 +532,8 @@ Attaching package: 'kableExtra'</code></pre>
 <div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="co">#print(descriptive_stats)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="ön-işleme" class="level2" data-number="4">
-<h2 data-number="4" class="anchored" data-anchor-id="ön-işleme"><span class="header-section-number">4</span> Ön İşleme</h2>
+<section id="veri-analizi" class="level3" data-number="2.5">
+<h3 data-number="2.5" class="anchored" data-anchor-id="veri-analizi"><span class="header-section-number">2.5</span> Veri Analizi</h3>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Convert relevant columns to factors</span></span>
 <span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>data_new<span class="sc">$</span>brand <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(data_new<span class="sc">$</span>brand)</span>
@@ -774,7 +798,20 @@ override using the `.groups` argument.</code></pre>
 </div>
 </div>
 </div>
-<p>Bir laptopun markası ortalama puanı önemli ölçüde etkiler. Rating açısından değerlendirildiğinde LG ve MSI en yüksek ortalama ratinge sahipken jio ve primebook markaları en düşük ortalama ratinge sahiptir. Apple marka laptoplar ise fiyat açısından pahalı olmasına rağmen rating olarak bu sıralamanın ortalarında kalmaktadır. Paramızı boşa harcamayıp daha fiyat performans laptoplar alalım.</p>
+</section>
+</section>
+<section id="çıkarımlar-ve-sonuçlar" class="level2" data-number="3">
+<h2 data-number="3" class="anchored" data-anchor-id="çıkarımlar-ve-sonuçlar"><span class="header-section-number">3</span> Çıkarımlar ve Sonuçlar</h2>
+<p>Bu proje kapsamında yapılan analizler doğrultusunda aşağıdaki önemli çıkarımlar elde edilmiştir:</p>
+<ul>
+<li><strong>Fiyat–Performans Dengesinde</strong> orta seviye işlemciler (özellikle Core i5) yüksek bilgisayar puanı sağlarken, aşırı yüksek donanım özellikleri her zaman daha yüksek <code>Rating</code> ile sonuçlanmamaktadır.</li>
+<li><strong>SSD tipi birincil depolama birimleri</strong> ve daha yüksek <strong>RAM kapasiteleri</strong>, bilgisayar puanları anlamlı şekilde artırmaktadır.</li>
+<li>GPU markaları arasında <strong>NVIDIA</strong> ekran kartına sahip modellerin ortalama puanları genellikle daha yüksektir. Entegre grafik birimlerine sahip modellerde puanlar görece düşüktür.</li>
+<li><strong>Laptop fiyatı ile bilgisayar puanı arasında pozitif ama zayıf bir ilişki</strong> gözlemlenmiştir. Bu durum, daha pahalı laptopların her zaman daha memnuniyet verici olmadığını göstermektedir.</li>
+<li>Modelleme sonucunda <code>Price</code>, <code>ram_memory</code>, <code>gpu_brand</code> gibi değişkenlerin <code>Rating</code> üzerinde anlamlı etkileri olduğu görülmüştür. Ancak modelin açıklayıcılığı orta seviyede kalmıştır.</li>
+</ul>
+<p><strong>Genel Sonuç:</strong> Bilgisayar puanı sadece fiyata değil; SSD varlığı, RAM kapasitesi ve ekran kartı özellikleri gibi teknik faktörlere dayanmaktadır. Bu bağlamda üreticilerin fiyatı artırmak yerine doğru konfigürasyonlara odaklanmaları, müşteri memnuniyetini artırmada daha etkili olacaktır.</p>
+<p>Rating açısından değerlendirildiğinde LG ve MSI en yüksek ortalama ratinge sahipken jio ve primebook markaları en düşük ortalama ratinge sahiptir. Apple marka laptoplar ise fiyat açısından pahalı olmasına rağmen rating olarak bu sıralamanın ortalarında kalmaktadır. Paramızı boşa harcamayıp daha fiyat performans laptoplar alalım. :)</p>
 
 
 </section>

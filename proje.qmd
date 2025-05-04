@@ -8,48 +8,65 @@ number-sections: true
 
 ## Genel Bakış ve Kapsamı
 
-**Veri Hakkında Genel Bilgiler**\
-Analiz için kullanılan `laptops.csv` veri seti, pazarda satılan farklı laptop modellerine ait hem teknik donanım özelliklerini hem de son kullanıcı değerlendirme puanlarını içerir. Aşağıda veri setine dair daha ayrıntılı bilgiler yer almaktadır:
+Bu projede, farklı markalara ve teknik donanım özelliklerine sahip 991 adet dizüstü bilgisayara ilişkin fiyat, donanım ve bilgisayar puanı (Rating) verileri incelenmiştir. Çalışmanın temel amacı, bilgisayar puanını etkileyen en önemli teknik özellikleri belirlemek ve fiyat–performans dengesi üzerine çıkarımlar yapmaktır.
 
--   **Kaynak & Toplanma:**\
-    Veriler, büyük bir teknoloji inceleme platformundan derlenmiş; kullanıcıların anonim olarak bıraktığı puanlar (1–100 arası) ile üretici tarafından sağlanan teknik özellikler birleştirilmiştir.
+Bu kapsamda aşağıdaki analiz adımları gerçekleştirilmiştir:
 
-    **Gözlem Sayısı & Kapsam:**\
-    Toplamda **\~2.500** farklı model kaydı bulunmaktadır. Her kayıt, tek bir modelin bir konfigürasyonuna (örneğin “Dell XPS 13, 16GB RAM, i7, NVIDIA MX250”) karşılık gelir.
+1.  **Veri İncelemesi ve Temizliği:**\
+    Veri setindeki eksik değerler, kategorik ve sayısal veri dönüşümleri yapılmış, fiyatlar INR'den USD'ye çevrilmiştir.
 
-    **Veri Kalitesi ve Ön İşleme Gereksinimleri:**
+2.  **Betimleyici İstatistikler ve Görselleştirme:**\
+    Sayısal değişkenlerin ortalama ve standart sapmaları hesaplanmış; kategorik değişkenlerin dağılımları grafiklerle analiz edilmiştir.
 
-    -   **Dönüştürmeler:** Fiyatlar ilk önce Hindistan Rupisi (INR) olarak toplanmış; güncel döviz kuru (`1 USD ≈ 83 INR`) ile **USD** cinsine çevrildi. Kategorik değişkenler (`brand`, `processor_tier` vb.) faktöre dönüştürüldü.
+3.  **İlişki Analizleri:**\
+    Rating değişkeni ile donanım özellikleri arasındaki ilişkiler grafiksel olarak ve korelasyonla incelenmiştir.
 
-    **Anahtar Değişkenler ve Anlamları:**
+4.  **Modelleme Aşaması:**\
+    Lineer regresyon modeli kurulmuş ve hata metrikleri (RMSE, MAE) ile model başarımı değerlendirilmiştir.
 
-    | Değişken | Tür | Açıklama |
-    |------------------------|------------------------|------------------------|
-    | `brand` | Faktör | Laptop markası (Apple, Dell, HP, Lenovo, Asus, vb.) |
-    | `processor_tier` | Faktör | İşlemci seviyesi (Core i3 / i5 / i7 / Ryzen 3 / 5 / 7 vb.) |
-    | `gpu_brand` | Faktör | Ekran kartı markası (NVIDIA, AMD, Intel Entegre vb.) |
-    | `ram_memory` | Faktör | RAM kapasitesi (4, 8, 16, 32 GB vb.) |
-    | `Price` | Numerik | Fiyat (USD) |
-    | `Rating` | Numerik | Kullanıcı memnuniyet puanı (1–100) |
-    | `primary_storage_type` | Faktör | Birincil depolama türü (SSD vs. HDD) |
-    | `primary_storage_capacity` | Numerik | Birincil depolama kapasitesi (GB) |
-    | `display_size` | Numerik | Ekran boyutu (inç) |
-    | `num_cores` | Faktör | İşlemci çekirdek sayısı |
-    | `is_touch_screen` | Faktör | Dokunmatik ekran (Evet / Hayır) |
-
-    **Kullanım Alanı & Sınırlamalar:**
-
-    -   Bu veri, **pazar segmentasyonu**, **fiyat performans analizi** ve **ürün geliştirme** fizibilite çalışmaları için uygundur.
-
-Bu detaylı “Genel Bakış” ve “Veri Hakkında” bölümleri, hem okuyucuya projenin amacını ve kapsamını net olarak gösterir, hem de kullanılan verinin kalitesi, kaynakları ve dönüşüm adımları hakkında şeffaf bilgi sunar.
+Bu analizler sonucunda bilgisayar performansını etkileyen başlıca faktörler belirlenmiş ve kullanıcılar için daha verimli laptop seçim kriterleri ortaya koyulmuştur.
 
 ## Veri Hakkında Genel Bilgiler
+
+Analiz için kullanılan `laptops.csv` veri seti, Hindistan pazarında satılan farklı laptop modellerine ait hem teknik donanım bilgilerini hem de bilgisayar puanlarını içermektedir.
+
+-   **Gözlem Sayısı:** Toplamda **991** satır bulunmaktadır. Her satır bir dizüstü bilgisayar konfigürasyonuna (örneğin, "HP Pavilion 15", 8GB RAM, Core i5, 512GB SSD) karşılık gelir.
+-   **Sütun Sayısı:** Veri setinde **22 değişken** bulunmaktadır.
+
+### Kaynak ve Dönüştürmeler
+
+-   Fiyatlar Hindistan Rupisi (INR) cinsindendir, analizde kullanılmak üzere `1 USD ≈ 83 INR` kuru ile USD'ye çevrilmiştir.
+-   `brand`, `processor_tier`, `gpu_brand`, `primary_storage_type`, `ram_memory` gibi kategorik değişkenler faktör tipine dönüştürülmüştür.
+-   Tüm sayısal değişkenler (örneğin `Price`, `Rating`, `display_size`, `num_cores`) analizlerde kullanılmak üzere `numeric` tipe çevrilmiştir.
+
+### Anahtar Değişkenler
+
+| Değişken | Tür | Açıklama |
+|----|----|----|
+| `brand` | Faktör | Laptop markası (HP, Lenovo, Asus, vb.) |
+| `processor_tier` | Faktör | İşlemci seviyesi (Core i3/i5/i7, Ryzen 3/5/7) |
+| `gpu_brand` | Faktör | Ekran kartı markası (Intel, AMD, NVIDIA) |
+| `ram_memory` | Faktör | RAM kapasitesi (GB) |
+| `Price` | Sayısal | Laptop fiyatı (USD) |
+| `Rating` | Sayısal | Bilgisayar puanı (1–100 puan arası) |
+| `primary_storage_type` | Faktör | Birincil depolama tipi (SSD, HDD) |
+| `primary_storage_capacity` | Sayısal | Birincil depolama kapasitesi (GB) |
+| `display_size` | Sayısal | Ekran boyutu (inç) |
+| `num_cores` | Sayısal | İşlemci çekirdek sayısı |
+| `is_touch_screen` | Faktör | Dokunmatik ekran var/yok |
+
+### Kullanım Alanı ve Sınırlamalar
+
+-   Bu veri seti; ürün konumlandırma, fiyat performans analizi, müşteri beklentisi modelleme gibi iş analitiği çalışmalarına uygundur.
+-   Veri yalnızca Hindistan pazarındaki ürünleri yansıttığı için küresel genelleme sınırlı olabilir.
+
+Veri seti bu haliyle hem betimleyici analizler hem de tahmine dayalı modelleme çalışmaları için ideal bir yapıya sahiptir.
+
+### Ön İşleme ve Kütüphanelerin İmplementasyonu
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
-
-## 
 
 ```{r}
 library(ggplot2)
@@ -101,7 +118,7 @@ kable(descriptive_stats, digits = 2, caption = "Tanımlayici İstatistikler") %>
 #print(descriptive_stats)
 ```
 
-## Ön İşleme
+### Veri Analizi
 
 ```{r}
 
@@ -314,4 +331,16 @@ ggplot(summary_table_rating, aes(x = brand, y = average_rating, fill = highlight
 
 ```
 
-Bir laptopun markası ortalama puanı önemli ölçüde etkiler. Rating açısından değerlendirildiğinde LG ve MSI en yüksek ortalama ratinge sahipken jio ve primebook markaları en düşük ortalama ratinge sahiptir. Apple marka laptoplar ise fiyat açısından pahalı olmasına rağmen rating olarak bu sıralamanın ortalarında kalmaktadır. Paramızı boşa harcamayıp daha fiyat performans laptoplar alalım.
+## Çıkarımlar ve Sonuçlar
+
+Bu proje kapsamında yapılan analizler doğrultusunda aşağıdaki önemli çıkarımlar elde edilmiştir:
+
+-   **Fiyat–Performans Dengesinde** orta seviye işlemciler (özellikle Core i5) yüksek bilgisayar puanı sağlarken, aşırı yüksek donanım özellikleri her zaman daha yüksek `Rating` ile sonuçlanmamaktadır.
+-   **SSD tipi birincil depolama birimleri** ve daha yüksek **RAM kapasiteleri**, bilgisayar puanları anlamlı şekilde artırmaktadır.
+-   GPU markaları arasında **NVIDIA** ekran kartına sahip modellerin ortalama puanları genellikle daha yüksektir. Entegre grafik birimlerine sahip modellerde puanlar görece düşüktür.
+-   **Laptop fiyatı ile bilgisayar puanı arasında pozitif ama zayıf bir ilişki** gözlemlenmiştir. Bu durum, daha pahalı laptopların her zaman daha memnuniyet verici olmadığını göstermektedir.
+-   Modelleme sonucunda `Price`, `ram_memory`, `gpu_brand` gibi değişkenlerin `Rating` üzerinde anlamlı etkileri olduğu görülmüştür. Ancak modelin açıklayıcılığı orta seviyede kalmıştır.
+
+**Genel Sonuç:** Bilgisayar puanı sadece fiyata değil; SSD varlığı, RAM kapasitesi ve ekran kartı özellikleri gibi teknik faktörlere dayanmaktadır. Bu bağlamda üreticilerin fiyatı artırmak yerine doğru konfigürasyonlara odaklanmaları, müşteri memnuniyetini artırmada daha etkili olacaktır.
+
+Rating açısından değerlendirildiğinde LG ve MSI en yüksek ortalama ratinge sahipken jio ve primebook markaları en düşük ortalama ratinge sahiptir. Apple marka laptoplar ise fiyat açısından pahalı olmasına rağmen rating olarak bu sıralamanın ortalarında kalmaktadır. Paramızı boşa harcamayıp daha fiyat performans laptoplar alalım. :)
