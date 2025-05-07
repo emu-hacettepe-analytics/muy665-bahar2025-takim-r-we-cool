@@ -4,7 +4,7 @@ author: "R_we_cool"
 date: "2025"
 format:
   html:
-    theme: lux  
+    theme: flatly  
 number-sections: true
 ---
 
@@ -178,6 +178,8 @@ ggplot(data_new, aes(x=Rating)) + geom_histogram(binwidth=5, fill='green3', colo
 
 ```
 
+Laptop ratinglerinin histogramı incelendiğinde, kullanıcı puanlarının genellikle 60 ile 70 arasında yoğunlaştığı görülmektedir. Bu durum, veri setindeki laptopların çoğunun orta–yüksek memnuniyet seviyesinde değerlendirildiğini göstermektedir.
+
 GPU markasının (örneğin NVIDIA, AMD) laptop puanlarına etkisi nedir?
 
 ```{r}
@@ -193,6 +195,8 @@ ggplot(summary_table_rating, aes(x=gpu_brand, y=average_rating, fill=gpu_brand))
   theme_minimal() +
   theme(axis.text.x = element_text(angle = 45, hjust = 1))
 ```
+
+GPU markalarına göre ortalama ratingler incelendiğinde, NVIDIA ekran kartına sahip laptopların en yüksek kullanıcı puanlarını aldığı, ARM tabanlı GPU’ların ise belirgin şekilde daha düşük ortalamalara sahip olduğu görülmektedir. AMD ve Intel GPU’lar orta seviyede konumlanırken, Apple GPU’lar nispeten daha düşük bir performans göstermektedir.
 
 GPU markasının laptop fiyatlarına etkisi nedir?
 
@@ -210,6 +214,8 @@ ggplot(summary_table_price, aes(x=gpu_brand, y=average_price, fill=gpu_brand)) +
   theme(axis.text.x = element_text(angle = 45, hjust = 1))
 ```
 
+GPU markalarına göre ortalama laptop fiyatları incelendiğinde, Apple GPU’lara sahip cihazların diğer markalara kıyasla çok daha yüksek fiyatlara satıldığı görülmektedir. ARM tabanlı sistemler ise en düşük ortalama fiyata sahipken, NVIDIA GPU'lu laptoplar fiyat açısından ikinci sırada yer almaktadır.
+
 Laptop fiyatları, işlemci markası ve GPU türüne göre nasıl değişmektedir?
 
 ```{r}
@@ -222,6 +228,8 @@ ggplot(data_new, aes(x = processor_brand, y = Price, color = gpu_type)) +
 
 İşlemci markası ile fiyat arasındaki ilişkiyi GPU türüne göre renklendirilmiş olarak gösteren grafik
 
+İşlemci markası ile fiyat arasındaki ilişki incelendiğinde, dedicated (harici) GPU'ya sahip laptopların her işlemci markasında daha yüksek fiyat aralığına yayıldığı görülmektedir. Apple işlemcili sistemler, yalnızca kendi GPU türüyle eşleştiği halde yüksek fiyatlarıyla dikkat çekerken, integrated (entegre) GPU’lu modeller tüm markalarda belirgin şekilde daha düşük fiyatlıdır.
+
 Laptop puanları, işlemci markası ve GPU türüne göre nasıl değişmektedir?
 
 ```{r}
@@ -232,6 +240,8 @@ ggplot(data_new, aes(x = processor_brand, y = Rating, color = gpu_type)) +
   scale_y_continuous(labels = scales::dollar_format(prefix = ''))
 
 ```
+
+GPU tipine göre laptop ratingleri incelendiğinde, dedicated (harici) GPU’ya sahip sistemlerin her işlemci markasında daha yüksek puanlar aldığı görülmektedir. Buna karşın, Apple işlemcili sistemler,  daha dar bir puan aralığında yer almakta ve genellikle orta seviyede değerlendirmeler almaktadır. Özellikle Intel ve AMD işlemcili modeller, dedicated GPU ile birlikte kullanıldığında en yüksek rating değerlerine ulaşmaktadır.
 
 Çekirdek sayısı ile laptop puanları arasında, işlemci markasına göre bir ilişki var mı?
 
@@ -245,7 +255,7 @@ ggplot(data_new, aes(x = num_cores, y = Rating, color = processor_brand)) +
 
 ```
 
-Çekirdek sayısı ile puanlar arasında doğrusal bir ilişki olduğu söylenebilir.
+Çekirdek sayısı ile puanlar arasında doğrusal bir ilişki olduğu söylenebilir. Grafik incelendiğinde, çekirdek sayısı arttıkça laptop rating’lerinin genellikle yükseldiği görülmektedir. Özellikle 12 çekirdekten sonra rating değerleri büyük ölçüde benzer seviyelerde kalmakta, bu da belirli bir çekirdek sayısından sonra ek çekirdeklerin kullanıcı memnuniyetine sınırlı katkı sağladığını göstermektedir.
 
 Fiyat ile puanlama arasında bir korelasyon var mı?
 
@@ -340,7 +350,7 @@ ggplot(summary_table_rating, aes(x = brand, y = average_rating, fill = highlight
 Bu proje kapsamında yapılan analizler doğrultusunda aşağıdaki önemli çıkarımlar elde edilmiştir:
 
 -   **Fiyat–Performans Dengesinde** orta seviye işlemciler (özellikle Core i5) yüksek bilgisayar puanı sağlarken, aşırı yüksek donanım özellikleri her zaman daha yüksek `Rating` ile sonuçlanmamaktadır.
--   **SSD tipi birincil depolama birimleri** ve daha yüksek **RAM kapasiteleri**, bilgisayar puanları anlamlı şekilde artırmaktadır.
+-   **SSD tipi birincil depolama birimleri** ve daha yüksek **RAM kapasiteleri**, bilgisayar puanlarını anlamlı şekilde artırmaktadır.
 -   GPU markaları arasında **NVIDIA** ekran kartına sahip modellerin ortalama puanları genellikle daha yüksektir. Entegre grafik birimlerine sahip modellerde puanlar görece düşüktür.
 -   **Laptop fiyatı ile bilgisayar puanı arasında pozitif ama zayıf bir ilişki** gözlemlenmiştir. Bu durum, daha pahalı laptopların her zaman daha memnuniyet verici olmadığını göstermektedir.
 -   Modelleme sonucunda `Price`, `ram_memory`, `gpu_brand` gibi değişkenlerin `Rating` üzerinde anlamlı etkileri olduğu görülmüştür. Ancak modelin açıklayıcılığı orta seviyede kalmıştır.
